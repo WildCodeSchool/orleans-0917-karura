@@ -1,7 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: noclain
- * Date: 03/10/17
- * Time: 09:49
- */
+include 'header.php';
+?>
+
+<!-- Corps de la page Accueil -->
+
+<?php
+include 'footer.php';
+?>
