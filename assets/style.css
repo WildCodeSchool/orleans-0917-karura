@@ -43,3 +43,34 @@
 }
 
 /*End barre de navigation*/
+
+
+/* Start slider */
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
+p {
+    font-size: 2vw;
+}
+
+.carousel-caption {
+    height: 80%;
+    bottom: 10%;
+}
+
+.premierParaSlider {
+    text-align: left;
+}
+
+.secondeParaSlider {
+    text-align : right;
+}
+
+.troisiemeParaSlider {
+    bottom: 0;
+    position: absolute;
+}
+
+/* End slider*/
