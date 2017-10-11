@@ -8,22 +8,27 @@
 
 namespace Karura\Controller;
 
-
 use Karura\Model\CategoryManager;
 
-class CategoryController
+class CategoryController extends Controller
 {
     public function showAllAction()
     {
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll();
-        require '../src/view/Category/showAll.php';
+
+        return $this->twig.render('Category/showAll.html.twig', [
+                'categories' => $categories,
+            ]);
     }
 
     public function showOneAction($id)
     {
         $categoryManager = new CategoryManager();
         $category = $categoryManager->find($id);
-        require '../src/View/Category/showOne.php';
+
+        return $this->twig.render('Category/showOne.html.twig', [
+                'category' => $category,
+            ]);
     }
 }

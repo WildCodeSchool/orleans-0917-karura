@@ -10,7 +10,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img class="img-responsive" src="../src/images/logo/karuralogosm.png" alt="karura">
+                <img class="img-responsive" src="assets/images/logo/karuralogosm.png" alt="karura">
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <form class="navbar-form navbar-right">

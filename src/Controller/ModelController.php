@@ -8,17 +8,15 @@
 
 namespace Karura\Controller;
 
-
-
 use Karura\Model\ModelManager;
 
-class ModelController
+class ModelController extends Controller
 {
     public function showAllAction()
     {
         $modelManager = new ModelManager();
         $models = $modelManager->findAll();
-        require '../src/view/Model/showAll.php';
+        require '../src/view/Model/showAll.html.twig';
     }
 
     public function showOneAction($id)
