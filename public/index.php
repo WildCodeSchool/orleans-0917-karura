@@ -74,8 +74,8 @@ include 'header.php';
 
 <!-- TEST affichage -->
     <?php
-    $categoryController = new \Karura\Controller\CategoryController();
-    echo  $categoryController->showAllAction();
+    $declinationController = new \Karura\Controller\DeclinationController();
+    echo $declinationController->showAllAction();
     ?>
 
 
