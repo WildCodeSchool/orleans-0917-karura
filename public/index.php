@@ -1,4 +1,7 @@
 <?php
+require "../vendor/autoload.php";
+require '../connect.php';
+
 include 'header.php';
 ?>
 
@@ -67,6 +70,14 @@ include 'header.php';
             <span class="sr-only">Next</span>
         </a>
     </div>
+
+
+<!-- TEST affichage -->
+    <?php
+    $categoryController = new \Karura\Controller\CategoryController();
+    echo  $categoryController->showAllAction();
+    ?>
+
 
 <?php
 include 'footer.php';
