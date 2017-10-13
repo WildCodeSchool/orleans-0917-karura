@@ -72,11 +72,13 @@ include 'header.php';
     </div>
 
 
-<!-- TEST affichage -->
-    <?php
-    $declinationController = new \Karura\Controller\DeclinationController();
-    echo $declinationController->showAllAction();
-    ?>
+    <!-- TEST affichage -->
+<?php
+/*$declinationController = new \Karura\Controller\DeclinationController();
+echo $declinationController->showAllAction();*/
+$modelController = new \Karura\Controller\ModelController();
+echo $modelController->showSearchAction('model1');
+?>
 
 
 <?php

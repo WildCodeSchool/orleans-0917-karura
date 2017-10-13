@@ -16,7 +16,10 @@ class ModelController extends Controller
     {
         $modelManager = new ModelManager();
         $models = $modelManager->findAll();
-        require '../src/view/Model/showAll.html.twig';
+
+        return $this->twig->render('Model/showAll.html.twig', [
+            'models' => $models,
+        ]);
     }
 
     public function showOneAction($id)
@@ -24,5 +27,15 @@ class ModelController extends Controller
         $modelManager = new ModelManager();
         $model = $modelManager->find($id);
         require '../src/View/Model/showOne.php';
+    }
+
+    public function showSearchAction(string $searchInput)
+    {
+        $modelManager = new ModelManager();
+        $models = $modelManager->findByName($searchInput);
+
+        return $this->twig->render('Model/showAll.html.twig', [
+            'models' => $models,
+        ]);
     }
 }
