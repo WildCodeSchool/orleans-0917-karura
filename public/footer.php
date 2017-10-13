@@ -2,14 +2,15 @@
 <footer>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-sm-4">
                 <p>Mentions légales</p>
             </div>
-            <div class="col-xs-6">
+            <div class="col-sm-4">
                 <p>Nous contacter : <a href="../category/contact.php">carine@karura.fr</a></p>
             </div>
-            <a class="col-xs-12">
-                <a href="https://wildcodeschool.fr/"></a><img src="http://via.placeholder.com/75x75" alt="Logo Wild Code School"></a>
+            <div class="col-sm-4">
+                <a class="pull-right" href="https://wildcodeschool.fr/"><img src="http://via.placeholder.com/75x75"
+                                                          alt="Logo Wild Code School"></a>
             </div>
         </div>
     </div> <!-- end container footer -->

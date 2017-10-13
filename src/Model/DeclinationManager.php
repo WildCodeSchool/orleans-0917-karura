@@ -19,7 +19,11 @@ class DeclinationManager
         $this->pdo = new \PDO(DSN, USER, PASS);
     }
 
+    // SELECT Methods
 
+    /**
+     * @return array
+     */
     public function findAll()
     {
         $req = "SELECT * FROM " . self::TABLE;
@@ -28,6 +32,10 @@ class DeclinationManager
 
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function find(int $id)
     {
         $req = "SELECT * FROM " . self::TABLE . " WHERE id=:id";
@@ -38,16 +46,23 @@ class DeclinationManager
         return $declination[0];
     }
 
+    // INSERT Methods
     public function insert()
     {
         // TODO
     }
 
+    // UPDATE Methods
     public function update()
     {
         // TODO
     }
 
+    // DELETE Methods
+
+    /**
+     * @param Declination $declination
+     */
     public function delete(Declination $declination)
     {
         $id = $declination->getId();
