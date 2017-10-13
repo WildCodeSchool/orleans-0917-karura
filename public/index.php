@@ -18,9 +18,4 @@ if (!empty($_GET['route'])) {
     }
 }
 
-/*$declinationController = new \Karura\Controller\DeclinationController();
-echo $declinationController->showAllAction();
-
-$modelController = new \Karura\Controller\ModelController();
-echo $modelController->showSearchAction('model1');*/
 ?>

@@ -51,6 +51,23 @@
     background-image: none
 }
 
+.carousel-inner > .item {
+    height: 30vw;
+    background-size: cover;
+}
+
+.slider1 {
+    background: url('../images/agi02.jpg') center no-repeat;
+}
+
+.slider2 {
+    background: url('../images/agi05.jpg') center no-repeat;
+}
+
+.slider3 {
+    background: url('../images/agi06.jpg') center no-repeat;
+}
+
 p {
     font-size: 2vw;
 }
@@ -71,6 +88,12 @@ p {
 .troisiemeParaSlider {
     bottom: 0;
     position: absolute;
+}
+
+@media(max-width: 500px) {
+    #carousel-example-generic {
+        display: none;
+    }
 }
 
 /* End slider*/
