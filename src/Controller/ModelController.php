@@ -34,7 +34,7 @@ class ModelController extends Controller
         $modelManager = new ModelManager();
         $models = $modelManager->findByName($searchInput);
 
-        return $this->twig->render('Model/showAll.html.twig', [
+        return $this->twig->render('Model/showSearch.html.twig', [
             'models' => $models,
         ]);
     }
