@@ -12,9 +12,10 @@
                 <img class="img-responsive" src="assets/images/logo/karuralogosm.png" alt="karura">
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <form class="navbar-form navbar-right">
+                <form action="index.php" method='get' class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Rechercher">
+                        <input type="hidden" class="form-control" name="route" value="search">
+                        <input type="text" class="form-control" name="search" placeholder="Rechercher">
                     </div>
                     <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"
                                                                         aria-hidden="true"></span></button>

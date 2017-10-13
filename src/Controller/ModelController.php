@@ -8,6 +8,7 @@
 
 namespace Karura\Controller;
 
+use Karura\Model\DeclinationManager;
 use Karura\Model\ModelManager;
 
 class ModelController extends Controller
@@ -34,8 +35,14 @@ class ModelController extends Controller
         $modelManager = new ModelManager();
         $models = $modelManager->findByName($searchInput);
 
+        $declinationManager = new DeclinationManager();
+        $declinationsByModel = [];
+        foreach ($models as $model) {
+            $declinationsByModel = array_merge($declinationsByModel, $declinationManager->findByModel($model));
+        }
+
         return $this->twig->render('Model/showSearch.html.twig', [
-            'models' => $models,
+            'declinationsByModel' => $declinationsByModel,
         ]);
     }
 }

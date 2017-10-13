@@ -3,7 +3,20 @@
 {% block pageTitle %}Recherche{% endblock %}
 
 {% block body %}
-    {% for model in models %}
-        <li>Modèle : {{ model.Name }} id = {{ model.Id }}</li>
-    {% endfor %}
+
+    <div class="row">
+
+        {% for declination in declinationsByModel %}
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <figure class="thumbnail">
+                    <img src="assets/images/{{ declination.mainImage }}" alt="">
+                    <figcaption class="caption">
+                        <p>{{ declination.mainImage }}</p>
+                    </figcaption>
+                </figure>
+            </div>
+        {% endfor %}
+
+    </div>
+
 {% endblock %}
