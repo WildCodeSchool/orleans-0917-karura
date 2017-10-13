@@ -11,7 +11,7 @@ namespace Karura\Controller;
 
 class Controller
 {
-    protected $twig;
+    public $twig;
 
     public function __construct ()
     {

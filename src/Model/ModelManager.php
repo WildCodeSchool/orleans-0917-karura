@@ -66,6 +66,17 @@ class ModelManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
     }
 
+    public function findByCategory(Category $category)
+    {
+        $req = "SELECT * 
+                FROM " . self::TABLE . "
+                WHERE category_id=:category_id";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
+    }
+
     public function insert()
     {
         // TODO
