@@ -50,7 +50,7 @@ class ModelManager
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('name', '%'.$modelName.'%', \PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Model::class);
     }
 
     public function findByNameWithCategory(string $modelName, Category $category)

@@ -3,7 +3,7 @@
 require "../vendor/autoload.php";
 require '../connect.php';
 
-
+// routeur
 if (!empty($_GET['route'])) {
     switch ($_GET['route']) {
         case ('home');
@@ -12,15 +12,11 @@ if (!empty($_GET['route'])) {
             break;
 
         case ('search');
+            // search by name of model
             $modelController = new \Karura\Controller\ModelController();
-            echo $modelController->showSearchAction('5');
+            echo $modelController->showSearchAction($_GET['search']);
             break;
     }
 }
 
-/*$declinationController = new \Karura\Controller\DeclinationController();
-echo $declinationController->showAllAction();
-
-$modelController = new \Karura\Controller\ModelController();
-echo $modelController->showSearchAction('model1');*/
 ?>

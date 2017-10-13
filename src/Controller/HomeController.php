@@ -14,12 +14,11 @@ class HomeController extends Controller
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll();
 
-        //2* find all declinations
+        //2* find all declinations for each category
         $declinationManager = new DeclinationManager();
         foreach ($categories as $category) {
-            $declinationsByCat[] = $declinationManager->findByCategory($category);
+            $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
         }
-        //var_dump($declinationsByCat);
 
         // pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
