@@ -6,17 +6,33 @@ require '../connect.php';
 // routeur
 if (!empty($_GET['route'])) {
     switch ($_GET['route']) {
-        case ('home');
-            $homeController = new \Karura\Controller\HomeController();
-            echo $homeController->showHome();
-            break;
-
         case ('search');
-            // search by name of model
+            // simple search in name of models
             $modelController = new \Karura\Controller\ModelController();
             echo $modelController->showSearchAction($_GET['search']);
             break;
+
+        case ('contact');
+            // go to contact page
+            $homeController = new \Karura\Controller\HomeController();
+            echo $homeController->showContact();
+            break;
+
+        case ('mentions');
+            // go to contact page
+            $homeController = new \Karura\Controller\HomeController();
+            echo $homeController->showMentions();
+            break;
+
+        default:
+            // go to homepage by default
+            $homeController = new \Karura\Controller\HomeController();
+            echo $homeController->showHome();
     }
+} else {
+    // go to homepage by default
+    $homeController = new \Karura\Controller\HomeController();
+    echo $homeController->showHome();
 }
 
 ?>

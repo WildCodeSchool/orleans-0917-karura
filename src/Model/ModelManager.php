@@ -22,14 +22,17 @@ class ModelManager
 
     public function findAll()
     {
-        $req = "SELECT * FROM " . self::TABLE;
+        $req = "SELECT *
+                FROM " . self::TABLE;
         $statement = $this->pdo->query($req);
         return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
     }
 
     public function find(int $id)
     {
-        $req = "SELECT * FROM " . self::TABLE . " WHERE id=:id";
+        $req = "SELECT *
+                FROM " . self::TABLE . "
+                WHERE id=:id";
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
@@ -63,7 +66,7 @@ class ModelManager
         $statement->bindValue('name', '%'.$modelName.'%', \PDO::PARAM_INT);
         $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Model::class);
     }
 
     public function findByCategory(Category $category)
@@ -74,7 +77,7 @@ class ModelManager
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Model::class);
     }
 
     public function insert()

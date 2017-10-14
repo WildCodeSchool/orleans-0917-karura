@@ -26,4 +26,22 @@ class HomeController extends Controller
             'declinationsByCat' => $declinationsByCat,
         ]);
     }
+
+    public function showContact()
+    {
+        // show contact page
+        // TODO
+        // make args to formate form when you came from model contact redirection
+        return $this->twig->render('contact.html.twig', [
+            'data_id' => 'data',
+        ]);
+    }
+
+    public function showMentions()
+    {
+        // show mentions légales
+        return $this->twig->render('mentions.html.twig', [
+            'data_id' => 'data',
+        ]);
+    }
 }

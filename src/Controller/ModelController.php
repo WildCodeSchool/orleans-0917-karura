@@ -27,10 +27,15 @@ class ModelController extends Controller
     {
         $modelManager = new ModelManager();
         $model = $modelManager->find($id);
-        require '../src/View/Model/showOne.php';
+        // TODO
     }
 
-    public function showSearchAction(string $searchInput)
+    /**
+     * @param string $searchInput
+     * @param array ...$filters
+     * @return string
+     */
+    public function showSearchAction(string $searchInput, ...$filters)
     {
         $modelManager = new ModelManager();
         $models = $modelManager->findByName($searchInput);
