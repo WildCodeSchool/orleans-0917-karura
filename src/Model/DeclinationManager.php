@@ -12,8 +12,15 @@ namespace Karura\Model;
 class DeclinationManager
 {
     const TABLE = 'declination';
+
+    /**
+     * @var \PDO
+     */
     private $pdo;
 
+    /**
+     * DeclinationManager constructor.
+     */
     public function __construct()
     {
         $this->pdo = new \PDO(DSN, USER, PASS);
@@ -66,6 +73,10 @@ class DeclinationManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Declination::class);
     }
 
+    /**
+     * @param Model $model
+     * @return array
+     */
     public function findByModel(Model $model)
     {
         $req = "SELECT *

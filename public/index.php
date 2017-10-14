@@ -12,6 +12,12 @@ if (!empty($_GET['route'])) {
             echo $modelController->showSearchAction($_GET['search']);
             break;
 
+        case ('category');
+            // models of one category
+            $modelController = new \Karura\Controller\ModelController();
+            echo $modelController->showByCategoryAction($_GET['category']);
+            break;
+
         case ('contact');
             // go to contact page
             $homeController = new \Karura\Controller\HomeController();

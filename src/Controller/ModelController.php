@@ -8,11 +8,19 @@
 
 namespace Karura\Controller;
 
+use Karura\Model\CategoryManager;
 use Karura\Model\DeclinationManager;
 use Karura\Model\ModelManager;
 
+/**
+ * Class ModelController
+ * @package Karura\Controller
+ */
 class ModelController extends Controller
 {
+    /**
+     * @return string
+     */
     public function showAllAction()
     {
         $modelManager = new ModelManager();
@@ -23,6 +31,9 @@ class ModelController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     */
     public function showOneAction($id)
     {
         $modelManager = new ModelManager();
@@ -32,10 +43,9 @@ class ModelController extends Controller
 
     /**
      * @param string $searchInput
-     * @param array ...$filters
      * @return string
      */
-    public function showSearchAction(string $searchInput, ...$filters)
+    public function showSearchAction(string $searchInput)
     {
         $modelManager = new ModelManager();
         $models = $modelManager->findByName($searchInput);
@@ -47,7 +57,25 @@ class ModelController extends Controller
         }
 
         return $this->twig->render('Model/showSearch.html.twig', [
-            'declinationsByModel' => $declinationsByModel,
+            'declinations' => $declinationsByModel,
+            'pageTitle' => 'Searching',
+        ]);
+    }
+
+    /**
+     * @param $category
+     * @return string
+     */
+    public function showByCategoryAction($category)
+    {
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->findByName($category);
+
+        $declinationManager = new DeclinationManager();
+        $declinationsByCategory = $declinationManager->findByCategory($category);
+
+        return $this->twig->render('Model/showSearch.html.twig', [
+            'declinations' => $declinationsByCategory,
         ]);
     }
 }

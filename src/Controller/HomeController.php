@@ -7,6 +7,9 @@ use Karura\Model\DeclinationManager;
 
 class HomeController extends Controller
 {
+    /**
+     * @return string
+     */
     public function showHome()
     {
         // show some models in home -> using model manager
@@ -27,16 +30,23 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function showContact()
     {
         // show contact page
-        // TODO
         // make args to formate form when you came from model contact redirection
+        // TODO
+        //
         return $this->twig->render('contact.html.twig', [
             'data_id' => 'data',
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function showMentions()
     {
         // show mentions légales

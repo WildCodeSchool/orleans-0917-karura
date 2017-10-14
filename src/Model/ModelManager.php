@@ -11,15 +11,25 @@ namespace Karura\Model;
 
 class ModelManager
 {
+
     const TABLE = 'model';
+
+    /**
+     * @var \PDO
+     */
     private $pdo;
 
+    /**
+     * ModelManager constructor.
+     */
     public function __construct()
     {
         $this->pdo = new \PDO(DSN, USER, PASS);
     }
 
-
+    /**
+     * @return array
+     */
     public function findAll()
     {
         $req = "SELECT *
@@ -28,6 +38,10 @@ class ModelManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function find(int $id)
     {
         $req = "SELECT *
@@ -56,6 +70,11 @@ class ModelManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Model::class);
     }
 
+    /**
+     * @param string $modelName
+     * @param Category $category
+     * @return array
+     */
     public function findByNameWithCategory(string $modelName, Category $category)
     {
         $req = "SELECT * 
@@ -69,6 +88,10 @@ class ModelManager
         return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Model::class);
     }
 
+    /**
+     * @param Category $category
+     * @return array
+     */
     public function findByCategory(Category $category)
     {
         $req = "SELECT * 
@@ -84,10 +107,15 @@ class ModelManager
     {
         // TODO
     }
+
     public function update()
     {
         // TODO
     }
+
+    /**
+     * @param Model $model
+     */
     public function delete(Model $model)
     {
         $id = $model->getId();
