@@ -56,9 +56,12 @@ class ModelController extends Controller
             $declinationsByModel = array_merge($declinationsByModel, $declinationManager->findByModel($model));
         }
 
+        $searchInformations = count($declinationsByModel) . ' résulats trouvés';
+        $searchInformations .= ($searchInput) ? ' pour l\'occurence "' . $searchInput . '"' : '';
+
         return $this->twig->render('Model/showSearch.html.twig', [
             'declinations' => $declinationsByModel,
-            'pageTitle' => 'Searching',
+            'pageTitle' => $searchInformations,
         ]);
     }
 

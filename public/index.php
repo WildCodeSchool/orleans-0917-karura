@@ -6,6 +6,31 @@ require '../connect.php';
 // routeur
 if (!empty($_GET['route'])) {
     switch ($_GET['route']) {
+        case ('admin');
+            // admin
+            $adminController = new \Karura\Controller\AdminController();
+            // subpages
+            if (!empty($_GET['adminRoute'])) {
+                $adminController = new \Karura\Controller\AdminController();
+
+                switch ($_GET['adminRoute']) {
+                    case ('color');
+                        echo $adminController->showAdminColor();
+                        break;
+
+                    case ('category');
+                        echo $adminController->showAdminCategory();
+                        break;
+
+                    default;
+                        echo $adminController->showAdminMainPage();
+                }
+
+            } else {
+                echo $adminController->showAdminMainPage();
+            }
+            break;
+
         case ('search');
             // simple search in name of models
             $modelController = new \Karura\Controller\ModelController();
@@ -30,7 +55,7 @@ if (!empty($_GET['route'])) {
             echo $homeController->showMentions();
             break;
 
-        default:
+        default;
             // go to homepage by default
             $homeController = new \Karura\Controller\HomeController();
             echo $homeController->showHome();

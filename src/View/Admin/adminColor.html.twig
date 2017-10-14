@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}Administration des couleurs{% endblock %}
+
+{% block body %}
+    <h1>Administration des couleurs</h1>
+
+    <ul>
+        {% for color in colors %}
+            <li>Nom : {{ color.name }} <span style="color:{{ color.hexa }};">{{ color.hexa }}</span></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
