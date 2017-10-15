@@ -12,22 +12,11 @@ namespace Karura\Model;
  * Class CategoryManager
  * @package Karura\Model
  */
-class CategoryManager
+class CategoryManager extends Manager
 {
     const TABLE = 'category';
 
-    /**
-     * @var \PDO
-     */
-    private $pdo;
-
-    /**
-     * CategoryManager constructor.
-     */
-    public function __construct()
-    {
-        $this->pdo = new \PDO(DSN, USER, PASS);
-    }
+    const CLASSREF = Category::class;
 
     /**
      * @return array
@@ -37,7 +26,7 @@ class CategoryManager
         $req = "SELECT *
                 FROM " . self::TABLE;
         $statement = $this->pdo->query($req);
-        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
 
     /**
@@ -52,7 +41,7 @@ class CategoryManager
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        $category = $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
+        $category = $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
         return $category[0];
     }
 
@@ -66,9 +55,9 @@ class CategoryManager
                 FROM " . self::TABLE . "
                 WHERE name=:name";
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue('name', $categoryName, \PDO::PARAM_INT);
+        $statement->bindValue('name', $categoryName, \PDO::PARAM_STR);
         $statement->execute();
-        $category = $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
+        $category = $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
         return $category[0];
     }
 

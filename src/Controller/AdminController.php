@@ -4,7 +4,6 @@ namespace Karura\Controller;
 
 use Karura\Model\CategoryManager;
 use Karura\Model\ColorManager;
-use Karura\Model\DeclinationManager;
 
 class AdminController extends Controller
 {
@@ -25,6 +24,8 @@ class AdminController extends Controller
     {
         $colorManager = new ColorManager();
         $colors = $colorManager->findAll();
+
+        // TODO add number of declinations per color ?
 
         return $this->twig->render('Admin/adminColor.html.twig', [
             'colors' => $colors,

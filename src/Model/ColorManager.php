@@ -12,22 +12,11 @@ namespace Karura\Model;
  * Class ColorManager
  * @package Karura\Model
  */
-class ColorManager
+class ColorManager extends Manager
 {
     const TABLE = 'color';
 
-    /**
-     * @var \PDO
-     */
-    private $pdo;
-
-    /**
-     * CategoryManager constructor.
-     */
-    public function __construct()
-    {
-        $this->pdo = new \PDO(DSN, USER, PASS);
-    }
+    const CLASSREF = Color::class;
 
     /**
      * @return array
@@ -37,7 +26,7 @@ class ColorManager
         $req = "SELECT *
                 FROM " . self::TABLE;
         $statement = $this->pdo->query($req);
-        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Color::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
 
     /**
@@ -52,12 +41,12 @@ class ColorManager
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        $category = $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Color::class);
+        $category = $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
         return $category[0];
     }
 
     /**
-     * @param string $categoryName
+     * @param string $colorName
      * @return mixed
      */
     public function findByName(string $colorName)
@@ -66,9 +55,9 @@ class ColorManager
                 FROM " . self::TABLE . "
                 WHERE name=:name";
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue('name', $colorName, \PDO::PARAM_INT);
+        $statement->bindValue('name', $colorName, \PDO::PARAM_STR);
         $statement->execute();
-        $category = $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Color::class);
+        $category = $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
         return $category[0];
     }
 
@@ -76,9 +65,21 @@ class ColorManager
     {
         // TODO
     }
-    public function update()
+
+    public function update(Color $color)
     {
-        // TODO
+        $id = $color->getId();
+        $fields = "";
+        foreach ($color as $attr => $value) {
+            $fields .= $attr . "=" . "'" . $value . "'";
+        }
+
+        $req = "UPDATE " . self::TABLE . "
+                SET " . $fields . "
+                WHERE id=:id";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
     }
 
     /**
@@ -86,11 +87,13 @@ class ColorManager
      */
     public function delete(Color $color)
     {
-        $id = $category->getId();
-        $req = "DELETE FROM self::TABLE WHERE id=:id";
+        $id = $color->getId();
+        $req = "DELETE
+                FROM " . self::TABLE . "
+                WHERE id=:id";
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
-    
+
 }

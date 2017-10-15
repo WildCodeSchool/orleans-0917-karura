@@ -2,12 +2,46 @@
 
 {% block pageTitle %}Administration des couleurs{% endblock %}
 
-{% block body %}
+{% block tbody %}
     <h1>Administration des couleurs</h1>
 
     <ul>
         {% for color in colors %}
             <li>Nom : {{ color.name }} <span style="color:{{ color.hexa }};">{{ color.hexa }}</span></li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+{% block body %}
+    <h1>Administration des couleurs</h1>
+    <form action="addColor.php" method='post'>
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="route" value="search">
+        </div>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"
+                                                           aria-hidden="true"> Ajouter une couleur</span></button>
+    </form>
+
+    <ul class="list-group">
+        {% for color in colors %}
+            <li class="list-group-item" >Couleur : {{ color.name }} <span style="background-color:{{ color.hexa }};">{{ color.hexa }}</span>
+                <form action="updateColor.php" method='post'>
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" name="route" value="search">
+                    </div>
+                    <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-edit"
+                                                                        aria-hidden="true"> Modifier</span></button>
+                </form>
+
+                <form action="deleteColor.php" method='post'>
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" name="route" value="search">
+                    </div>
+                    <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-minus"
+                                                                       aria-hidden="true"> Supprimer</span></button>
+                </form>
+            </li>
         {% endfor %}
     </ul>
 
