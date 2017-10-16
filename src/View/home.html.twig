@@ -2,23 +2,261 @@
 
 {% block body %}
 
-    {% for declinations in declinationsByCat %}
+    {% include 'slider.html.twig' %}
 
-        {# add One rectangle by category #}
-        <div class="row">
-
-            {% for declination in declinations %}
-                <div class="col-sm-6 col-md-4 col-lg-3">
+    <!--Categorie 1-->
+    <div class="container-fluid">
+        <div class="test">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="categorie">
+                        <p>Categorie</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
                     <figure class="thumbnail">
-                        <img src="assets/images/{{ declination.mainImage }}" alt="">
+                        <img src="assets/images/jupette_gr1.jpg" alt="">
                         <figcaption class="caption">
-                            <p>{{ declination.mainImage }}</p>
+                            <p>Modèle 1</p>
                         </figcaption>
                     </figure>
                 </div>
-            {% endfor %}
-
+                <div class="row">
+                    <div class="container">
+                        <div class="col-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/jupette_gr2.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 2</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/jupette_gr3.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 3</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/jupette_gr4.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 4</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/jupette_gr5.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 5</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    {% endfor %}
+    </div>
+
+    <!--Categorie 2-->
+    <div class="container-fluid">
+        <div class="test">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="categorie">
+                        <p>Categorie</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <figure class="thumbnail">
+                        <img src="assets/images/maillot_synchro1.jpg" alt="">
+                        <figcaption class="caption">
+                            <p>Modèle 1</p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="row">
+                    <div class="container">
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <figure class="thumbnail">
+                                    <img src="assets/images/maillot_synchro2.jpg" alt="">
+                                    <figcaption class="caption">
+                                        <p>Modèle 2</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-lg-6">
+                                <figure class="thumbnail">
+                                    <img src="assets/images/maillot_synchro3.jpg" alt="">
+                                    <figcaption class="caption">
+                                        <p>Modèle 3</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <figure class="thumbnail">
+                                    <img src="assets/images/maillot_synchro4.jpg" alt="">
+                                    <figcaption class="caption">
+                                        <p>Modèle 4</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-lg-6">
+                                <figure class="thumbnail">
+                                    <img src="assets/images/maillot_synchro5.jpg" alt="">
+                                    <figcaption class="caption">
+                                        <p>Modèle 5</p>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+    <!--Categorie 3-->
+    <div class="container-fluid">
+        <div class="test">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="categorie">
+                        <p>Categorie</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <figure class="thumbnail">
+                        <img src="assets/images/coiffe1.jpg" alt="">
+                        <figcaption class="caption">
+                            <p>Modèle 1</p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        <div class="col-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/coiffe2.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 2</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/coiffe3.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 3</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/coiffe4.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 4</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/coiffe5.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 5</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Categorie 4-->
+    <div class="container-fluid">
+        <div class="test">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="categorie">
+                        <p>Categorie</p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <figure class="thumbnail">
+                        <img src="assets/images/twirling1.jpg" alt="">
+                        <figcaption class="caption">
+                            <p>Modèle 1</p>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="row">
+                    <div class="container">
+                        <div class="col-lg-4">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/twirling2.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 2</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/twirling3.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 3</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/twirling4.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 4</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                                <div class="col-lg-6">
+                                    <figure class="thumbnail">
+                                        <img src="assets/images/twirling5.jpg" alt="">
+                                        <figcaption class="caption">
+                                            <p>Modèle 5</p>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 {% endblock %}

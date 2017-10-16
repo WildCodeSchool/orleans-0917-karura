@@ -4,6 +4,7 @@
 /*Couleur de barre de navigation*/
 .navbar {
     background-color: white;
+    margin-bottom: 0;
 }
 
 /*Positionnement des catégories sur l'axe Y*/
@@ -51,6 +52,23 @@
     background-image: none
 }
 
+.carousel-inner > .item {
+    height: 30vw;
+    background-size: cover;
+}
+
+.slider1 {
+    background: url('../images/agi02.jpg') center no-repeat;
+}
+
+.slider2 {
+    background: url('../images/agi05.jpg') center no-repeat;
+}
+
+.slider3 {
+    background: url('../images/agi06.jpg') center no-repeat;
+}
+
 p {
     font-size: 2vw;
 }
@@ -73,4 +91,63 @@ p {
     position: absolute;
 }
 
+@media(max-width: 500px) {
+    #carousel-example-generic {
+        display: none;
+    }
+}
+
 /* End slider*/
+
+/* Thumbnail*/
+ .categorie {
+     background-color: #adadad;
+     transform: rotate(-90deg);
+     margin-top: 13vh;
+     width: 65vh;
+     height: 20vw;
+     text-align: center;
+     padding-top: 7vw;
+     color: white;
+ }
+
+ .thumbnail p {
+     font-size: 2.5vh;
+     text-align: center;
+ }
+
+ .thumbnail {
+     margin-bottom: 0;
+ }
+
+ .test {
+     margin-top:10vh;
+ }
+
+ .row {
+     height : 200px;
+     display: block ;
+
+ }
+
+
+ /* Start Footer */
+
+footer {
+    background-color: #F3F3F3;
+    height: 20vh;
+    padding-top: 5vh;
+}
+
+footer a {
+    color: black;
+}
+
+footer img {
+    width:5vw;
+}
+
+footer .row {
+    height:100%;
+
+}

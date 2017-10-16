@@ -8,11 +8,20 @@
 
 namespace Karura\Controller;
 
-
+/**
+ * Class Controller
+ * @package Karura\Controller
+ */
 class Controller
 {
-    public $twig;
+    /**
+     * @var \Twig_Environment
+     */
+    protected $twig;
 
+    /**
+     * Controller constructor.
+     */
     public function __construct ()
     {
         $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../View');

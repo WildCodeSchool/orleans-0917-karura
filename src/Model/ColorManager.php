@@ -9,14 +9,14 @@
 namespace Karura\Model;
 
 /**
- * Class CategoryManager
+ * Class ColorManager
  * @package Karura\Model
  */
-class CategoryManager extends Manager
+class ColorManager extends Manager
 {
-    const TABLE = 'category';
+    const TABLE = 'color';
 
-    const CLASSREF = Category::class;
+    const CLASSREF = Color::class;
 
     /**
      * @return array
@@ -46,16 +46,16 @@ class CategoryManager extends Manager
     }
 
     /**
-     * @param string $categoryName
+     * @param string $colorName
      * @return mixed
      */
-    public function findByName(string $categoryName)
+    public function findByName(string $colorName)
     {
         $req = "SELECT * 
                 FROM " . self::TABLE . "
                 WHERE name=:name";
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue('name', $categoryName, \PDO::PARAM_STR);
+        $statement->bindValue('name', $colorName, \PDO::PARAM_STR);
         $statement->execute();
         $category = $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
         return $category[0];
@@ -65,21 +65,35 @@ class CategoryManager extends Manager
     {
         // TODO
     }
-    public function update()
+
+    public function update(Color $color)
     {
-        // TODO
+        $id = $color->getId();
+        $fields = "";
+        foreach ($color as $attr => $value) {
+            $fields .= $attr . "=" . "'" . $value . "'";
+        }
+
+        $req = "UPDATE " . self::TABLE . "
+                SET " . $fields . "
+                WHERE id=:id";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
     }
 
     /**
      * @param Category $category
      */
-    public function delete(Category $category)
+    public function delete(Color $color)
     {
-        $id = $category->getId();
-        $req = "DELETE FROM self::TABLE WHERE id=:id";
+        $id = $color->getId();
+        $req = "DELETE
+                FROM " . self::TABLE . "
+                WHERE id=:id";
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
-    
+
 }
