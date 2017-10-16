@@ -25,4 +25,5 @@ abstract class Manager
         // activate error for pdo requests
         $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
+
 }
