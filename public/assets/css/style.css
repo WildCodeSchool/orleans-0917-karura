@@ -5,6 +5,7 @@
 .navbar {
     background-color: white;
     margin-bottom: 0;
+    border: none;
 }
 
 /*Positionnement des catégories sur l'axe Y*/
@@ -70,7 +71,7 @@
 }
 
 p {
-    font-size: 2vw;
+    font-size: 2em;
 }
 
 .carousel-caption {
@@ -111,39 +112,57 @@ p {
 
 /* End slider*/
 
-/* Thumbnail*/
- .categorie {
-     background-color: #adadad;
-     transform: rotate(-90deg);
-     margin-top: 13vh;
-     width: 65vh;
-     height: 20vw;
-     text-align: center;
-     padding-top: 7vw;
-     color: white;
- }
+/* Start Thumbnail*/
 
- .thumbnail p {
-     font-size: 2.5vh;
-     text-align: center;
- }
+.category-thumbnail {
+    margin-top:10vh;
+    margin-bottom: 5vh;
+    overflow: hidden;
+}
+.rectangle-category {
+    background-color: #adadad;
+    transform: rotate(-90deg);
+    width: 80vh;
+    height: 20vw;
+    color: white;
+    text-align: center;
+}
+
+.rectangle-category-sm {
+    background-color: #adadad;
+    width: 80vh;
+    color: white;
+}
 
  .thumbnail {
      margin-bottom: 0;
+     border: none;
  }
 
- .test {
-     margin-top:10vh;
- }
+.thumbnail:hover p.text {
+    opacity: 1;
+}
 
- .row {
-     height : 200px;
-     display: block ;
+.thumbnail:hover img {
+    opacity: 0.7;
+    transition: opacity .5s ease-in-out;
+}
 
- }
+.thumbnail p.text {
+    color: #FFF;
+    opacity: 0;
+    display: block;
+    position: absolute;
+    transition: opacity .5s ease-in-out;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
 
+/* End Thumbnails*/
 
- /* Start Footer */
+/* Start Footer */
 
 footer {
     background-color: #F3F3F3;
@@ -161,5 +180,6 @@ footer img {
 
 footer .row {
     height:100%;
-
 }
+
+/*End Thumbnails*/
