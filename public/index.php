@@ -11,65 +11,55 @@ if (!empty($_GET['route'])) {
 }
 
 
-switch ($route) {
-    case ('home');
-        $homeController = new \Karura\Controller\HomeController();
-        echo $homeController->showHome();
-        break;
+if ($route == 'home') {
+    $homeController = new \Karura\Controller\HomeController();
+    echo $homeController->showHome();
 
-    case ('admin');
-        // admin
-        $adminController = new \Karura\Controller\AdminController();
-        // subpages
-        if (!empty($_GET['adminRoute'])) {
+} elseif (substr($route, 0, 5) == 'admin') {
+    // admin pages
+    switch ($route) {
+        case ('admincolor');
+            $colorController = new \Karura\Controller\ColorController();
+            echo $colorController->showAll();
+            break;
+
+        case ('admincategory');
+            echo $adminController->showAdminCategory();
+            break;
+
+        default;
             $adminController = new \Karura\Controller\AdminController();
+            echo $adminController->showMainPage();
+    }
 
-            switch ($_GET['adminRoute']) {
-                case ('color');
-                    echo $adminController->showAdminColor();
-                    break;
+} elseif ($route == 'search') {
+    // simple search in name of models
+    $modelController = new \Karura\Controller\ModelController();
+    echo $modelController->showSearchAction($_GET['search']);
 
-                case ('category');
-                    echo $adminController->showAdminCategory();
-                    break;
+} elseif ($route == 'category') {
 
-                default;
-                    echo $adminController->showAdminMainPage();
-            }
+    // models of one category
+    $modelController = new \Karura\Controller\ModelController();
+    echo $modelController->showByCategoryAction($_GET['category']);
 
-        } else {
-            echo $adminController->showAdminMainPage();
-        }
-        break;
+} elseif
+($route == 'contact') {
 
-    case ('search');
-        // simple search in name of models
-        $modelController = new \Karura\Controller\ModelController();
-        echo $modelController->showSearchAction($_GET['search']);
-        break;
+    // go to contact page
+    $homeController = new \Karura\Controller\HomeController();
+    echo $homeController->showContact();
 
-    case ('category');
-        // models of one category
-        $modelController = new \Karura\Controller\ModelController();
-        echo $modelController->showByCategoryAction($_GET['category']);
-        break;
+} elseif
+($route == 'mentions') {
+    // go to mentions page
+    $homeController = new \Karura\Controller\HomeController();
+    echo $homeController->showMentions();
 
-    case ('contact');
-        // go to contact page
-        $homeController = new \Karura\Controller\HomeController();
-        echo $homeController->showContact();
-        break;
-
-    case ('mentions');
-        // go to mentions page
-        $homeController = new \Karura\Controller\HomeController();
-        echo $homeController->showMentions();
-        break;
-
-    default;
-        // go to homepage by default
-        $homeController = new \Karura\Controller\HomeController();
-        echo $homeController->showHome();
+} else {
+    // go to homepage by default
+    $homeController = new \Karura\Controller\HomeController();
+    echo $homeController->showHome();
 }
 
 ?>

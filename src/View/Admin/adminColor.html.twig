@@ -20,18 +20,19 @@
             <input type="hidden" class="form-control" name="route" value="search">
         </div>
         <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"
-                                                           aria-hidden="true"> Ajouter une couleur</span></button>
+                                                            aria-hidden="true"> Ajouter une couleur</span></button>
     </form>
 
     <ul class="list-group">
         {% for color in colors %}
-            <li class="list-group-item" >Couleur : {{ color.name }} <span style="background-color:{{ color.hexa }};">{{ color.hexa }}</span>
+            <li class="list-group-item">Couleur : {{ color.name }} <span
+                        style="background-color:{{ color.hexa }};">{{ color.hexa }}</span>
                 <form action="updateColor.php" method='post'>
                     <div class="form-group">
                         <input type="hidden" class="form-control" name="route" value="search">
                     </div>
                     <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-edit"
-                                                                        aria-hidden="true"> Modifier</span></button>
+                                                                     aria-hidden="true"> Modifier</span></button>
                 </form>
 
                 <form action="deleteColor.php" method='post'>

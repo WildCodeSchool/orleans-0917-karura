@@ -54,7 +54,7 @@ class ModelManager extends Manager
                 FROM " . self::TABLE . "
                 WHERE name LIKE :name";
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue('name', '%'.$modelName.'%', \PDO::PARAM_STR);
+        $statement->bindValue('name', '%' . $modelName . '%', \PDO::PARAM_STR);
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
@@ -71,7 +71,7 @@ class ModelManager extends Manager
                 WHERE name LIKE :name
                 AND category_id=:category_id";
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue('name', '%'.$modelName.'%', \PDO::PARAM_STR);
+        $statement->bindValue('name', '%' . $modelName . '%', \PDO::PARAM_STR);
         $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
@@ -113,5 +113,5 @@ class ModelManager extends Manager
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
-    
+
 }

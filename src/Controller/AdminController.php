@@ -10,25 +10,10 @@ class AdminController extends Controller
     /**
      * @return string
      */
-    public function showAdminMainPage()
+    public function showMainPage()
     {
-        return $this->twig->render('Admin/adminCategory.html.twig', [
+        return $this->twig->render('Admin/adminMainPage.html.twig', [
             'data_id' => 'data',
-        ]);
-    }
-
-    /**
-     * @return string
-     */
-    public function showAdminColor()
-    {
-        $colorManager = new ColorManager();
-        $colors = $colorManager->findAll();
-
-        // TODO add number of declinations per color ?
-
-        return $this->twig->render('Admin/adminColor.html.twig', [
-            'colors' => $colors,
         ]);
     }
 
