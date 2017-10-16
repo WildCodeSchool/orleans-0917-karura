@@ -82,13 +82,25 @@ p {
     text-align: left;
 }
 
-.secondeParaSlider {
+.secondParaSlider {
     text-align : right;
 }
 
 .troisiemeParaSlider {
     bottom: 0;
     position: absolute;
+}
+
+.animJs1 {
+    display:none;
+}
+
+.animJs2 {
+    display:none;
+}
+
+.animJs3 {
+    display: none;
 }
 
 @media(max-width: 500px) {
