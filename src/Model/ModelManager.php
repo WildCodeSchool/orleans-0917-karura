@@ -9,23 +9,12 @@
 namespace Karura\Model;
 
 
-class ModelManager
+class ModelManager extends Manager
 {
 
     const TABLE = 'model';
 
-    /**
-     * @var \PDO
-     */
-    private $pdo;
-
-    /**
-     * ModelManager constructor.
-     */
-    public function __construct()
-    {
-        $this->pdo = new \PDO(DSN, USER, PASS);
-    }
+    const CLASSREF = Model::class;
 
     /**
      * @return array
@@ -35,7 +24,7 @@ class ModelManager
         $req = "SELECT *
                 FROM " . self::TABLE;
         $statement = $this->pdo->query($req);
-        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
 
     /**
@@ -50,7 +39,7 @@ class ModelManager
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        $model = $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Category::class);
+        $model = $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
         return $model[0];
     }
 
@@ -65,9 +54,9 @@ class ModelManager
                 FROM " . self::TABLE . "
                 WHERE name LIKE :name";
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue('name', '%'.$modelName.'%', \PDO::PARAM_INT);
+        $statement->bindValue('name', '%'.$modelName.'%', \PDO::PARAM_STR);
         $statement->execute();
-        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Model::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
 
     /**
@@ -82,10 +71,10 @@ class ModelManager
                 WHERE name LIKE :name
                 AND category_id=:category_id";
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue('name', '%'.$modelName.'%', \PDO::PARAM_INT);
+        $statement->bindValue('name', '%'.$modelName.'%', \PDO::PARAM_STR);
         $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Model::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
 
     /**
@@ -100,7 +89,7 @@ class ModelManager
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
         $statement->execute();
-        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Model::class);
+        return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
 
     public function insert()

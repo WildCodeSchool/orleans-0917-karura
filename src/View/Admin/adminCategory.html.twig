@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}Administration des catégories{% endblock %}
+
+{% block body %}
+    <h1>Administration des catégories</h1>
+
+    <ul>
+        {% for category in categories %}
+            <li>Nom : {{ category.name }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
