@@ -9,30 +9,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img class="img-responsive" src="assets/images/logo/logokarurasm.jpg" alt="karura">
+                <a href="index.php">
+                    <img class="img-responsive" src="assets/images/logo/logokarurasm.jpg" alt="karura">
+                </a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <form class="navbar-form navbar-right">
+                <form action="index.php" method='get' class="navbar-form navbar-right">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Rechercher">
+                        <input type="hidden" class="form-control" name="route" value="search">
+                        <input type="text" class="form-control" name="search" placeholder="Rechercher">
                     </div>
                     <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"
                                                                         aria-hidden="true"></span></button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Accueil <span class="sr-only">(current)</span></a></li>
+                    <li><a href="index.php">Accueil <span class="sr-only">(current)</span></a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">Modèle <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Natation Synchronisée</a></li>
-                            <li><a href="#">Twirling</a></li>
-                            <li><a href="#">Natation</a></li>
-                            <li><a href="#">GR</a></li>
+                            <li><a href="index.php?route=category&category=synchro">Natation Synchronisée</a></li>
+                            <li><a href="index.php?route=category&category=twirling">Twirling</a></li>
+                            <li><a href="index.php?route=category&category=swimming">Natation</a></li>
+                            <li><a href="index.php?route=category&category=gr">GR</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Accessoires</a></li>
-                    <li><a href="#">Contactez</a></li>
+                    <li><a href="index.php?route=category&category=headress">Accessoires</a></li>
+                    <li><a href="index.php?route=contact">Contactez</a></li>
                     <li><a href="#">A propos</a></li>
                 </ul>
             </div>

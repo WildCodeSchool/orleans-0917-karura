@@ -12,8 +12,15 @@ namespace Karura\Model;
 class DeclinationManager
 {
     const TABLE = 'declination';
+
+    /**
+     * @var \PDO
+     */
     private $pdo;
 
+    /**
+     * DeclinationManager constructor.
+     */
     public function __construct()
     {
         $this->pdo = new \PDO(DSN, USER, PASS);
@@ -54,7 +61,7 @@ class DeclinationManager
      */
     public function findByCategory(Category $category)
     {
-        $req = "SELECT *
+        $req = "SELECT decl.*
                 FROM " . self::TABLE . " as decl
                 JOIN model
                 ON decl.model_id = model.id
@@ -62,6 +69,22 @@ class DeclinationManager
 
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Declination::class);
+    }
+
+    /**
+     * @param Model $model
+     * @return array
+     */
+    public function findByModel(Model $model)
+    {
+        $req = "SELECT *
+                FROM " . self::TABLE . " as decl
+                WHERE model_id=:model_id";
+
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('model_id', $model->getId(), \PDO::PARAM_INT);
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_CLASS, \Karura\Model\Declination::class);
     }
