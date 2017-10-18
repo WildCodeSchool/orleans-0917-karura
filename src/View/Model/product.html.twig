@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}Modèle{% endblock %}
+
+    {% block content %}
+
+        <div class="row">
+            <div class="col-lg-2">
+                <img class="img-responsive" src="assets/images/{{ declinations[0].secondaryImage }}" alt="Image du modèle">
+            </div>
+
+            <div class="col-lg-3">
+                <img class="img-responsive" src="assets/images/{{ declinations[0].mainImage }}" alt="Image du modèle">
+            </div>
+
+            <div class="col-lg-7">
+                <h1>{{ model.name }}</h1>
+                <p>{{ model.description }}</p>
+                <form method="POST" action="index.php?route=contact">
+                    <input type="submit" name="contact" value="Nous contacter pour ce modèle" >
+                </form>
+            </div>
+        </div>
+
+
+        <div class="row">
+        {% for declination in declinations %}
+            <div class="col-lg-3">
+                <img class="img-responsive" src="assets/images/{{ declinations[0].mainImage }}" alt="Image du modèle">
+            </div>
+        {% endfor %}
+        </div>
+
+    {% endblock %}
