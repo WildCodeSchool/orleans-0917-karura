@@ -23,7 +23,7 @@
 /*Couleur et taille police*/
 .navbar-default .navbar-nav > li > a {
     color: black;
-    font-size: calc(100% + 10px);
+    font-size: calc(80% + 10px);
     font-family: 'comic sans ms';
 }
 
@@ -114,42 +114,88 @@ p {
 
 /* Start Thumbnail*/
 
+/* Start Mise en forme des thumbnails*/
+
 .category-thumbnail {
-    margin-top:10vh;
-    margin-bottom: 5vh;
-    overflow: hidden;
-}
-.rectangle-category {
-    background-color: #adadad;
-    transform: rotate(-90deg);
-    width: 80vh;
-    height: 20vw;
-    color: white;
-    text-align: center;
+    margin-top:2.5vh;
+    margin-bottom: 2.5vh;
 }
 
-.rectangle-category-sm {
-    background-color: #adadad;
-    width: 80vh;
-    color: white;
+.title-block {
+    background-color: #D821AD;
+    color: black;
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    padding: 0;
+    margin-bottom: 0;
+    width: 40vh;
+    height: 80vh;
+    min-height: 100%;
+    float: left;
+    font-family: Celtic Garamond Pro;
+}
+
+.title-block-sm {
+    background-color: #D821AD;
+    color: black;
+    text-align: center;
+    padding: 0;
+    margin-bottom: 5vh;
+    width: 100%;
+    height: 10vh;
+    min-height: 100%;
+    font-family: Celtic Garamond Pro;
+}
+
+.thumbnail-sm .thumbnail{
+    width: 28.1vh;
+    padding-bottom: 5vh;
+}
+
+.main-thumbnail .thumbnail {
+    width: 60vh;
 }
 
  .thumbnail {
      margin-bottom: 0;
      border: none;
+     padding:0;
+     overflow: hidden;
  }
+
+.thumbnail img {
+    max-width: 100%;
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.thumbnail:hover img {
+    opacity: 0.7;
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    transition: all .3s ease-in-out;
+}
+/*End Mise en forme thumbnail*/
+
+/*Start Mise en forme textes thumbnail*/
+
+.title-block span {
+    font-size: calc(6em * 0.625);
+}
+
+.text {
+    color: black;
+    font-family: Celtic Garamond Pro;
+}
 
 .thumbnail:hover p.text {
     opacity: 1;
 }
 
-.thumbnail:hover img {
-    opacity: 0.7;
-    transition: opacity .5s ease-in-out;
-}
-
 .thumbnail p.text {
-    color: #FFF;
     opacity: 0;
     display: block;
     position: absolute;
@@ -157,8 +203,9 @@ p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
 }
+
+/*End Mise en forme textes thumbnail*/
 
 /* End Thumbnails*/
 
@@ -182,4 +229,4 @@ footer .row {
     height:100%;
 }
 
-/*End Thumbnails*/
+/*End footer*/

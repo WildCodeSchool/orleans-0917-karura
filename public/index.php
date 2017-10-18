@@ -43,15 +43,13 @@ if ($route == 'home') {
     $modelController = new \Karura\Controller\ModelController();
     echo $modelController->showByCategoryAction($_GET['category']);
 
-} elseif
-($route == 'contact') {
+} elseif ($route == 'contact') {
 
     // go to contact page
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showContact();
 
-} elseif
-($route == 'mentions') {
+} elseif ($route == 'mentions') {
     // go to mentions page
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showMentions();
