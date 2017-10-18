@@ -122,7 +122,7 @@ p {
 }
 
 .title-block {
-    background-color: #D821AD;
+    background-color: #e75fc7;
     color: black;
     text-align: center;
     display: inline-block;
@@ -137,7 +137,7 @@ p {
 }
 
 .title-block-sm {
-    background-color: #D821AD;
+    background-color: #e75fc7;
     color: black;
     text-align: center;
     padding: 0;
@@ -213,12 +213,17 @@ p {
 
 footer {
     background-color: #F3F3F3;
-    height: 20vh;
+    height: 100%;
     padding-top: 5vh;
 }
 
 footer a {
     color: black;
+}
+
+footer a:hover {
+    color: #D821AD;
+    text-decoration: none;
 }
 
 footer img {
@@ -230,3 +235,23 @@ footer .row {
 }
 
 /*End footer*/
+
+/*Start page mentions légales*/
+
+.mention-page h1 {
+    text-align: center;
+    font-family: Celtic Garamond Pro;
+    color: #D821AD;
+}
+
+.mention-page h2 {
+    font-family: Celtic Garamond Pro;
+    font-size: calc(3em * 0.625);
+    color: #D821AD;
+}
+
+.mention-page p {
+    font-size: calc(2em * 0.625);
+}
+
+/*End page mentions légales*/
