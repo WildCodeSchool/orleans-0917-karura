@@ -2,8 +2,8 @@
 
 {% block pageTitle %}Recherche{% endblock %}
 
-{% block body %}
-    <h1>{{  pageTitle ?? '' }}</h1>
+{% block content %}
+    <p>{{  declinations | length }} résulats trouvé{{ (declinations | length)>1 ? 's' }} {{ searchInput ? ' pour le terme "' ~ searchInput ~ '"' }}</p>
 
     <div class="row">
 
