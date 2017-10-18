@@ -20,10 +20,22 @@ if ($route == 'home') {
     switch ($route) {
         case ('admincolor');
             $colorController = new \Karura\Controller\ColorController();
-            echo $colorController->showAll();
+            if (!empty($_GET['action'])) {
+                if ($_GET['action'] == 'add') {
+                    echo $colorController->addColor();
+                } elseif ($_GET['action'] == 'delete') {
+                    echo $colorController->deleteColor();
+                } elseif ($_GET['action'] == 'update') {
+                    echo $colorController->updateColor();
+                }
+            } else {
+                echo $colorController->showAll();
+            }
+
             break;
 
         case ('admincategory');
+            $adminController = new \Karura\Controller\AdminController();
             echo $adminController->showAdminCategory();
             break;
 
