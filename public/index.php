@@ -56,7 +56,12 @@ if ($route == 'home') {
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showMentions();
 
-} else {
+} elseif ($route == 'product') {
+    $modelController = new \Karura\Controller\ModelController();
+    echo $modelController->showProduct();
+}
+
+else {
     // go to homepage by default
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showHome();

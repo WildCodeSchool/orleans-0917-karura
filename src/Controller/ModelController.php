@@ -81,4 +81,20 @@ class ModelController extends Controller
             'declinations' => $declinationsByCategory,
         ]);
     }
+
+    public function showProduct()
+    {
+        $modelManager = new ModelManager();
+        $model = $modelManager->find((int)$_GET["modelId"]);
+
+        $declinationManager = new DeclinationManager();
+        $declinationsByModel = $declinationManager->findByModel($model);
+
+        return $this->twig->render('Model/product.html.twig', [
+            'declinations' => $declinationsByModel,
+            'model' => $model,
+        ]);
+
+    }
+
 }
