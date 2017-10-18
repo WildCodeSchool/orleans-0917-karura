@@ -15,9 +15,9 @@
 
 {% block body %}
     <h1>Administration des couleurs</h1>
-    <a href="index.php?route=admincolor&action=add"">
-    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"
-                                                        aria-hidden="true"> Ajouter une couleur</span></button></a>
+    <a class="btn btn-success" href="index.php?route=admincolor&action=add">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"> Ajouter une couleur</span>
+    </a>
 
     <ul class="list-group">
         {% for color in colors %}

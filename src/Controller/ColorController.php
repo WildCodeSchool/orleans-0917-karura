@@ -40,18 +40,23 @@ class ColorController extends Controller
     {
         if (!empty($_POST)) {
             $color = new Color();
-            foreach ($_POST as $key => $value) {
-                $set = 'set' . ucfirst($key);
-                $color->$set($value);
-            }
+            $color->setName($_POST['name']);
+            $color->setHexa($_POST['hexa']);
 
             $colorManager = new ColorManager();
             $colorManager->insert($color);
 
+            $_SESSION['message'] = 'Color added with success';
+
             header('Location: index.php?route=admincolor');
+            exit;
+
         }
 
+        $_SESSION['message'] = 'Veuillez entrer une couleur';
+
         return $this->twig->render('Admin/addColor.html.twig');
+
     }
 
     /**
@@ -71,6 +76,7 @@ class ColorController extends Controller
             $colorManager->update($color);
 
             header('Location: index.php?route=admincolor');
+            exit;
         }
 
         $color = $colorManager->find($_POST['color_id']);
@@ -85,10 +91,20 @@ class ColorController extends Controller
      */
     public function deleteColor()
     {
-        $colorManager = new ColorManager();
-        $color = $colorManager->find($_POST['color_id']);
-        $colorManager->delete($color);
+        if (!empty($_POST['color_id'])) {
+            $colorManager = new ColorManager();
+            $color = $colorManager->find($_POST['color_id']);
+            $colorManager->delete($color);
 
-        return $this->showAll();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            $_SESSION['message'] = 'La couleur ' . $color->getName() . ' a bien été supprimée de la base de données';
+
+            header('Location: index.php?route=admincolor');
+            exit;
+        }
+
     }
 }

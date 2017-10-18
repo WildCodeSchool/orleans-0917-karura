@@ -18,6 +18,14 @@
 
 {% include 'header.html.twig' %}
 
+{# Dynamic message for user #}
+{% if session['message'] %}
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>You've got a message</strong> {{ session['message'] }}
+    </div>
+{% endif %}
+
 {% block body %}{% endblock %}
 
 {% include 'footer.html.twig' %}

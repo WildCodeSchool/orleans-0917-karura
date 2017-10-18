@@ -28,5 +28,10 @@ class Controller
         $this->twig = new \Twig_Environment($loader, array(
             'cache' => false,
         ));
+        // make $_SESSION accessible in all twig views
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $this->twig->addGlobal('session', $_SESSION);
     }
 }

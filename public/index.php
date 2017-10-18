@@ -3,6 +3,10 @@
 require "../vendor/autoload.php";
 require '../connect.php';
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+var_dump($_SESSION);
 // routeur
 if (!empty($_GET['route'])) {
     $route = $_GET['route'];
@@ -74,4 +78,5 @@ if ($route == 'home') {
     echo $homeController->showHome();
 }
 
+$_SESSION['message'] = '';
 ?>
