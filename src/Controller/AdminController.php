@@ -12,9 +12,7 @@ class AdminController extends Controller
      */
     public function showMainPage()
     {
-        return $this->twig->render('Admin/adminMainPage.html.twig', [
-            'data_id' => 'data',
-        ]);
+        return $this->twig->render('Admin/adminMainPage.html.twig');
     }
 
     /**

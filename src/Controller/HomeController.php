@@ -40,9 +40,7 @@ class HomeController extends Controller
         // make args to formate form when you came from model contact redirection
         // TODO
         //
-        return $this->twig->render('contact.html.twig', [
-            'data_id' => 'data',
-        ]);
+        return $this->twig->render('contact.html.twig');
     }
 
     /**
@@ -51,8 +49,6 @@ class HomeController extends Controller
     public function showMentions()
     {
         // show mentions légales
-        return $this->twig->render('mentions.html.twig', [
-            'data_id' => 'data',
-        ]);
+        return $this->twig->render('mentions.html.twig');
     }
 }
