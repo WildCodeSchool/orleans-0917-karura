@@ -23,6 +23,7 @@ class HomeController extends Controller
         foreach ($categories as $category) {
             $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
         }
+var_dump($declinationsByCat);
 
         // pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
