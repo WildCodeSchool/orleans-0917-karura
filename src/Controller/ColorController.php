@@ -11,6 +11,7 @@ namespace Karura\Controller;
 
 use Karura\Model\Color;
 use Karura\Model\ColorManager;
+use Karura\Model\DeclinationManager;
 
 /**
  * Class ColorController
@@ -27,9 +28,15 @@ class ColorController extends Controller
         $colors = $colorManager->findAll();
 
         // TODO add number of declinations per color
+        $declinationManager = new DeclinationManager();
+        $declinationsNumber = [];
+        foreach ($colors as $color) {
+            $declinationsNumber[$color->getId()] = count($declinationManager->findByColor($color));
+        }
 
         return self::render('Admin/adminColor.html.twig', [
             'colors' => $colors,
+            'declinationsNumber' => $declinationsNumber,
         ]);
     }
 
@@ -46,26 +53,12 @@ class ColorController extends Controller
             $colorManager = new ColorManager();
             $colorManager->insert($color);
 
-//            $_SESSION['message'] = 'Color added with success';
-//            self::setMessage('Color added with success', 'success');
-            $_SESSION['message'] = 'La couleur ' . $color->getName() . ' a été ajoutée à la base de données';
-            $_SESSION['message_type'] = 'success';
+            self::setMessage('Color added with success', 'success', 'ADD SUCCESS !!!');
 
             header('Location: index.php?route=admincolor');
             exit;
 
         }
-
-//        $_SESSION['message'] = 'Veuillez entrer une couleur';
-//        self::getTwig()->addGlobal('session', $_SESSION);
-//        self::getTwig()->addGlobal('session', ['message'=>'Veuillez entrer une couleur']);
-//        self::setMessage('Veuillez entrer une couleur', 'info');
-        /*$message = ['message'=>'Veuillez entrer une couleur',
-                    'message_type'=>'info'];
-
-        return self::getTwig()->render('Admin/addColor.html.twig', [
-            'message' => $message,
-        ]);*/
 
         self::setMessage('Add a new color please');
 

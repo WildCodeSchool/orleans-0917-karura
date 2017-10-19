@@ -3,6 +3,7 @@
 require "../vendor/autoload.php";
 require '../connect.php';
 
+// session starting for dynamic everywhere you want message
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -78,6 +79,4 @@ if ($route == 'home') {
     echo $homeController->showHome();
 }
 
-//\Karura\Controller\Controller::setMessage('');
-var_dump($_SESSION);
 ?>

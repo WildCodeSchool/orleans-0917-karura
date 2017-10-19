@@ -20,13 +20,18 @@
                                                                      aria-hidden="true"> Modifier</span></button>
                 </form>
 
-                <form action="index.php?route=admincolor&action=delete" method='post'>
-                    <div class="form-group">
-                        <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
-                    </div>
-                    <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-minus"
-                                                                       aria-hidden="true"> Supprimer</span></button>
-                </form>
+                {% if declinationsNumber[color.id] > 0 %}
+                    <p> Il y a {{ declinationsNumber[color.id] }} modèles associés à cette couleur, vous ne pouvez pas
+                        la supprimer.</p>
+                {% else %}
+                    <form action="index.php?route=admincolor&action=delete" method='post'>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
+                        </div>
+                        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-minus"
+                                                                           aria-hidden="true"> Supprimer</span></button>
+                    </form>
+                {% endif %}
             </li>
         {% endfor %}
     </ul>

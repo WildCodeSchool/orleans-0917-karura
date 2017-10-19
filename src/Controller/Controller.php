@@ -34,16 +34,43 @@ class Controller
         return self::$twig;
     }
 
-    static public function setMessage($message, $type='info')
+    public function __construct()
     {
+        // define sessions vars
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if (empty($_SESSION['message'])) {
+            $_SESSION['message'] = '';
+        }
+        if (empty($_SESSION['message_title'])) {
+            $_SESSION['message_title'] = '';
+        }
+        if (empty($_SESSION['message_type'])) {
+            $_SESSION['message_type'] = '';
+        }
+
+
+    }
+
+    static public function setMessage($message, $type = 'info', $title = 'Message : ')
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $_SESSION['message'] = $message;
+        $_SESSION['message_title'] = $title;
         $_SESSION['message_type'] = $type;
     }
 
-    static public function render(string $view, array $args_tab=[])
+    static public function render(string $view, array $args_tab = [])
     {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         $args = [
             'message' => $_SESSION['message'],
+            'message_title' => $_SESSION['message_title'],
             'message_type' => $_SESSION['message_type'],
         ];
         $args_tab = array_merge($args_tab, $args);
@@ -52,7 +79,5 @@ class Controller
         self::setMessage('');// burn after reading
         return $view;
     }
-
-
 
 }

@@ -22,11 +22,11 @@
 {% if message %}
     <div class="alert alert-{{ message_type }}">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>You've got a message</strong> {{ message }}
+        <strong>{{ message_title }}</strong> {{ message | raw }}
     </div>
 {% endif %}
 
-{% block body %}{% endblock %}
+{% block body %}page vide{% endblock %}
 
 {% include 'footer.html.twig' %}
 

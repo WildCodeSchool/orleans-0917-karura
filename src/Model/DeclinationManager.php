@@ -78,6 +78,22 @@ class DeclinationManager extends Manager
         return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
 
+    /**
+     * @param Color $color
+     * @return array
+     */
+    public function findByColor(Color $color)
+    {
+        $req = "SELECT *
+                FROM " . self::TABLE . " as decl
+                WHERE color_id=:color_id";
+
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('color_id', $color->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
+    }
+
     // INSERT Methods
     public function insert()
     {
