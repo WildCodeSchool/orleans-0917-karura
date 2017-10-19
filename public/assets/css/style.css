@@ -160,7 +160,7 @@ p {
     padding: 0;
     margin-bottom: 0;
     width: 40vh;
-    height: 80vh;
+    height: 53vh;
     min-height: 100%;
     float: left;
     font-family: Celtic Garamond Pro;
@@ -173,11 +173,12 @@ p {
 }
 
 .title-block-sm {
-    background-color: #e75fc7;
+    background-color: #E3E3E3;
     color: black;
     text-align: center;
     padding: 0;
     margin-bottom: 5vh;
+    font-size: 6vh;
     width: 100%;
     height: 10vh;
     min-height: 100%;
@@ -185,12 +186,12 @@ p {
 }
 
 .thumbnail-sm .thumbnail{
-    width: 28.1vh;
+    width: 18.1vh;
     padding-bottom: 5vh;
 }
 
 .main-thumbnail .thumbnail {
-    width: 60vh;
+    width: 40vh;
 }
 
  .thumbnail {
@@ -198,6 +199,7 @@ p {
      border: none;
      padding:0;
      overflow: hidden;
+     margin-left: 0;
  }
 
 .thumbnail img {
