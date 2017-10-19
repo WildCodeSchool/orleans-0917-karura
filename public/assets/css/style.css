@@ -58,6 +58,18 @@
     background-size: cover;
 }
 
+.carousel-control {
+    color: #D821AD;
+}
+
+.carousel-control:hover {
+    color: #D821AD;
+}
+
+.carousel-control:focus, .carousel-control:hover {
+    color: #D821AD;
+}
+
 .slider1 {
     background: url('../images/agi02.jpg') center no-repeat;
 }
@@ -80,16 +92,34 @@ p {
 }
 
 .premierParaSlider {
-    text-align: left;
+    text-align: center;
+    font-family: Celtic Garamond Pro;
+    font-weight:bold;
+    font-size: 3em;
+    text-decoration-line: underline;
+    text-decoration-color: #D821AD;
 }
 
 .secondParaSlider {
-    text-align : right;
+    text-align : center;
+    font-family: Celtic Garamond Pro;
 }
 
 .troisiemeParaSlider {
     bottom: 0;
     position: absolute;
+}
+
+.action-button {
+    font-size:1.5em;
+    background-color: #D821AD;
+    color: white;
+    padding: 5px 5px 5px 5px;
+}
+
+.action-button:hover {
+    color: #E3E3E3;
+    text-decoration: none;
 }
 
 .animJs1 {
@@ -122,8 +152,7 @@ p {
 }
 
 .title-block {
-    background-color: #e75fc7;
-    color: black;
+    background-color: #E3E3E3;
     text-align: center;
     display: inline-block;
     position: absolute;
@@ -134,6 +163,12 @@ p {
     min-height: 100%;
     float: left;
     font-family: Celtic Garamond Pro;
+}
+
+.title-block span{
+    font-size: 5vh ;
+    color: #555555;
+    border-bottom: 5px solid #D821AD;
 }
 
 .title-block-sm {
@@ -181,10 +216,6 @@ p {
 /*End Mise en forme thumbnail*/
 
 /*Start Mise en forme textes thumbnail*/
-
-.title-block span {
-    font-size: calc(6em * 0.625);
-}
 
 .text {
     color: black;
