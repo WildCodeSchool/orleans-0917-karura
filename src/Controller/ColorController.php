@@ -26,9 +26,9 @@ class ColorController extends Controller
         $colorManager = new ColorManager();
         $colors = $colorManager->findAll();
 
-        // TODO add number of declinations per color ?
+        // TODO add number of declinations per color
 
-        return $this->twig->render('Admin/adminColor.html.twig', [
+        return self::render('Admin/adminColor.html.twig', [
             'colors' => $colors,
         ]);
     }
@@ -46,17 +46,30 @@ class ColorController extends Controller
             $colorManager = new ColorManager();
             $colorManager->insert($color);
 
-            $_SESSION['message'] = 'Color added with success';
+//            $_SESSION['message'] = 'Color added with success';
+//            self::setMessage('Color added with success', 'success');
+            $_SESSION['message'] = 'La couleur ' . $color->getName() . ' a été ajoutée à la base de données';
+            $_SESSION['message_type'] = 'success';
 
             header('Location: index.php?route=admincolor');
             exit;
 
         }
 
-        $_SESSION['message'] = 'Veuillez entrer une couleur';
+//        $_SESSION['message'] = 'Veuillez entrer une couleur';
+//        self::getTwig()->addGlobal('session', $_SESSION);
+//        self::getTwig()->addGlobal('session', ['message'=>'Veuillez entrer une couleur']);
+//        self::setMessage('Veuillez entrer une couleur', 'info');
+        /*$message = ['message'=>'Veuillez entrer une couleur',
+                    'message_type'=>'info'];
 
-        return $this->twig->render('Admin/addColor.html.twig');
+        return self::getTwig()->render('Admin/addColor.html.twig', [
+            'message' => $message,
+        ]);*/
 
+        self::setMessage('Add a new color please');
+
+        return self::render('Admin/addColor.html.twig');
     }
 
     /**
@@ -80,7 +93,8 @@ class ColorController extends Controller
         }
 
         $color = $colorManager->find($_POST['color_id']);
-        return $this->twig->render('Admin/updateColor.html.twig', [
+
+        return self::getTwig()->render('Admin/updateColor.html.twig', [
             'color' => $color,
         ]);
 
@@ -100,7 +114,7 @@ class ColorController extends Controller
                 session_start();
             }
 
-            $_SESSION['message'] = 'La couleur ' . $color->getName() . ' a bien été supprimée de la base de données';
+            self::setMessage('La couleur ' . $color->getName() . ' a bien été supprimée de la base de données', 'success');
 
             header('Location: index.php?route=admincolor');
             exit;

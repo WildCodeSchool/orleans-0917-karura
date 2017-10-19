@@ -17,21 +17,42 @@ class Controller
     /**
      * @var \Twig_Environment
      */
-    protected $twig;
+    static public $twig;
 
     /**
-     * Controller constructor.
+     * @return \Twig_Environment
      */
-    public function __construct ()
+    static public function getTwig(): \Twig_Environment
     {
-        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../View');
-        $this->twig = new \Twig_Environment($loader, array(
-            'cache' => false,
-        ));
-        // make $_SESSION accessible in all twig views
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
+        if (self::$twig === Null) {
+            $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../View');
+            self::$twig = new \Twig_Environment($loader, array(
+                'cache' => false,
+            ));
         }
-        $this->twig->addGlobal('session', $_SESSION);
+
+        return self::$twig;
     }
+
+    static public function setMessage($message, $type='info')
+    {
+        $_SESSION['message'] = $message;
+        $_SESSION['message_type'] = $type;
+    }
+
+    static public function render(string $view, array $args_tab=[])
+    {
+        $args = [
+            'message' => $_SESSION['message'],
+            'message_type' => $_SESSION['message_type'],
+        ];
+        $args_tab = array_merge($args_tab, $args);
+
+        $view = self::getTwig()->render($view, $args_tab);
+        self::setMessage('');// burn after reading
+        return $view;
+    }
+
+
+
 }

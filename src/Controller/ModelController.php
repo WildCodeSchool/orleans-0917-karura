@@ -26,7 +26,7 @@ class ModelController extends Controller
         $modelManager = new ModelManager();
         $models = $modelManager->findAll();
 
-        return $this->twig->render('Model/showAll.html.twig', [
+        return self::render('Model/showAll.html.twig', [
             'models' => $models,
         ]);
     }
@@ -59,7 +59,7 @@ class ModelController extends Controller
         $searchInformations = count($declinationsByModel) . ' résulats trouvés';
         $searchInformations .= ($searchInput) ? ' pour l\'occurence "' . $searchInput . '"' : '';
 
-        return $this->twig->render('Model/showSearch.html.twig', [
+        return self::render('Model/showSearch.html.twig', [
             'declinations' => $declinationsByModel,
             'pageTitle' => $searchInformations,
         ]);
@@ -77,7 +77,7 @@ class ModelController extends Controller
         $declinationManager = new DeclinationManager();
         $declinationsByCategory = $declinationManager->findByCategory($category);
 
-        return $this->twig->render('Model/showSearch.html.twig', [
+        return self::render('Model/showSearch.html.twig', [
             'declinations' => $declinationsByCategory,
         ]);
     }

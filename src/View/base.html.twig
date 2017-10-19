@@ -19,10 +19,10 @@
 {% include 'header.html.twig' %}
 
 {# Dynamic message for user #}
-{% if session['message'] %}
-    <div class="alert alert-info">
+{% if message %}
+    <div class="alert alert-{{ message_type }}">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>You've got a message</strong> {{ session['message'] }}
+        <strong>You've got a message</strong> {{ message }}
     </div>
 {% endif %}
 
