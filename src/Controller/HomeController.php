@@ -40,10 +40,7 @@ var_dump($declinationsByCat);
         // show contact page
         // make args to formate form when you came from model contact redirection
         // TODO
-<<<<<<< Updated upstream
-        //
-        return $this->twig->render('contact.html.twig');
-=======
+
         $errors = [];
         if (!empty($_POST)) {
 
@@ -90,7 +87,6 @@ var_dump($declinationsByCat);
         return $this->twig->render('contact.html.twig', [
             'errors' => $errors,
         ]);
->>>>>>> Stashed changes
     }
 
     /**
