@@ -50,7 +50,7 @@ class DeclinationManager extends Manager
      */
     public function findByCategory(Category $category)
     {
-        $req = "SELECT decl.*
+        $req = "SELECT decl.*, model.name
                 FROM " . self::TABLE . " as decl
                 JOIN model
                 ON decl.model_id = model.id

@@ -1,88 +1,77 @@
 {% extends 'base.html.twig' %}
-
-{% block body %}
-
+{% block content %}
     {% include 'slider.html.twig' %}
 
-        {% for declinations in declinationsByCat %}
-            {# add One rectangle by category #}
-            <div class="row">
-                {% for declination in declinations %}
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <figure class="thumbnail">
-                            <img src="assets/images/{{ declination.mainImage }}" alt="">
-                            <figcaption class="caption">
-                                <p>{{ declination.mainImage }}</p>
-                            </figcaption>
-                        </figure>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endfor %}
+    <!--Thumbnail des catégories -->
 
-
-
-    <!--Categorie 1-->
-
-{% for declinations in declinationsByCat %}
-       {# add One rectangle by category #}
-<div class="row">
-    <div class="hidden-sm hidden-xs col-md-3">
-        <div class="rectangle-category">
-            <p>Categories</p>
-        </div>
-    </div>
-    <div class="col-sm-4 hidden-lg">
-        <div class="rectangle-category-sm">
-            <p>Natation Synchronisé</p>
-        </div>
-    </div>
-        <div class="category-thumbnail">
-                <div class="col-lg-4">
-                    <div class="thumbnail">
-                        <img src="assets/images/{{ declinations[0].mainImage }}" alt="">
-                        <p>{{ declinations[0].mainImage }}</p>
-                    </div>
-                </div>
-
-            <div class="container">
-                <div class="col-lg-4">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="thumbnail">
-                                <img src="assets/images/{{ declinations[1].mainImage }}" alt="">
-                                <p class="">{{ declinations[1].mainImage }}</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="thumbnail">
-                                <img src="assets/images/{{ declinations[2].mainImage }}" alt="">
-                                <p>{{ declinations[2].mainImage }}</p>
-                            </div>
+    {% for declinations in declinationsByCat %}
+        {# add One rectangle by category #}
+        <div class="container-fluid">
+            <div class="category-thumbnail">
+                <div class="row">
+                    <div class="hidden-xs col-lg-3">
+                        <div class="title-block">
+                            <span>Catégories</span>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="thumbnail">
-                                <img src="assets/images/{{ declinations[3].mainImage }}" alt="">
-                                <p>{{ declinations[3].mainImage }}</p>
-                            </div>
+                    <div class="hidden-lg col-sm-3">
+                        <div class="title-block-sm">
+                            <span>Catégories</span>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="thumbnail">
-                                <img src="assets/images/{{ declinations[4].mainImage }}" alt="">
-                                <p>{{ declinations[4].mainImage }}</p>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="main-thumbnail">
+                            <a href="index.php?route=product&modelId={{ declinations[0].modelId }}">
+                                <div class="thumbnail">
+                                    <img src="assets/images/{{ declinations[0].mainImage }}" alt="">
+                                    <p class="text">{{ declinations[0].mainImage }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hidden-xs col-lg-5">
+                        <div class="thumbnail-sm">
+                            <div class="row">
+                                <div class="col-lg-offset-1 col-lg-4">
+                                    <a href="index.php?route=product&modelId={{ declinations[1].modelId }}">
+                                        <div class="thumbnail">
+                                            <img src="assets/images/{{ declinations[1].mainImage }}" alt="">
+                                            <p class="text">{{ declinations[1].mainImage }}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-offset-1 col-lg-4">
+                                    <a href="index.php?route=product&modelId={{ declinations[2].modelId }}">
+                                        <div class="thumbnail">
+                                            <img src="assets/images/{{ declinations[2].mainImage }}" alt="">
+                                            <p class="text">{{ declinations[2].mainImage }}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-offset-1 col-lg-4">
+                                    <a href="index.php?route=product&modelId={{ declinations[3].modelId }}">
+                                        <div class="thumbnail">
+                                            <img src="assets/images/{{ declinations[3].mainImage }}" alt="">
+                                            <p class="text">{{ declinations[3].mainImage }}</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-offset-1 col-lg-4">
+                                    <a href="index.php?route=product&modelId={{ declinations[4].modelId }}">
+                                        <div class="thumbnail">
+                                            <img src="assets/images/{{ declinations[4].mainImage }}" alt="">
+                                            <p class="text">{{ declinations[4].mainImage }}</p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-</div>
-
-
-{% endfor %}
+    {% endfor %}
 
 {% endblock %}
-
 
