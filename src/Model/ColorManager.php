@@ -41,8 +41,8 @@ class ColorManager extends Manager
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        $category = $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
-        return $category[0];
+        $statement->setFetchMode(\PDO::FETCH_CLASS, self::CLASSREF);
+        return $statement->fetch();
     }
 
     /**
@@ -57,8 +57,8 @@ class ColorManager extends Manager
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('name', $colorName, \PDO::PARAM_STR);
         $statement->execute();
-        $category = $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
-        return $category[0];
+        $statement->setFetchMode(\PDO::FETCH_CLASS, self::CLASSREF);
+        return $statement->fetch();
     }
 
     public function insert(Color $color)

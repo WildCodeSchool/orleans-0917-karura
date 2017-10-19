@@ -45,24 +45,43 @@ class ColorController extends Controller
      */
     public function addColor()
     {
+        $errors = [];
         if (!empty($_POST)) {
-            $color = new Color();
-            $color->setName($_POST['name']);
-            $color->setHexa($_POST['hexa']);
-
             $colorManager = new ColorManager();
-            $colorManager->insert($color);
 
-            self::setMessage('Color added with success', 'success', 'ADD SUCCESS !!!');
+            // check errors
+            if (empty($_POST['name'])) {
+                $errors['name'] = 'Le nom de la couleur ne doit pas être vide';
+            } else {
+                if ($colorManager->findByName($_POST['name'])) {
+                    $errors['name'] = 'Une couleur existe déjà sous ce nom, veuillez en spécifier un autre';
+                }
+            }
 
-            header('Location: index.php?route=admincolor');
-            exit;
+
+            if (empty($errors)) {
+                $color = new Color();
+                $color->setName($_POST['name']);
+                $color->setHexa($_POST['hexa']);
+
+                $colorManager->insert($color);
+
+                self::setMessage('La couleur ' . $color->getName() . ' a été ajoutée à la base de données', 'success');
+
+                header('Location: index.php?route=admincolor');
+                exit;
+            }
 
         }
 
-        self::setMessage('Add a new color please');
-
-        return self::render('Admin/addColor.html.twig');
+        if (!empty($errors)) {
+            self::setMessage('Votre formulaire comporte des erreurs', 'danger', 'Erreur !');
+        }
+        
+        return self::render('Admin/addColor.html.twig', [
+            'errors' => $errors,
+            'post' => $_POST,
+        ]);
     }
 
     /**
@@ -102,10 +121,6 @@ class ColorController extends Controller
             $colorManager = new ColorManager();
             $color = $colorManager->find($_POST['color_id']);
             $colorManager->delete($color);
-
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();
-            }
 
             self::setMessage('La couleur ' . $color->getName() . ' a bien été supprimée de la base de données', 'success');
 

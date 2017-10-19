@@ -34,6 +34,9 @@ class Controller
         return self::$twig;
     }
 
+    /**
+     * Controller constructor.
+     */
     public function __construct()
     {
         // define sessions vars
@@ -53,7 +56,12 @@ class Controller
 
     }
 
-    static public function setMessage($message, $type = 'info', $title = 'Message : ')
+    /**
+     * @param $message
+     * @param string $type
+     * @param string $title
+     */
+    static public function setMessage($message, string $type = 'info', string $title = 'Message : ')
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -63,6 +71,21 @@ class Controller
         $_SESSION['message_type'] = $type;
     }
 
+    static public function setMessage2(string $type = 'info', string $title = 'Message : ', ...$message)
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        $_SESSION['message'] = $message;
+        $_SESSION['message_title'] = $title;
+        $_SESSION['message_type'] = $type;
+    }
+
+    /**
+     * @param string $view
+     * @param array $args_tab
+     * @return string
+     */
     static public function render(string $view, array $args_tab = [])
     {
         if (session_status() == PHP_SESSION_NONE) {

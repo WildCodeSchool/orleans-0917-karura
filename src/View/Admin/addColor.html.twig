@@ -10,9 +10,11 @@
             <form action="index.php?route=admincolor&action=add" method='post'>
                 <div class="form-group">
                     <label for="name">Nom de la couleur</label>
-                    <input id="name" type="text" class="form-control" name="name">
+                    <input id="name" type="text" class="form-control" name="name" value="{{ post.name ?: '' }}">
+                    {% if errors.name %}<li style="color:red">{{ errors.name }}</li>{% endif %}
+
                     <label for="hexa">Code couleur</label>
-                    <input id="hexa" type="color" class="form-control" name="hexa">
+                    <input id="hexa" type="color" class="form-control" name="hexa" value="{{ post.hexa ?: '' }}">
                 </div>
                 <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-plus"
                                                                  aria-hidden="true"> Ajouter</span></button>
