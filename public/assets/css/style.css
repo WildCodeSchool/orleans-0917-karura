@@ -255,3 +255,29 @@ footer .row {
 }
 
 /*End page mentions légales*/
+
+/*Start pages modèles*/
+
+.main-model-row, .declination-row {
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+}
+
+.main-thumbnail-model:hover img, .secondary-thumbnail-model:hover img{
+    opacity: 1.0;
+}
+
+.declination-model{
+    width: 18vh;
+    height: 25vh;
+}
+
+.model-button{
+    font-size:1.5em;
+    background-color: #D821AD;
+    color: white;
+    padding: 5px 5px 5px 5px;
+   
+}
+
+/*End pages modèles*/
