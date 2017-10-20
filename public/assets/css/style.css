@@ -300,6 +300,7 @@ footer .row {
 
 .main-thumbnail-model:hover img, .secondary-thumbnail-model:hover img{
     opacity: 1.0;
+    transform:none;
 }
 
 .declination-model{
@@ -314,6 +315,10 @@ footer .row {
     padding: 5px 5px 5px 5px;
     border: none;
     font-family: Celtic Garamond Pro;
+}
+
+.modal-header h2{
+    text-align: center;
 }
 
 /*End pages modèles*/
