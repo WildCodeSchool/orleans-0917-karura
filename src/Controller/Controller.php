@@ -61,17 +61,7 @@ class Controller
      * @param string $type
      * @param string $title
      */
-    static public function setMessage($message, string $type = 'info', string $title = 'Message : ')
-    {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        $_SESSION['message'] = $message;
-        $_SESSION['message_title'] = $title;
-        $_SESSION['message_type'] = $type;
-    }
-
-    static public function setMessage2(string $type = 'info', string $title = 'Message : ', ...$message)
+    static public function setMessage($message, string $type = 'info', string $title = '')
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
