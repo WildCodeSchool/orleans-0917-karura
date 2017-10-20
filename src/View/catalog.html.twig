@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+    <!--Thumbnail Catalogue -->
+    <div class="jumbotron">
+        <h1>NOTRE CATALOGUE</h1>
+        <p>Retrouver ici nos différents modèles</p>
+    </div>
+
+    {% for declinations in declinationsByCat %}
+        <div class="container">
+            <div class="row">
+                <div class="jumbotron">
+                    <h2>CATÉGORIE</h2>
+                </div>
+                {% for declination in declinations %}
+                    <div class="col-lg-3">
+                        <div class="catalog-thumb">
+                            <a href="index.php?route=product&modelId={{ declination.modelId }}&colorId={{ declination.colorId }}">
+                                <div class="thumbnail">
+                                    <img src="assets/images/{{ declination.mainImage }}" alt="">
+                                    <p class="text">{{ declination.mainImage }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

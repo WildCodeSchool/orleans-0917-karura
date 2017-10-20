@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}Modèle{% endblock %}
+
+    {% block content %}
+
+        <div class="container">
+            <div class="row main-model-row">
+
+                <div class="col-lg-2">
+                    <div class="thumbnail secondary-thumbnail-model">
+                        <img class="img-responsive" src="assets/images/{{ declinationByColor.secondaryImage }}"
+                             alt="Image du modèle">
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4">
+                    <div class="thumbnail main-thumbnail-model">
+                        <img class="img-responsive" src="assets/images/{{ declinationByColor.mainImage }}"
+                             alt="Image du modèle">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <h1>{{ model.name }}</h1>
+                    <p>{{ model.description }}</p>
+                    <form method="POST" action="index.php?route=contact">
+                        <input class="model-button" type="submit" name="contact" value="Nous contacter">
+                    </form>
+                </div>
+            </div>
+
+            <div class="row declination-row">
+                {% if (declinations | length)>1 %}
+                    {% for declination in declinations %}
+                        <div class="col-lg-2">
+                            <a href="index.php?route=product&modelId={{ declination.modelId }}&colorId={{ declination.colorId }}">
+                                <div class="thumbnail declination-model">
+                                    <img class="img-responsive" src="assets/images/{{ declination.mainImage }}"
+                                         alt="Image du modèle">
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+    {% endblock %}
