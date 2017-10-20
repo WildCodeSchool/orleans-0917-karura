@@ -10,8 +10,12 @@
                     {% if declinationByColor.secondaryImage is not empty %}
                         <div class="thumbnail secondary-thumbnail-model">
                             <a href="#" data-toggle="modal" data-target="#2">
+                                <figure>
+                                    <figcaption>
                                 <img class="img-responsive" src="assets/images/{{ declinationByColor.secondaryImage }}"
                                      alt="Image du modele">
+                                    </figcaption>
+                                </figure>
                             </a>
                             <div class="modal fade" id="2" tabindex="-1" role="dialog">
                                 <div class="modal-dialog" role="document">
@@ -31,11 +35,15 @@
                 </div>
 
 
-                <div class="col-xs-12 col-lg-4">
+                <div class="col-lg-4">
                     <div class="thumbnail main-thumbnail-model">
                         <a href="#" data-toggle="modal" data-target="#1">
-                        <img class="img-responsive" src="assets/images/{{ declinationByColor.mainImage }}"
-                             alt="Image du modèle">
+                            <figure>
+                                <figcaption>
+                                    <img class="img-responsive" src="assets/images/{{ declinationByColor.mainImage }}"
+                                         alt="Image du modele">
+                                </figcaption>
+                            </figure>
                         </a>
                         <div class="modal fade" id="1" tabindex="-1" role="dialog">
                             <div class="modal-dialog" role="document">
