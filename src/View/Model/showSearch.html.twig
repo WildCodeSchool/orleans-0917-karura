@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}Recherche{% endblock %}
+
+{% block content %}
+
+    <div class="nbr-search">
+    <p>{{  declinations | length }} résultats trouvé{{ (declinations | length)>1 ? 's' }} {{ searchInput ? ' pour le terme "' ~ searchInput ~ '"' }}</p>
+    </div>
+
+    <div class="container">
+    <div class="row">
+
+        {% for declination in declinations %}
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <a href="index.php?route=product&modelId={{ declination.modelId }}&colorId={{ declination.colorId }}">
+                <figure class="thumbnail">
+                    <img src="assets/images/{{ declination.mainImage }}" alt="">
+                    <figcaption class="caption">
+                        <p class="text">{{ declination.mainImage }}</p>
+                    </figcaption>
+                </figure>
+                </a>
+            </div>
+        {% endfor %}
+
+    </div>
+    </div>
+
+{% endblock %}
