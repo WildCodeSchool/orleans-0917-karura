@@ -5,7 +5,7 @@
 {% block content %}
 
     <div class="nbr-search">
-    <p>{{  declinations | length }} résultats trouvé{{ (declinations | length)>1 ? 's' }} {{ searchInput ? ' pour le terme "' ~ searchInput ~ '"' }}</p>
+    <p>{{  declinations | length }} {{ (declinations | length)>1 ? 'résultats trouvés' : 'résultat trouvé' }} {{ searchInput ? ' pour le terme "' ~ searchInput ~ '"' }}</p>
     </div>
 
     <div class="container">

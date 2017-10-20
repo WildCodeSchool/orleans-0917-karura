@@ -24,7 +24,7 @@ class HomeController extends Controller
             $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
         }
 
-        // pour le moment affichage des modeles avec TOUTES les couleurs dispos
+        // TODO pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
         return self::render('home.html.twig', [
             'declinationsByCat' => $declinationsByCat,
@@ -49,9 +49,9 @@ class HomeController extends Controller
             $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
         }
 
-        // pour le moment affichage des modeles avec TOUTES les couleurs dispos
+        // TODO pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
-        return $this->twig->render('catalog.html.twig', [
+        return self::render('catalog.html.twig', [
             'declinationsByCat' => $declinationsByCat,
         ]);
     }
