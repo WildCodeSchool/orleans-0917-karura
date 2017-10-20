@@ -120,21 +120,22 @@ class HomeController extends Controller
                         }
                     }
                 }
+
+                $mailer->send($message);
+
+                $messageAccusingReception = (new \Swift_Message($header))
+                    ->setFrom([$setTo])
+                    ->setTo([$setFrom => $firstName])
+                    ->setBody('Nous avons bien reçu votre message, et vous répondrons dans les meilleurs délais.' . "\r\n" . 'Belle journée à vous' . "\r\n\r\n" . 'Message envoyé : ' . "\r\n" . $formMessage);
+
+                $mailer->send($messageAccusingReception);
+
             }
-
-            $mailer->send($message);
-
-            $messageAccusingReception = (new \Swift_Message($header))
-                ->setFrom([$setTo])
-                ->setTo([$setFrom => $firstName])
-                ->setBody('Nous avons bien reçu votre message, et vous répondrons dans les meilleurs délais.' . "\r\n" . 'Belle journée à vous' . "\r\n\r\n" . 'Message envoyé : ' . "\r\n" . $formMessage);
-
-            $mailer->send($messageAccusingReception);
-
 
             //INSERER LE MESSAGE "BIEN ENVOYÉ" SUR LA PAGE DE REDIRECTION
 //                header('Location: index.php');
         }
+
         return self::render('contact.html.twig', [
             'errors' => $errors,
         ]);
@@ -148,16 +149,5 @@ class HomeController extends Controller
         // show mentions légales
         return self::render('mentions.html.twig');
     }
-return $this->twig->render('contact.html.twig', ['errors' => $errors,]);
 }
 
-/**
- * @return string
- */
-public
-function showMentions()
-{
-    // show mentions légales
-    return $this->twig->render('mentions.html.twig');
-}
-}
