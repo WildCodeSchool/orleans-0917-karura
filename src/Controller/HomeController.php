@@ -26,10 +26,11 @@ class HomeController extends Controller
 
         // pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
-        return $this->twig->render('home.html.twig', [
+        return self::render('home.html.twig', [
             'declinationsByCat' => $declinationsByCat,
         ]);
     }
+
 
     /**
      * @return string
@@ -63,8 +64,81 @@ class HomeController extends Controller
         // show contact page
         // make args to formate form when you came from model contact redirection
         // TODO
-        //
-        return $this->twig->render('contact.html.twig');
+
+        $errors = [];
+
+        if (!empty($_POST)) {
+
+            if (empty($_POST['formLastName'])) {
+                $errors['formLastName'] = "Merci de renseigner votre nom";
+            }
+            if (empty($_POST['formMail'])) {
+                $errors['formMail'] = "Merci de renseigner votre email";
+            }
+            if (empty($_POST['formMessage'])) {
+                $errors['formMessage'] = "Merci d'écrire un message";
+            }
+
+            if (count($errors) == 0) {
+
+                $setTo = "loann.meignant@hotmail.fr";
+                $setFrom = $_POST['formMail'];
+                $gender = $_POST['gender'];
+                $firstName = $_POST['formFirstName'];
+                $lastName = $_POST['formLastName'];
+                $phoneForm = $_POST['formTel'];
+                $formMessage = $_POST['formMessage'];
+                $header = "Envoi de message sur Karura.com";
+
+                if ($phoneForm) {
+                    $phone = $phoneForm;
+                } else {
+                    $phone = "non renseigné";
+                }
+
+                $messageSent = $gender . ' ' . $firstName . ' ' . $lastName . ' vous a envoyé un message sur Karura.com :' . "\r\n\r\n" . $formMessage . "\r\n\r\n" .
+                    'E-mail : ' . $setFrom . "\r\n" . 'Téléphone : ' . $phone;
+
+                $transport = (new \Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
+                    ->setUsername('fsacado1@gmail.com')
+                    ->setPassword('tarteauxpommes');
+
+                $mailer = new \Swift_Mailer($transport);
+
+                $message = (new \Swift_Message($header))
+                    ->setFrom([$setFrom => $firstName])
+                    ->setTo([$setTo => 'Loann'])
+                    ->setBody($messageSent);
+
+                if (!empty($_FILES)) {
+                    if ($_FILES['formFile']['error'] !== 4) {
+                        if (filesize($_FILES['formFile']['tmp_name']) > 26214400) {
+                            $errors['formFile'] = "Votre fichier est trop volumineux";
+                        } else {
+                            $attachment = \Swift_Attachment::fromPath($_FILES['formFile']['tmp_name'])->setFilename($_FILES['formFile']['name']);
+                            $message->attach($attachment);
+                        }
+                    }
+                }
+
+                $mailer->send($message);
+
+                $messageAccusingReception = (new \Swift_Message($header))
+                    ->setFrom([$setTo])
+                    ->setTo([$setFrom => $firstName])
+                    ->setBody('Nous avons bien reçu votre message, et vous répondrons dans les meilleurs délais.' . "\r\n" . 'Belle journée à vous' . "\r\n\r\n" . 'Message envoyé : ' . "\r\n" . $formMessage);
+
+                $mailer->send($messageAccusingReception);
+
+            }
+
+            //INSERER LE MESSAGE "BIEN ENVOYÉ" SUR LA PAGE DE REDIRECTION
+//                header('Location: index.php');
+        }
+
+        return self::render('contact.html.twig', [
+            'errors' => $errors,
+        ]);
     }
 
     /**
@@ -73,6 +147,7 @@ class HomeController extends Controller
     public function showMentions()
     {
         // show mentions légales
-        return $this->twig->render('mentions.html.twig');
+        return self::render('mentions.html.twig');
     }
 }
+

@@ -26,7 +26,7 @@ class ModelController extends Controller
         $modelManager = new ModelManager();
         $models = $modelManager->findAll();
 
-        return $this->twig->render('Model/showAll.html.twig', [
+        return self::render('Model/showAll.html.twig', [
             'models' => $models,
         ]);
     }
@@ -56,7 +56,7 @@ class ModelController extends Controller
             $declinationsByModel = array_merge($declinationsByModel, $declinationManager->findByModel($model));
         }
 
-        return $this->twig->render('Model/showSearch.html.twig', [
+        return self::render('Model/showSearch.html.twig', [
             'declinations' => $declinationsByModel,
             'searchInput' => $searchInput,
         ]);
@@ -74,7 +74,7 @@ class ModelController extends Controller
         $declinationManager = new DeclinationManager();
         $declinationsByCategory = $declinationManager->findByCategory($category);
 
-        return $this->twig->render('Model/showSearch.html.twig', [
+        return self::render('Model/showSearch.html.twig', [
             'declinations' => $declinationsByCategory,
         ]);
     }
@@ -91,7 +91,7 @@ class ModelController extends Controller
                 $declinationByColor = $declination;
             }
         }
-        return $this->twig->render('Model/product.html.twig', [
+        return self::render('Model/product.html.twig', [
             'declinations' => $declinationsByModel,
             'model' => $model,
             'declinationByColor' => $declinationByColor,

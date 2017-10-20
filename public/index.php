@@ -3,6 +3,11 @@
 require "../vendor/autoload.php";
 require '../connect.php';
 
+// session starting for dynamic everywhere you want message
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 // routeur
 if (!empty($_GET['route'])) {
     $route = $_GET['route'];
@@ -20,10 +25,22 @@ if ($route == 'home') {
     switch ($route) {
         case ('admincolor');
             $colorController = new \Karura\Controller\ColorController();
-            echo $colorController->showAll();
+            if (!empty($_GET['action'])) {
+                if ($_GET['action'] == 'add') {
+                    echo $colorController->addColor();
+                } elseif ($_GET['action'] == 'delete') {
+                    echo $colorController->deleteColor();
+                } elseif ($_GET['action'] == 'update') {
+                    echo $colorController->updateColor();
+                }
+            } else {
+                echo $colorController->showAll();
+            }
+
             break;
 
         case ('admincategory');
+            $adminController = new \Karura\Controller\AdminController();
             echo $adminController->showAdminCategory();
             break;
 

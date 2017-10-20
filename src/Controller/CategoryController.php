@@ -17,7 +17,7 @@ class CategoryController extends Controller
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll();
 
-        return $this->twig.render('Category/showAll.html.twig', [
+        return self::render('Category/showAll.html.twig', [
                 'categories' => $categories,
             ]);
     }
@@ -27,7 +27,7 @@ class CategoryController extends Controller
         $categoryManager = new CategoryManager();
         $category = $categoryManager->find($id);
 
-        return $this->twig.render('Category/showOne.html.twig', [
+        return self::render('Category/showOne.html.twig', [
                 'category' => $category,
             ]);
     }
