@@ -27,13 +27,12 @@ class ColorController extends Controller
         $colorManager = new ColorManager();
         $colors = $colorManager->findAll();
 
-        // TODO add number of declinations per color
         $declinationManager = new DeclinationManager();
         $declinationsNumber = [];
         foreach ($colors as $color) {
             $declinationsNumber[$color->getId()] = count($declinationManager->findByColor($color));
         }
-
+        
         return self::render('Admin/adminColor.html.twig', [
             'colors' => $colors,
             'declinationsNumber' => $declinationsNumber,

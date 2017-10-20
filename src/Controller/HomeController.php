@@ -134,7 +134,7 @@ class HomeController extends Controller
             }
 
         }
-        return $this->twig->render('contact.html.twig', [
+        return self::render('contact.html.twig', [
             'errors' => $errors,
         ]);
     }
