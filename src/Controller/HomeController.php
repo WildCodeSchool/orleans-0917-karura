@@ -26,7 +26,7 @@ class HomeController extends Controller
 
         // pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
-        return $this->twig->render('home.html.twig', [
+        return self::render('home.html.twig', [
             'declinationsByCat' => $declinationsByCat,
         ]);
     }
@@ -145,6 +145,6 @@ class HomeController extends Controller
     public function showMentions()
     {
         // show mentions légales
-        return $this->twig->render('mentions.html.twig');
+        return self::render('mentions.html.twig');
     }
 }

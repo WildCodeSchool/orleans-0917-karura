@@ -18,7 +18,23 @@
 
 {% include 'header.html.twig' %}
 
+{# Dynamic message for user #}
+{% if message %}
+    <div class="row">
+        <div class="alert alert-{{ message_type }}">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>{{ message_title }}</strong> {{ message }}
+            {#
+            - ?? messages multiples : à coup de for message in messages via un $_SESSION['messages']
+            - ?? message ul : à coup de ul via un array avec title=key et message=value
+            <strong>{{ message_title }}</strong> <ul>{% for msg in message %}<li>{{ msg | raw }}</li> {% endfor %}</ul>
+            #}
+        </div>
+    </div> <!-- end row -->
+{% endif %}
 {% block content %}{% endblock %}
+
+{% block body %}page vide{% endblock %}
 
 {% include 'footer.html.twig' %}
 
