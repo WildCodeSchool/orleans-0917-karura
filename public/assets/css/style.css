@@ -321,6 +321,9 @@ footer .row {
     font-family: Celtic Garamond Pro;
 }
 
+.modal-header h2{
+    text-align: center;
+}
 
 /*End pages modèles*/
 
