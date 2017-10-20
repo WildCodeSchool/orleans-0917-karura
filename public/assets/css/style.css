@@ -155,25 +155,13 @@ p {
 
 START FORM */
 
-form {
+.contactForm {
     margin : 0 auto;
     width : 80vw;
     padding: 1em;
     border: 1px solid #CCC;
     border-radius: 1em;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* END FORM
 
@@ -253,6 +241,8 @@ Start Mise en forme des thumbnails*/
 /*End Mise en forme thumbnail
 
 ------------------------------------------------------------------------------------------------------------------------
+
+Start Mise en form textes thumbnails */
 
 .text {
     color: black;
