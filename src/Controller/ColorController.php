@@ -77,7 +77,7 @@ class ColorController extends Controller
         if (!empty($errors)) {
             self::setMessage('Votre formulaire comporte des erreurs', 'danger', 'Erreur !');
         }
-        
+
         return self::render('Admin/addColor.html.twig', [
             'errors' => $errors,
             'post' => $_POST,
