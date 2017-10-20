@@ -253,6 +253,7 @@ footer {
 
 footer a {
     color: black;
+    font-family: Celtic Garamond Pro;
 }
 
 footer a:hover {
@@ -275,13 +276,13 @@ footer .row {
 .mention-page h1 {
     text-align: center;
     font-family: Celtic Garamond Pro;
-    color: #D821AD;
+    color: #555562;
 }
 
 .mention-page h2 {
     font-family: Celtic Garamond Pro;
     font-size: calc(3em * 0.625);
-    color: #D821AD;
+    color: #555562;
 }
 
 .mention-page p {
@@ -311,7 +312,42 @@ footer .row {
     background-color: #D821AD;
     color: white;
     padding: 5px 5px 5px 5px;
-   
+    border: none;
+    font-family: Celtic Garamond Pro;
 }
 
 /*End pages modèles*/
+
+/*Start pages Catalogue*/
+
+.jumbotron {
+    text-align: center;
+    font-family: Celtic Garamond Pro;
+    margin-top: 5vh;
+    color: #555562;
+}
+
+.jumbotron h1, h2 {
+    text-decoration-line: underline;
+    text-decoration-color: #D821AD;
+}
+
+.catalog-thumb .thumbnail {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+/*End pages Catalog*/
+
+/*Start pages Product*/
+
+.nbr-search p {
+    text-align: center;
+    font-family: Celtic Garamond Pro;
+    margin-top: 5vh;
+    text-decoration-line: underline;
+    text-decoration-color: #D821AD;
+
+}
+
+/*End pages Product*/

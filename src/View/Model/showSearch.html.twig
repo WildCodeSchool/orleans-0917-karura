@@ -3,7 +3,10 @@
 {% block pageTitle %}Recherche{% endblock %}
 
 {% block content %}
+
+    <div class="nbr-search">
     <p>{{  declinations | length }} résultats trouvé{{ (declinations | length)>1 ? 's' }} {{ searchInput ? ' pour le terme "' ~ searchInput ~ '"' }}</p>
+    </div>
 
     <div class="container">
     <div class="row">
