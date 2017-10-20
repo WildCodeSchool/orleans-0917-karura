@@ -26,7 +26,7 @@ class HomeController extends Controller
 
         // pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
-        return $this->twig->render('home.html.twig', [
+        return self::render('home.html.twig', [
             'declinationsByCat' => $declinationsByCat,
         ]);
     }
@@ -135,7 +135,18 @@ class HomeController extends Controller
             //INSERER LE MESSAGE "BIEN ENVOYÉ" SUR LA PAGE DE REDIRECTION
 //                header('Location: index.php');
         }
+        return self::render('contact.html.twig', [
+            'errors' => $errors,
+        ]);
+    }
 
+    /**
+     * @return string
+     */
+    public function showMentions()
+    {
+        // show mentions légales
+        return self::render('mentions.html.twig');
     }
 return $this->twig->render('contact.html.twig', ['errors' => $errors,]);
 }
