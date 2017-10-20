@@ -81,7 +81,6 @@ class HomeController extends Controller
 
             if (count($errors) == 0) {
 
-                $setTo = "loann.meignant@hotmail.fr";
                 $setFrom = $_POST['formMail'];
                 $gender = $_POST['gender'];
                 $firstName = $_POST['formFirstName'];
@@ -99,41 +98,14 @@ class HomeController extends Controller
                 $messageSent = $gender . ' ' . $firstName . ' ' . $lastName . ' vous a envoyé un message sur Karura.com :' . "\r\n\r\n" . $formMessage . "\r\n\r\n" .
                     'E-mail : ' . $setFrom . "\r\n" . 'Téléphone : ' . $phone;
 
-                $transport = (new \Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-                    ->setUsername('fsacado1@gmail.com')
-                    ->setPassword('tarteauxpommes');
-
-                $mailer = new \Swift_Mailer($transport);
-
-                $message = (new \Swift_Message($header))
-                    ->setFrom([$setFrom => $firstName])
-                    ->setTo([$setTo => 'Loann'])
-                    ->setBody($messageSent);
-
-                if (!empty($_FILES)) {
-                    if ($_FILES['formFile']['error'] !== 4) {
-                        if (filesize($_FILES['formFile']['tmp_name']) > 26214400) {
-                            $errors['formFile'] = "Votre fichier est trop volumineux";
-                        } else {
-                            $attachment = \Swift_Attachment::fromPath($_FILES['formFile']['tmp_name'])->setFilename($_FILES['formFile']['name']);
-                            $message->attach($attachment);
-                        }
-                    }
-                }
-
-                $mailer->send($message);
-
-                $messageAccusingReception = (new \Swift_Message($header))
-                    ->setFrom([$setTo])
-                    ->setTo([$setFrom => $firstName])
-                    ->setBody('Nous avons bien reçu votre message, et vous répondrons dans les meilleurs délais.' . "\r\n" . 'Belle journée à vous.' . "\r\n\r\n" . 'Message envoyé : ' . "\r\n" . $formMessage);
-
-                $mailer->send($messageAccusingReception);
+                require '../mailConfig.php';
 
             }
 
-            //INSERER LE MESSAGE "BIEN ENVOYÉ" SUR LA PAGE DE REDIRECTION
-//                header('Location: index.php');
+            self::setMessage('Votre message a correctement été envoyé.', 'success', 'Merci !');
+
+            header('Location: index.php');
+            exit();
         }
 
         return self::render('contact.html.twig', [
