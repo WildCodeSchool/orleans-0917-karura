@@ -86,10 +86,15 @@ class ModelController extends Controller
 
         $declinationManager = new DeclinationManager();
         $declinationsByModel = $declinationManager->findByModel($model);
-
+        foreach($declinationsByModel as $declination){
+            if ($declination->getColorId()==((int)$_GET["colorId"])){
+                $declinationByColor = $declination;
+            }
+        }
         return $this->twig->render('Model/product.html.twig', [
             'declinations' => $declinationsByModel,
             'model' => $model,
+            'declinationByColor' => $declinationByColor,
         ]);
 
     }

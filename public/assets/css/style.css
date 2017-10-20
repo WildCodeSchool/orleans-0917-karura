@@ -60,7 +60,18 @@ START SLIDER */
     background-size: cover;
 }
 
-/*Image de fond des slides 1, 2 et 3*/
+.carousel-control {
+    color: #D821AD;
+}
+
+.carousel-control:hover {
+    color: #D821AD;
+}
+
+.carousel-control:focus, .carousel-control:hover {
+    color: #D821AD;
+}
+
 .slider1 {
     background: url('../images/agi02.jpg') center no-repeat;
 }
@@ -86,12 +97,18 @@ p {
 
 /*Décalage paragraphe*/
 .premierParaSlider {
-    text-align: left;
+    text-align: center;
+    font-family: Celtic Garamond Pro;
+    font-weight:bold;
+    font-size: 3em;
+    text-decoration-line: underline;
+    text-decoration-color: #D821AD;
 }
 
 /*Décalage paragraphe*/
 .secondParaSlider {
-    text-align : right;
+    text-align : center;
+    font-family: Celtic Garamond Pro;
 }
 
 /*Position paragraphe*/
@@ -100,7 +117,19 @@ p {
     position: absolute;
 }
 
-/*Les trois paragraphes du premier slide n'apparaissent pas. Ils apparaitront grâce au JavaScript*/
+.action-button {
+    font-size:1.5em;
+    background-color: #D821AD;
+    color: white;
+    padding: 5px 5px 5px 5px;
+    font-family: Celtic Garamond Pro;
+}
+
+.action-button:hover {
+    color: #E3E3E3;
+    text-decoration: none;
+}
+
 .animJs1 {
     display:none;
 }
@@ -158,26 +187,32 @@ Start Mise en forme des thumbnails*/
 }
 
 .title-block {
-    background-color: #e75fc7;
-    color: black;
+    background-color: #E3E3E3;
     text-align: center;
     display: inline-block;
     position: absolute;
     padding: 0;
     margin-bottom: 0;
     width: 40vh;
-    height: 80vh;
+    height: 53vh;
     min-height: 100%;
     float: left;
     font-family: Celtic Garamond Pro;
 }
 
+.title-block span{
+    font-size: 5vh ;
+    color: #555555;
+    border-bottom: 5px solid #D821AD;
+}
+
 .title-block-sm {
-    background-color: #e75fc7;
+    background-color: #E3E3E3;
     color: black;
     text-align: center;
     padding: 0;
     margin-bottom: 5vh;
+    font-size: 6vh;
     width: 100%;
     height: 10vh;
     min-height: 100%;
@@ -185,12 +220,12 @@ Start Mise en forme des thumbnails*/
 }
 
 .thumbnail-sm .thumbnail{
-    width: 28.1vh;
+    width: 18.1vh;
     padding-bottom: 5vh;
 }
 
 .main-thumbnail .thumbnail {
-    width: 60vh;
+    width: 40vh;
 }
 
  .thumbnail {
@@ -198,6 +233,7 @@ Start Mise en forme des thumbnails*/
      border: none;
      padding:0;
      overflow: hidden;
+     margin-left: 0;
  }
 
 .thumbnail img {
@@ -217,12 +253,6 @@ Start Mise en forme des thumbnails*/
 /*End Mise en forme thumbnail
 
 ------------------------------------------------------------------------------------------------------------------------
-
-Start Mise en forme textes thumbnail*/
-
-.title-block span {
-    font-size: calc(6em * 0.625);
-}
 
 .text {
     color: black;
@@ -257,6 +287,7 @@ footer {
 
 footer a {
     color: black;
+    font-family: Celtic Garamond Pro;
 }
 
 footer a:hover {
@@ -281,13 +312,13 @@ Start page mentions légales*/
 .mention-page h1 {
     text-align: center;
     font-family: Celtic Garamond Pro;
-    color: #D821AD;
+    color: #555562;
 }
 
 .mention-page h2 {
     font-family: Celtic Garamond Pro;
     font-size: calc(3em * 0.625);
-    color: #D821AD;
+    color: #555562;
 }
 
 .mention-page p {
@@ -295,3 +326,64 @@ Start page mentions légales*/
 }
 
 /*End page mentions légales*/
+
+/*Start pages modèles*/
+
+.main-model-row, .declination-row {
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+}
+
+.main-thumbnail-model:hover img, .secondary-thumbnail-model:hover img{
+    opacity: 1.0;
+}
+
+.declination-model{
+    width: 18vh;
+    height: 25vh;
+}
+
+.model-button{
+    font-size:1.5em;
+    background-color: #D821AD;
+    color: white;
+    padding: 5px 5px 5px 5px;
+    border: none;
+    font-family: Celtic Garamond Pro;
+}
+
+/*End pages modèles*/
+
+/*Start pages Catalogue*/
+
+.jumbotron {
+    text-align: center;
+    font-family: Celtic Garamond Pro;
+    margin-top: 5vh;
+    color: #555562;
+}
+
+.jumbotron h1, h2 {
+    text-decoration-line: underline;
+    text-decoration-color: #D821AD;
+}
+
+.catalog-thumb .thumbnail {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+
+/*End pages Catalog*/
+
+/*Start pages Product*/
+
+.nbr-search p {
+    text-align: center;
+    font-family: Celtic Garamond Pro;
+    margin-top: 5vh;
+    text-decoration-line: underline;
+    text-decoration-color: #D821AD;
+
+}
+
+/*End pages Product*/

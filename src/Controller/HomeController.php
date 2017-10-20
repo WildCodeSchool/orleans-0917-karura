@@ -34,6 +34,30 @@ class HomeController extends Controller
     /**
      * @return string
      */
+    public function showCatalog()
+    {
+        // show some models in home -> using model manager
+        //1* find all category
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->findAll();
+
+        //2* find all declinations for each category
+        $declinationManager = new DeclinationManager();
+        $declinationsByCat = [];
+        foreach ($categories as $category) {
+            $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
+        }
+
+        // pour le moment affichage des modeles avec TOUTES les couleurs dispos
+        // à terme on affichera uniquement une des couleur + modal
+        return $this->twig->render('catalog.html.twig', [
+            'declinationsByCat' => $declinationsByCat,
+        ]);
+    }
+
+    /**
+     * @return string
+     */
     public function showContact()
     {
         // show contact page
