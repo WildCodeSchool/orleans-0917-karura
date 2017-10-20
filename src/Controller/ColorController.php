@@ -32,7 +32,7 @@ class ColorController extends Controller
         foreach ($colors as $color) {
             $declinationsNumber[$color->getId()] = count($declinationManager->findByColor($color));
         }
-        
+
         return self::render('Admin/adminColor.html.twig', [
             'colors' => $colors,
             'declinationsNumber' => $declinationsNumber,

@@ -91,7 +91,7 @@ class ModelController extends Controller
                 $declinationByColor = $declination;
             }
         }
-        return $this->twig->render('Model/product.html.twig', [
+        return self::render('Model/product.html.twig', [
             'declinations' => $declinationsByModel,
             'model' => $model,
             'declinationByColor' => $declinationByColor,
