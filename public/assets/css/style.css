@@ -300,6 +300,11 @@ footer .row {
 
 .main-thumbnail-model:hover img, .secondary-thumbnail-model:hover img{
     opacity: 1.0;
+    -webkit-transform:none; /* Safari et Chrome */
+    -moz-transform:none; /* Firefox */
+    -ms-transform:none; /* Internet Explorer 9 */
+    -o-transform:none; /* Opera */
+    transform:none;
 }
 
 .declination-model{
@@ -315,6 +320,7 @@ footer .row {
     border: none;
     font-family: Celtic Garamond Pro;
 }
+
 
 /*End pages modèles*/
 
