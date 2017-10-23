@@ -22,7 +22,7 @@ class Controller
     /**
      * @return \Twig_Environment
      */
-    static public function getTwig(): \Twig_Environment
+    public function getTwig(): \Twig_Environment
     {
         if (self::$twig === null) {
             $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../View');
@@ -61,17 +61,7 @@ class Controller
      * @param string $type
      * @param string $title
      */
-    static public function setMessage($message, string $type = 'info', string $title = 'Message : ')
-    {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-        $_SESSION['message'] = $message;
-        $_SESSION['message_title'] = $title;
-        $_SESSION['message_type'] = $type;
-    }
-
-    static public function setMessage2(string $type = 'info', string $title = 'Message : ', ...$message)
+    public function setMessage($message, string $type = 'info', string $title = '')
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
@@ -86,7 +76,7 @@ class Controller
      * @param array $args_tab
      * @return string
      */
-    static public function render(string $view, array $args_tab = [])
+    public function render(string $view, array $args_tab = [])
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
