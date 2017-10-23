@@ -1,26 +1,16 @@
 <?php
 
-$host = 'smtp.gmail.com';
-$port = 465;
-$security = 'ssl';
-$fileSize = 26214400;
+$fileSize = 26214400; // 25 Mo
 
-$username = 'fsacado1@gmail.com';
-$password = 'tarteauxpommes';
-$setTo = 'loann.meignant@hotmail.fr';
-
-
-
-
-$transport = (new \Swift_SmtpTransport($host, $port, $security))
-    ->setUsername($username)
-    ->setPassword($password);
+$transport = (new \Swift_SmtpTransport(HOST, PORT, SECURITY))
+    ->setUsername(USERNAME)
+    ->setPassword(PASSWORD);
 
 $mailer = new \Swift_Mailer($transport);
 
 $message = (new \Swift_Message($header))
     ->setFrom([$setFrom => $firstName])
-    ->setTo($setTo)
+    ->setTo(SETTO)
     ->setBody($messageSent);
 
 if (!empty($_FILES)) {
@@ -37,7 +27,7 @@ if (!empty($_FILES)) {
 $mailer->send($message);
 
 $messageAccusingReception = (new \Swift_Message($header))
-    ->setFrom($setTo)
+    ->setFrom(SETTO)
     ->setTo([$setFrom => $firstName])
     ->setBody('Nous avons bien reçu votre message, et vous répondrons dans les meilleurs délais.' . "\r\n" . 'Belle journée à vous.' . "\r\n\r\n" . 'Message envoyé : ' . "\r\n" . $formMessage);
 

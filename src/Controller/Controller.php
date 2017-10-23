@@ -24,7 +24,7 @@ class Controller
      */
     static public function getTwig(): \Twig_Environment
     {
-        if (self::$twig === Null) {
+        if (self::$twig === null) {
             $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../View');
             self::$twig = new \Twig_Environment($loader, array(
                 'cache' => false,
