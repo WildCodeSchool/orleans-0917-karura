@@ -24,12 +24,13 @@ class HomeController extends Controller
             $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
         }
 
-        // pour le moment affichage des modeles avec TOUTES les couleurs dispos
+        // TODO pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
-        return $this->twig->render('home.html.twig', [
+        return self::render('home.html.twig', [
             'declinationsByCat' => $declinationsByCat,
         ]);
     }
+
 
     /**
      * @return string
@@ -48,9 +49,9 @@ class HomeController extends Controller
             $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
         }
 
-        // pour le moment affichage des modeles avec TOUTES les couleurs dispos
+        // TODO pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
-        return $this->twig->render('catalog.html.twig', [
+        return self::render('catalog.html.twig', [
             'declinationsByCat' => $declinationsByCat,
         ]);
     }
@@ -63,8 +64,53 @@ class HomeController extends Controller
         // show contact page
         // make args to formate form when you came from model contact redirection
         // TODO
-        //
-        return $this->twig->render('contact.html.twig');
+
+        $errors = [];
+
+        if (!empty($_POST)) {
+
+            if (empty($_POST['formLastName'])) {
+                $errors['formLastName'] = "Merci de renseigner votre nom";
+            }
+            if (empty($_POST['formMail'])) {
+                $errors['formMail'] = "Merci de renseigner votre email";
+            }
+            if (empty($_POST['formMessage'])) {
+                $errors['formMessage'] = "Merci d'écrire un message";
+            }
+
+            if (count($errors) == 0) {
+
+                $setFrom = $_POST['formMail'];
+                $gender = $_POST['gender'];
+                $firstName = $_POST['formFirstName'];
+                $lastName = $_POST['formLastName'];
+                $phoneForm = $_POST['formTel'];
+                $formMessage = $_POST['formMessage'];
+                $header = "Envoi de message sur Karura.com";
+
+                if ($phoneForm) {
+                    $phone = $phoneForm;
+                } else {
+                    $phone = "non renseigné";
+                }
+
+                $messageSent = $gender . ' ' . $firstName . ' ' . $lastName . ' vous a envoyé un message sur Karura.com :' . "\r\n\r\n" . $formMessage . "\r\n\r\n" .
+                    'E-mail : ' . $setFrom . "\r\n" . 'Téléphone : ' . $phone;
+
+                require '../mailConfig.php';
+
+            }
+
+            self::setMessage('Votre message a correctement été envoyé.', 'success', 'Merci !');
+
+            header('Location: index.php');
+            exit();
+        }
+
+        return self::render('contact.html.twig', [
+            'errors' => $errors,
+        ]);
     }
 
     /**
@@ -73,6 +119,7 @@ class HomeController extends Controller
     public function showMentions()
     {
         // show mentions légales
-        return $this->twig->render('mentions.html.twig');
+        return self::render('mentions.html.twig');
     }
 }
+
