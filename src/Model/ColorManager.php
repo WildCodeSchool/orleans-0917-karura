@@ -41,8 +41,8 @@ class ColorManager extends Manager
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
-        $category = $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
-        return $category[0];
+        $statement->setFetchMode(\PDO::FETCH_CLASS, self::CLASSREF);
+        return $statement->fetch();
     }
 
     /**
@@ -57,28 +57,34 @@ class ColorManager extends Manager
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('name', $colorName, \PDO::PARAM_STR);
         $statement->execute();
-        $category = $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
-        return $category[0];
+        $statement->setFetchMode(\PDO::FETCH_CLASS, self::CLASSREF);
+        return $statement->fetch();
     }
 
-    public function insert()
+    public function insert(Color $color)
     {
-        // TODO
+        $req = "INSERT INTO " . self::TABLE . "
+                (name, hexa)
+                VALUES (:name, :hexa)";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('name', $color->getName(), \PDO::PARAM_INT);
+        $statement->bindValue('hexa', $color->getHexa(), \PDO::PARAM_INT);
+        $statement->execute();
     }
 
     public function update(Color $color)
     {
         $id = $color->getId();
-        $fields = "";
-        foreach ($color as $attr => $value) {
-            $fields .= $attr . "=" . "'" . $value . "'";
-        }
+        $name = $color->getName();
+        $hexa = $color->getHexa();
 
         $req = "UPDATE " . self::TABLE . "
-                SET " . $fields . "
+                SET id=:id, name=:name, hexa=:hexa
                 WHERE id=:id";
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->bindValue('name', $name, \PDO::PARAM_INT);
+        $statement->bindValue('hexa', $hexa, \PDO::PARAM_INT);
         $statement->execute();
     }
 

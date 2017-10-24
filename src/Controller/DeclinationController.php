@@ -18,7 +18,7 @@ class DeclinationController extends Controller
         $declinationManager = new DeclinationManager();
         $declinations = $declinationManager->findAll();
 
-        return $this->twig->render('Declination/showAll.html.twig', [
+        return self::render('Declination/showAll.html.twig', [
                 'declinations' => $declinations,
             ]);
     }
@@ -28,7 +28,7 @@ class DeclinationController extends Controller
         $declinationManager = new DeclinationManager();
         $declination = $declinationManager->find($id);
 
-        return $this->twig->render('Declination/showOne.html.twig', [
+        return self::render('Declination/showOne.html.twig', [
                 'declination' => $declination,
             ]);
     }
