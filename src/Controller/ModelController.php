@@ -48,7 +48,7 @@ class ModelController extends Controller
 
         return self::render('Admin/adminModels.html.twig', [
             'models' => $models,
-            'declinations' => $declinationsNumber,
+            'declinationsNumber' => $declinationsNumber,
         ]);
     }
 

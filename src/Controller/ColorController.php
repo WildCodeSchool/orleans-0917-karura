@@ -119,7 +119,7 @@ class ColorController extends Controller
         }
 
 
-        return self::getTwig()->render('Admin/updateColor.html.twig', [
+        return self::render('Admin/updateColor.html.twig', [
             'color' => $color,
             'errors' => $errors,
         ]);
