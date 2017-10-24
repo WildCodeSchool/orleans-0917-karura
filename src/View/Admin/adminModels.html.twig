@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}Administration des Modèles{% endblock %}
+
+{% block content %}
+    <h1>Administration des Modèles</h1>
+    <a class="btn btn-success" href="index.php?route=adminmodeladd">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"> Ajouter un modèle</span>
+    </a>
+
+    <ul class="list-group">
+        {% for model in models %}
+            <li class="list-group-item">Modèle : {{ model.name }} ( existe en {{ declinations[model.id] }} déclinaisons )
+
+                <form action="index.php?route=adminmodelupdate" method='post'>
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
+                    </div>
+                    <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-edit"
+                                                                     aria-hidden="true"> Modifier</span></button>
+                </form>
+
+                {% if declinationsNumber[model.id] > 0 %}
+                    <p> Il y a {{ declinationsNumber[model.id] }} variantes associés à ce modèle, vous ne pouvez pas
+                        le supprimer.</p>
+                {% else %}
+                    <form action="index.php?route=adminmodeldelete" method='post'>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
+                        </div>
+                        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-minus"
+                                                                           aria-hidden="true"> Supprimer</span></button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

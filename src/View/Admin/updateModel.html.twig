@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}Administration des modèles{% endblock %}
+
+{% block content %}
+    <h1>Modifier un modèle</h1>
+
+    <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+            <form action="index.php?route=adminmodelupdate" method='post'>
+                <div class="form-group">
+                    <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
+
+                    <label for="name">Nom du modèle</label>
+                    <input id="name" type="text" class="form-control" name="name" value="{{ model.name }}">
+                    {% if errors.name %}
+                        <li style="color:red">{{ errors.name }}</li>{% endif %}
+
+                    <label for="desc">Description</label>
+                    <textarea name="description" id="desc" cols="30" rows="10">{{ model.description }}</textarea>
+
+                    <label for="cat">Catégorie</label>
+                    <select name="category" id="cat">
+                        {% for category in categories %}
+                            <option value="{{ category.id }}"
+                                    {{ (category.id == model.categoryId) ? 'selected' }}>{{ category.name }}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+                <button type="submit" class="btn btn-info" name="updating" value="1"><span
+                            class="glyphicon glyphicon-edit"
+                            aria-hidden="true"> Modifier</span></button>
+            </form>
+
+            <form action="index.php?route=adminmodel" method='post'>
+                <button type="submit" class="btn btn-danger">Annuler</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
