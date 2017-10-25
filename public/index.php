@@ -30,11 +30,16 @@ if ($route == 'home') {
             echo $colorController->deleteColor();
         } elseif ($route == 'admincolorupdate') {
             echo $colorController->updateColor();
-
         } else {
             echo $colorController->showAll();
         }
-
+    } elseif (substr($route, 0, 9) == 'adminform') {
+        $formController = new \Karura\Controller\FormController();
+        if ($route == 'adminformreceptionaddressupdate') {
+            echo $formController->updateReceptionAddress();
+        } else {
+            echo $formController->showAll();
+        }
     } elseif ($route == 'admincategory') {
         $adminController = new \Karura\Controller\AdminController();
         echo $adminController->showAdminCategory();
@@ -85,3 +90,4 @@ if ($route == 'home') {
 }
 
 ?>
+

@@ -315,9 +315,11 @@ Start page mentions légales*/
     font-size: calc(2em * 0.625);
 }
 
-/*End page mentions légales*/
+/*End page mentions légales
 
-/*Start pages modèles*/
+------------------------------------------------------------------------------------------------------------------------
+
+Start pages modèles*/
 
 .main-model-row, .declination-row {
     margin-top: 2.5vh;
@@ -347,9 +349,11 @@ Start page mentions légales*/
     text-align: center;
 }
 
-/*End pages modèles*/
+/*End pages modèles
 
-/*Start pages Catalogue*/
+------------------------------------------------------------------------------------------------------------------------
+
+Start pages Catalogue*/
 
 .jumbotron {
     text-align: center;
@@ -368,9 +372,11 @@ Start page mentions légales*/
     margin-bottom: 5vh;
 }
 
-/*End pages Catalog*/
+/*End pages Catalog
 
-/*Start pages Product*/
+------------------------------------------------------------------------------------------------------------------------
+
+Start pages Product*/
 
 .nbr-search p {
     text-align: center;

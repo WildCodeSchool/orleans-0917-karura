@@ -24,7 +24,8 @@ class Color
      */
     private $name;
 
-    /**
+    /** $statement->bindValue('name', $name, \PDO::PARAM_INT);
+        $statement->bindValue('hexa', $hexa, \PDO::PARAM_INT);
      * @var
      */
     private $hexa;

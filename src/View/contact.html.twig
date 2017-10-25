@@ -7,44 +7,48 @@
     <h2>Une question, un renseignement... Contactez-nous !</h2>
 
     <form class="contactForm" action="" method="POST" enctype="multipart/form-data">
-        <p class="form-group">
+        <p class="">
             <label for="gender">Civilité :</label>
             <input type="radio" id="formGenderMadame" name="gender" value="Madame" checked> Madame
             <input type="radio" id="formGenderMonsieur" name="gender" value="Monsieur"> Monsieur
         </p>
 
-        <p class="form-group">
-            <label for="formLastName">Nom :</label>
+        <p class="">
+            <label for="formLastName">Nom *:</label>
             <input type="text" id="formLastName" class="form-control" name="formLastName" required>
-        <p>{{ errors['formName'] ? errors['formName']}}</p>
+        <p>{{ errors['formName'] ? errors['formName'] }}</p>
         </p>
 
-        <p class="form-group">
+        <p class="">
             <label for="firstNameForm">Prénom :</label>
             <input type="text" id="firstNameForm" class="form-control" name="formFirstName">
         </p>
 
         <p class="form-group">
             <label for="formTel">Téléphone :</label>
-            <input type="text" pattern="0[1-8]([-. ]?[0-9]{2}){4}" id="formTel" class="form-control" name="formTel">
+            <input type="tel" pattern="0[1-8]([-. ]?[0-9]{2}){4}" id="formTel" class="form-control" name="formTel">
         </p>
 
         <p class="form-group">
-            <label for="formMail">E-mail :</label>
-            <input type="email" pattern="[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$" id="formMail" class="form-control" name="formMail" required>
-        <p>{{ errors['formMail'] ? errors['formMail']}}</p>
+            <label for="formMail">E-mail *:</label>
+            <input type="email" pattern="[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$" id="formMail" class="form-control"
+                   name="formMail" required>
+        <p>{{ errors['formMail'] ? errors['formMail'] }}</p>
 
         <p class="form-group">
-            <label for="formMessage">Message / Question :</label>
+            <label for="formMessage">Message / Question *:</label>
             <textarea type="text" id="formMessage" class="form-control" name="formMessage" required></textarea>
-        <p>{{ errors['formMessage'] ? errors['formMessage']}}</p>
+        <p>{{ errors['formMessage'] ? errors['formMessage'] }}</p>
+
+        <p>Les champs suivis d'un * sont obligatoires</p>
 
         <p class="form-group">
             <label for="formFile">Inclure une pièce-jointe :</label>
             <input type="file" id="formFile" name="formFile">
-        <p>{{ errors['formFile'] ? errors['formFile']}}</p>
+        <p>{{ errors['formFile'] ? errors['formFile'] }}</p>
         </p>
-        <button type="submit" class="btn btn-default" data-toggle="modal" data-target="#confirm-submit">Envoyer</button>
+        <button type="submit" class="btn btn-default button-form-submit" data-toggle="modal" data-target="#confirm-submit">Envoyer</button>
     </form>
+
 
 {% endblock %}

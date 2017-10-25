@@ -96,7 +96,6 @@ class ColorController extends Controller
             $color->setName($_POST['name']);
             $color->setHexa($_POST['hexa']);
 
-
             $colorManager->update($color);
 
             header('Location: index.php?route=admincolor');
@@ -108,7 +107,6 @@ class ColorController extends Controller
         return self::getTwig()->render('Admin/updateColor.html.twig', [
             'color' => $color,
         ]);
-
     }
 
     /**
