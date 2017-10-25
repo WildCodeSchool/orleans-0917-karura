@@ -37,7 +37,17 @@ class ModelController extends Controller
      */
     public function showAllAdminAction()
     {
+        // search models all model and sort by category
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->findAll();
+
         $modelManager = new ModelManager();
+        $modelsByCat = [];
+        foreach ($categories as $category) {
+            $modelsByCat[$category->getName()] = $modelManager->findByCategory($category);
+        }
+
+        // search number of declination by models
         $models = $modelManager->findAll();
 
         $declinationManager = new DeclinationManager();
@@ -47,7 +57,7 @@ class ModelController extends Controller
         }
 
         return self::render('Admin/adminModels.html.twig', [
-            'models' => $models,
+            'modelsByCat' => $modelsByCat,
             'declinationsNumber' => $declinationsNumber,
         ]);
     }

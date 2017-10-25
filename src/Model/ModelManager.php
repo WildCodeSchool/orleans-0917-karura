@@ -86,7 +86,8 @@ class ModelManager extends Manager
     {
         $req = "SELECT * 
                 FROM " . self::TABLE . "
-                WHERE category_id=:category_id";
+                WHERE category_id=:category_id
+                ORDER BY name";
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
         $statement->execute();
