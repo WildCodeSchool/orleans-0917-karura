@@ -67,7 +67,7 @@ class ColorController extends Controller
 
                 self::setMessage('La couleur ' . $color->getName() . ' a été ajoutée à la base de données', 'success');
 
-                header('Location: index.php?route=admincolor');
+                header('Location: admin.php?route=admincolor');
                 exit;
             }
 
@@ -123,7 +123,7 @@ class ColorController extends Controller
 
             self::setMessage('La couleur ' . $color->getName() . ' a bien été supprimée de la base de données', 'success');
 
-            header('Location: index.php?route=admincolor');
+            header('Location: admin.php?route=admincolor');
             exit;
         }
 

@@ -1,12 +1,37 @@
-{% extends 'base.html.twig' %}
+{% extends 'Admin/baseadmin.html.twig' %}
 
 {% block pageTitle %}Administration{% endblock %}
 
 {% block content %}
-    <h1>Administration du site</h1>
-    <p>
-        <a href="index.php?route=admincolor">Administrer les couleurs</a>
-    </p>
+    <div class="container">
+        <div class="row">
+            <h1>Administration du site</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-6">
+                <a href="admin.php?route=admincolor" class="thumbnail">
+                    <img src="assets/images/logo/iconpaint.png" alt="..."><span>Administrer les couleurs</span>
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-6">
+                <a href="admin.php?route=adminformreceptionaddressupdate" class="thumbnail">
+                    <img src="assets/images/logo/iconmail.png" alt="..."><span>Administrer les Emails</span>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 col-md-6">
+                <a href="admin.php?route=adminmodel" class="thumbnail">
+                    <img src="assets/images/logo/iconvetement.png" alt="..."><span>Administrer les modèles</span>
+                </a>
+            </div>
+            <div class="col-xs-6 col-md-6">
+                <a href="admin.php?route=adminaccueil" class="thumbnail">
+                    <img src="assets/images/logo/iconaccueil.png" alt="..."><span>Administrer la page d'accueil</span>
+                </a>
+            </div>
+        </div>
+
 
 
     {# TODO A faire :
@@ -16,5 +41,5 @@
     - administrer les catégories
     - administrer le formulaire de contact (email de redirection des messages)
     - administrer les modèles mis en avant sur l'accueil ?#}
-
+    </div>
 {% endblock %}
