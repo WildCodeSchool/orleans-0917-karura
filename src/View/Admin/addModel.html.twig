@@ -4,35 +4,38 @@
 
 {% block content %}
     <h1>Ajouter un modèle</h1>
-    <div class="container">
-        <div class="row">
-            <form action="index.php?route=adminmodeladd" method='post'>
-                <div class="form-group">
-                    <label for="name">Nom du modèle</label>
-                    <input id="name" type="text" class="form-control" name="name" value="{{ post.name ?: '' }}">
-                    {% if errors.name %}
-                        <li style="color:red">{{ errors.name }}</li>{% endif %}
+    <form class="contactForm" action="index.php?route=adminmodeladd" method='post'>
 
-                    <label for="desc">Description</label>
-                    <textarea name="description" id="desc" cols="30" rows="10">{{ post.description ?: '' }}</textarea>
+        <div class="form-group">
+            <label for="name">Nom du modèle</label>
+            <input id="name" type="text" class="form-control" name="name" value="{{ post.name ?: '' }}">
+            {% if errors.name %}
+                <li style="color:red">{{ errors.name }}</li>{% endif %}
+        </div>
 
-                    <label for="cat">Catégorie</label>
-                    <select name="category" id="cat">
-                        {% for category in categories %}
-                        <option value="{{ category.id }}"
-                                {{ category.id == model.categoryId ? 'selected' }}>{{ category.name }}</option>
-                        {% endfor %}
-                    </select>
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea class="form-control" name="description" id="desc" cols="30"
+                      rows="10">{{ post.description ?: '' }}</textarea>
+        </div>
 
-                </div>
-                <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-plus"
-                                                                 aria-hidden="true"> Ajouter</span></button>
-            </form>
+        <div class="form-group">
+            <label for="cat">Catégorie</label>
+            <select name="category" id="cat">
+                {% for category in categories %}
+                    <option value="{{ category.id }}"
+                            {{ category.id == model.categoryId ? 'selected' }}>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
 
-            <form action="index.php?route=adminmodel" method='post'>
-                <button type="submit" class="btn btn-danger">Annuler</button>
-            </form>
-        </div> <!-- end row -->
-    </div>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"
+                                                         aria-hidden="true"> Ajouter</span></button>
+
+        <a href="index.php?route=adminmodel" class="pull-right btn btn-danger">
+        <span class="glyphicon glyphicon-remove"
+              aria-hidden="true"> Annuler</span></a>
+
+    </form>
 
 {% endblock %}
