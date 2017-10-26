@@ -12,8 +12,8 @@
         <ul class="list-group">
             {% for color in colors %}
                 <li class="list-group-item">
-                    <p>Couleur : {{ color.name | capitalize }} <span class="pull-right"
-                                                                     style="background-color:{{ color.hexa }};color:{{ color.hexa }};border-radius:20%;">@@</span>
+                    <p>Couleur : {{ color.name | capitalize }} <span class="glyphicon glyphicon-tint"
+                                                                     style="color:{{ color.hexa }}"></span>
                     </p>
 
                     <form action="index.php?route=admincolorupdate" method='post'>
@@ -21,7 +21,7 @@
                             <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
                         </div>
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"
-                                                                         aria-hidden="true"> Modifier cette couleur</span>
+                                                                            aria-hidden="true"> Modifier cette couleur</span>
                         </button>
                     </form>
 
