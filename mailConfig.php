@@ -1,7 +1,7 @@
 <?php
 
 //MAX FILESIZE
-$fileSize = 2097152; // 2Mo
+$fileSize = 3145728; // 3Mo
 
 //GET EMAIL ADDRESS FROM DATABASE
 $formManager = new \Karura\Model\FormManager();
