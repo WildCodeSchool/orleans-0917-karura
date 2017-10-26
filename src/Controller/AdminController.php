@@ -7,6 +7,14 @@ use Karura\Model\ColorManager;
 
 class AdminController extends Controller
 {
+//TODO A faire :
+//- administrer les modèles :: DONE
+//- administrer les variantes par modèle :: Via la page des modèles
+//- administrer les couleurs :: DONE
+//- administrer les catégories ??
+//- administrer le formulaire de contact (email de redirection des messages)
+//- administrer les modèles mis en avant sur l'accueil ?
+
     /**
      * @return string
      */

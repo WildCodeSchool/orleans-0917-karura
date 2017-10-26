@@ -35,7 +35,21 @@ if ($route == 'home') {
             echo $colorController->showAll();
         }
 
-    } elseif ($route == 'admincategory') {
+    } elseif (substr($route, 0, 10) == 'adminmodel') {
+        $modelController = new \Karura\Controller\ModelController();
+        if ($route == 'adminmodeladd') {
+            echo $modelController->addModel();
+        } elseif ($route == 'adminmodeldelete') {
+            echo $modelController->deleteModel();
+        } elseif ($route == 'adminmodelupdate') {
+            echo $modelController->updateModel();
+
+        } else {
+            echo $modelController->showAllAdminAction();
+        }
+
+
+} elseif ($route == 'admincategory') {
         $adminController = new \Karura\Controller\AdminController();
         echo $adminController->showAdminCategory();
 
