@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block pageTitle %}Ajouter une déclinaison{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+    <h1>Ajouter une déclinaison au modèle {{ model.name }}</h1>
+
+    <div class="row">
+        <div class="col-lg-2">
+            <form action="index.php?route=admindeclinationadd" method='post' enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="back">Image secondaire</label>
+                    <input type="file" name="files[]" multiple="multiple" accept="image/*">
+                    <label for="front">Image principale</label>
+                    <input type="file" name="files[]" multiple="multiple" accept="image/*">
+                    <label for="front">Couleur</label>
+                    <select class="form-control" name="color_id">
+                        {% for color in colors %}
+                            <option value="{{ color.id }}" {{ (post.colorId == color.id)?'selected' }}>{{ color.name }}</option>
+                        {% endfor %}
+                    </select>
+                    {% if errors.twice %}
+                    <strong style="color:red">{{errors.twice}}</strong>
+                    {% endif %}
+                    <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
+
+                </div>
+
+                <button type="submit" class="adminButton btn btn-info" name="adding" value="1"><span
+                            class="glyphicon glyphicon-edit"
+                            aria-hidden="true"></span> Ajouter</button>
+
+                <a href="index.php?route=admindeclination&modelId={{ model.id }}"
+                   class="adminButton btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Annuler
+                </a>
+
+            </form>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}

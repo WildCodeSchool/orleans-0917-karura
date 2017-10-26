@@ -34,6 +34,18 @@ if ($route == 'home') {
         } else {
             echo $colorController->showAll();
         }
+    } elseif (substr($route, 0, strlen('admindeclination')) == 'admindeclination') {
+        $declinationController = new \Karura\Controller\DeclinationController();
+        if ($route == 'admindeclinationadd') {
+            echo $declinationController->addDeclination();
+        } elseif ($route == 'admindeclinationdelete') {
+            echo $declinationController->deleteDeclination();
+        } elseif ($route == 'admindeclinationupdate') {
+            echo $declinationController->updateDeclination();
+
+        } else {
+            echo $declinationController->showAllByModel();
+        }
 
     } elseif ($route == 'admincategory') {
         $adminController = new \Karura\Controller\AdminController();
