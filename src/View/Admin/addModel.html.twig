@@ -10,7 +10,8 @@
             <label for="name">Nom du modèle</label>
             <input id="name" type="text" class="form-control" name="name" value="{{ post.name ?: '' }}">
             {% if errors.name %}
-                <li style="color:red">{{ errors.name }}</li>{% endif %}
+                <strong style="color:red">{{ (errors.name) ? errors.name }}</strong>
+            {% endif %}
         </div>
 
         <div class="form-group">

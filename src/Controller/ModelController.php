@@ -118,7 +118,7 @@ class ModelController extends Controller
         $declinationManager = new DeclinationManager();
         $declinationsByModel = $declinationManager->findByModel($model);
         foreach ($declinationsByModel as $declination) {
-            if ($declination->getColorId() == ((int)$_GET["colorId"])) {
+            if ($declination->getColorId() == ($_GET["colorId"])) {
                 $declinationByColor = $declination;
             }
         }
