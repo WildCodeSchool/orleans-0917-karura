@@ -105,15 +105,9 @@ p {
 }
 
 /*Décalage paragraphe*/
-.secondParaSlider {
+.secondParaSlider, .troisiemeParaSlider {
     text-align: center;
     font-family: Celtic Garamond Pro;
-}
-
-/*Position paragraphe*/
-.troisiemeParaSlider {
-    bottom: 0;
-    position: absolute;
 }
 
 .action-button {
@@ -193,18 +187,18 @@ Start Mise en forme des thumbnails*/
 }
 
 .category-thumbnail:nth-child(2n+1) .title-block {
-    background-color: #A3A3A3;
+    background-color: #4C4C4C;
+    color: #E3E3E3;
 }
 
 .title-block span {
     font-size: 5vh;
-    color: #555555;
     border-bottom: 5px solid #D821AD;
 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-80%);
 }
 
 .title-block-sm {
@@ -221,6 +215,7 @@ Start Mise en forme des thumbnails*/
 }
 
 .thumbnail-sm .thumbnail {
+    position: relative;
     width: 18.1vh;
     padding-bottom: 5vh;
 }
@@ -371,6 +366,16 @@ Start page mentions légales*/
     font-family: Celtic Garamond Pro;
     margin-top: 5vh;
     color: #555562;
+}
+
+/* Alternate bg color of rectangle in Home */
+.catalog-row:nth-child(2n) .jumbotron {
+    background-color: #E3E3E3;
+}
+
+.catalog-row:nth-child(2n+1) .jumbotron {
+    background-color: #4C4C4C;
+    color: #E3E3E3;
 }
 
 .jumbotron h1, h2 {

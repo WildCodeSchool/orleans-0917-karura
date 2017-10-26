@@ -7,9 +7,9 @@
         <p>Retrouvez ici nos différents modèles</p>
     </div>
 
-    {% for category, declinations in declinationsByCat %}
-        <div class="container">
-            <div class="row">
+    <div class="container">
+        {% for category, declinations in declinationsByCat %}
+            <div class="row catalog-row">
                 <div class="jumbotron">
                     <h2>{{ category | capitalize }}</h2>
                 </div>
@@ -26,7 +26,6 @@
                     </div>
                 {% endfor %}
             </div>
-        </div>
-    {% endfor %}
-
+        {% endfor %}
+    </div>
 {% endblock %}
