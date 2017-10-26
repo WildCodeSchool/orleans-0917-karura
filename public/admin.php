@@ -40,7 +40,7 @@ if (substr($route, 0, 5) == 'admin') {
     }
 } elseif (substr($route, 0, 9) == 'adminform') {
     $formController = new \Karura\Controller\FormController();
-    if ($route == 'adminformreceptionaddressupdate') {
+    if ($route == 'admin-form-reception-address-update') {
         echo $formController->updateReceptionAddress();
     } else {
         echo $formController->showAll();
