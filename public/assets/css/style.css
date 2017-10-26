@@ -1,4 +1,14 @@
-/* START BARRE DE NAVIGATION */
+/* START BODY */
+
+.successMessage {
+    margin-top: 20px;
+}
+
+/* END BODY
+
+------------------------------------------------------------------------------------------------------------------------
+
+START BARRE DE NAVIGATION */
 
 /*Couleur de barre de navigation*/
 .navbar {
