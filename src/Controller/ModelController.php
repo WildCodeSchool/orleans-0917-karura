@@ -56,10 +56,24 @@ class ModelController extends Controller
             $declinationsByModel = array_merge($declinationsByModel, $declinationManager->findByModel($model));
         }
 
-        return self::render('Model/showSearch.html.twig', [
-            'declinations' => $declinationsByModel,
-            'searchInput' => $searchInput,
-        ]);
+        $modelManager = new ModelManager();
+        $models = $modelManager->findAll();
+        $modelNames = [];
+        foreach ($models as $model) {
+            $modelNames[$model->getId()] = $model->getName();
+        }
+
+        if ($searchInput) {
+            return self::render('Model/showSearch.html.twig', [
+                'declinations' => $declinationsByModel,
+                'searchInput' => $searchInput,
+                'models' => $modelNames,
+            ]);
+        } else {
+            header('Location: index.php?route=catalog');
+            exit();
+
+        }
     }
 
     /**
@@ -74,8 +88,17 @@ class ModelController extends Controller
         $declinationManager = new DeclinationManager();
         $declinationsByCategory = $declinationManager->findByCategory($category);
 
+        $modelManager = new ModelManager();
+        $models = $modelManager->findAll();
+        $modelNames = [];
+        foreach ($models as $model) {
+            $modelNames[$model->getId()] = $model->getName();
+        }
+
         return self::render('Model/showSearch.html.twig', [
             'declinations' => $declinationsByCategory,
+            'models' => $modelNames,
+            'category' => $category,
         ]);
     }
 
@@ -86,8 +109,8 @@ class ModelController extends Controller
 
         $declinationManager = new DeclinationManager();
         $declinationsByModel = $declinationManager->findByModel($model);
-        foreach($declinationsByModel as $declination){
-            if ($declination->getColorId()==((int)$_GET["colorId"])){
+        foreach ($declinationsByModel as $declination) {
+            if ($declination->getColorId() == ((int)$_GET["colorId"])) {
                 $declinationByColor = $declination;
             }
         }
