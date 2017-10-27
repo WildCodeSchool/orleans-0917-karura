@@ -79,7 +79,7 @@ class HomeController extends Controller
                 $errors['formMessage'] = "Merci d'écrire un message";
             }
 
-            if (count($errors) == 0) {
+            if (empty($errors)) {
 
                 $setFrom = $_POST['formMail'];
                 $gender = $_POST['gender'];
@@ -100,16 +100,20 @@ class HomeController extends Controller
 
                 require '../mailConfig.php';
 
+                if (empty($errors)) {
+
+                    self::setMessage('Votre message a correctement été envoyé.', 'success', 'Merci !');
+
+                    header('Location: index.php');
+                    exit();
+
+                }
             }
-
-            self::setMessage('Votre message a correctement été envoyé.', 'success', 'Merci !');
-
-            header('Location: index.php');
-            exit();
         }
 
         return self::render('contact.html.twig', [
             'errors' => $errors,
+            'post' => $_POST,
         ]);
     }
 
@@ -122,4 +126,3 @@ class HomeController extends Controller
         return self::render('mentions.html.twig');
     }
 }
-
