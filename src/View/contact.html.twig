@@ -18,7 +18,7 @@
             <div class="form-group">
                 <label for="formLastName" class="control-label">Nom * </label>
                 <input type="text" id="formLastName" class="form-control" name="formLastName" value="{{ post.formLastName ? post.formLastName }}" required>
-                <p>{{ errors['formLastName'] ? errors['formLastName'] }}</p>
+                <p class="errorForm">{{ errors['formLastName'] ? errors['formLastName'] }}</p>
 
                 <div class="form-group">
                     <label for="firstNameForm" class="control-label">Prénom </label>
@@ -36,13 +36,13 @@
                     <input type="email" pattern="[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$" id="formMail"
                            class="form-control"
                            name="formMail" value="{{ post.formMail ? post.formMail }}" required>
-                    <p>{{ errors['formMail'] ? errors['formMail'] }}</p>
+                    <p class="errorForm">{{ errors['formMail'] ? errors['formMail'] }}</p>
                 </div>
 
                 <div class="form-group">
                     <label for="formMessage">Message / Question * </label>
                     <textarea id="formMessage" class="form-control" name="formMessage" required>{{ post.formMessage ? post.formMessage }}</textarea>
-                    <p>{{ errors['formMessage'] ? errors['formMessage'] }}</p>
+                    <p class="errorForm">{{ errors['formMessage'] ? errors['formMessage'] }}</p>
                 </div>
 
                 <div>Les champs suivis d'un * sont obligatoires</div>
@@ -50,7 +50,7 @@
                 <div class="form-group form-upload">
                     <label for="formFile">Inclure une pièce-jointe </label>
                     <input type="file" id="formFile" name="formFile">
-                    <p>{{ errors['formFile'] ? errors['formFile'] }}</p>
+                    <p class="errorForm">{{ errors['formFile'] ? errors['formFile'] }}</p>
                 </div>
                 <button type="submit" class="btn btn-success button-form-submit" data-toggle="modal"
                         data-target="#confirm-submit"><span class="glyphicon glyphicon-ok"

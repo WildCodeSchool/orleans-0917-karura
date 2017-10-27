@@ -163,6 +163,7 @@ p {
 ------------------------------------------------------------------------------------------------------------------------
 
 START FORM */
+
 .form h2 {
     text-align: center;
     margin: 25px 0;
@@ -181,12 +182,20 @@ START FORM */
     margin: 20px 0;
 }
 
+.errorForm {
+    font-size: 20px;
+    color : #D821AD;
+}
+
 textarea.form-control {
     height: 10em;
 }
 
 @media (max-width: 500px) {
     .contactForm {
+        font-size: 15px;
+    }
+    .errorForm {
         font-size: 15px;
     }
 }
