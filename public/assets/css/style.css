@@ -175,7 +175,7 @@ Start Mise en forme des thumbnails*/
 }
 
 .title-block {
-    background-color: #E3E3E3;
+    background-color: #4c4c4c;
     text-align: center;
     display: inline-block;
     position: absolute;
@@ -186,11 +186,12 @@ Start Mise en forme des thumbnails*/
     min-height: 100%;
     float: left;
     font-family: Celtic Garamond Pro;
+    box-shadow: 5px 5px 5px #b2b2b2;
 }
 
 .title-block span{
     font-size: 5vh ;
-    color: #555555;
+    color: white;
     border-bottom: 5px solid #D821AD;
 }
 
@@ -315,9 +316,11 @@ Start page mentions légales*/
     font-size: calc(2em * 0.625);
 }
 
-/*End page mentions légales*/
+/*End page mentions légales
 
-/*Start pages modèles*/
+------------------------------------------------------------------------------------------------------------------------
+
+Start pages modèles*/
 
 .main-model-row, .declination-row {
     margin-top: 2.5vh;
