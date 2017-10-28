@@ -3,40 +3,46 @@
 {% block pageTitle %}Administration des couleurs{% endblock %}
 
 {% block content %}
+    <h1>Administration des couleurs <a class="btn btn-success btn-lg pull-right" href="index.php?route=admincoloradd">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"> Ajouter une couleur</span>
+        </a></h1>
+    <p class="text-center"></p>
+
     <div class="container">
-    <h1>Administration des couleurs</h1>
-    <a class="btn btn-success" href="admin.php?route=admincoloradd">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"> Ajouter une couleur</span>
-    </a>
+        <ul class="list-group">
+            {% for color in colors %}
+                <li class="list-group-item">
+                    <p>Couleur : {{ color.name | capitalize }} <span class="glyphicon glyphicon-tint"
+                                                                     style="color:{{ color.hexa }}"></span>
+                    </p>
 
-    <ul class="list-group">
-
-        {% for color in colors %}
-            <li class="list-group-item">Couleur : {{ color.name }} <span
-                        style="background-color:{{ color.hexa }};">{{ color.hexa }}</span>
-                <form action="admin.php?route=admincolorupdate" method='post'>
-                    <div class="form-group">
-                        <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
-                    </div>
-                    <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-edit"
-                                                                     aria-hidden="true"> Modifier</span></button>
-                </form>
-
-                {% if declinationsNumber[color.id] > 0 %}
-                    <p> Il y a {{ declinationsNumber[color.id] }} modèles associés à cette couleur, vous ne pouvez pas
-                        la supprimer.</p>
-                {% else %}
-                    <form action="admin.php?route=admincolordelete" method='post'>
+                    <form action="index.php?route=admincolorupdate" method='post'>
                         <div class="form-group">
                             <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
                         </div>
-                        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-minus"
-                                                                           aria-hidden="true"> Supprimer</span></button>
+                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"
+                                                                            aria-hidden="true"> Modifier cette couleur</span>
+                        </button>
                     </form>
-                {% endif %}
-            </li>
-        {% endfor %}
-        </div>
-    </ul>
+
+                    <form action="index.php?route=admincolordelete" method='post'>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
+                        </div>
+                        <button type="submit" class="btn btn-danger"
+                                {{ (declinationsNumber[color.id] > 0) ? 'disabled="disabled"' }}>
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"> Supprimer cette couleur</span>
+                        </button>
+                        {% if declinationsNumber[color.id] > 0 %}
+                            <strong> Il y a {{ declinationsNumber[color.id] }} modèles associés à cette couleur, vous ne
+                                pouvez
+                                pas
+                                la supprimer.</strong>
+                        {% endif %}
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}
