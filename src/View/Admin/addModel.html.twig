@@ -1,10 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'Admin/baseadmin.html.twig' %}
 
 {% block pageTitle %}Administration des Modèles{% endblock %}
 
 {% block content %}
     <h1>Ajouter un modèle</h1>
-    <form class="contactForm" action="index.php?route=adminmodeladd" method='post'>
+    <form class="contactForm" action="admin.php?route=adminmodeladd" method='post'>
 
         <div class="form-group">
             <label for="name">Nom du modèle</label>
@@ -33,7 +33,7 @@
         <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"
                                                          aria-hidden="true"> Ajouter</span></button>
 
-        <a href="index.php?route=adminmodel" class="pull-right btn btn-danger">
+        <a href="admin.php?route=adminmodel" class="pull-right btn btn-danger">
         <span class="glyphicon glyphicon-remove"
               aria-hidden="true"> Annuler</span></a>
 

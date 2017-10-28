@@ -15,29 +15,38 @@ if (!empty($_GET['route'])) {
     $route = 'admin'; // go to home by default
 }
 
-if (substr($route, 0, 5) == 'admin') {
-    // admin pages
-    if (substr($route, 0, 10) == 'admincolor') {
-        $colorController = new \Karura\Controller\ColorController();
-        if ($route == 'admincoloradd') {
-            echo $colorController->addColor();
-        } elseif ($route == 'admincolordelete') {
-            echo $colorController->deleteColor();
-        } elseif ($route == 'admincolorupdate') {
-            echo $colorController->updateColor();
-
-        } else {
-            echo $colorController->showAll();
-        }
-
-    } elseif ($route == 'admincategory') {
-        $adminController = new \Karura\Controller\AdminController();
-        echo $adminController->showAdminCategory();
+// admin pages
+if (substr($route, 0, 10) == 'admincolor') {
+    $colorController = new \Karura\Controller\ColorController();
+    if ($route == 'admincoloradd') {
+        echo $colorController->addColor();
+    } elseif ($route == 'admincolordelete') {
+        echo $colorController->deleteColor();
+    } elseif ($route == 'admincolorupdate') {
+        echo $colorController->updateColor();
 
     } else {
-        $adminController = new \Karura\Controller\AdminController();
-        echo $adminController->showMainPage();
+        echo $colorController->showAll();
     }
+
+} elseif (substr($route, 0, 10) == 'adminmodel') {
+    $modelController = new \Karura\Controller\ModelController();
+    if ($route == 'adminmodeladd') {
+        echo $modelController->addModel();
+    } elseif ($route == 'adminmodeldelete') {
+        echo $modelController->deleteModel();
+    } elseif ($route == 'adminmodelupdate') {
+        echo $modelController->updateModel();
+
+    } else {
+        echo $modelController->showAllAdminAction();
+    }
+
+} elseif ($route == 'admincategory') {
+    $adminController = new \Karura\Controller\AdminController();
+    echo $adminController->showAdminCategory();
+
+
 } elseif (substr($route, 0, 9) == 'adminform') {
     $formController = new \Karura\Controller\FormController();
     if ($route == 'admin-form-reception-address-update') {
@@ -45,6 +54,10 @@ if (substr($route, 0, 5) == 'admin') {
     } else {
         echo $formController->showAll();
     }
+
+} else {
+    $adminController = new \Karura\Controller\AdminController();
+    echo $adminController->showMainPage();
 }
 
 ?>

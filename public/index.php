@@ -18,53 +18,35 @@ if (!empty($_GET['route'])) {
 if ($route == 'home') {
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showHome();
-
-    } elseif (substr($route, 0, 10) == 'adminmodel') {
-        $modelController = new \Karura\Controller\ModelController();
-        if ($route == 'adminmodeladd') {
-            echo $modelController->addModel();
-        } elseif ($route == 'adminmodeldelete') {
-            echo $modelController->deleteModel();
-        } elseif ($route == 'adminmodelupdate') {
-            echo $modelController->updateModel();
-
-        } else {
-            echo $modelController->showAllAdminAction();
-        }
-} elseif
-($route == 'search') {
+} elseif ($route == 'search') {
     // simple search in name of models
     $modelController = new \Karura\Controller\ModelController();
     echo $modelController->showSearchAction($_GET['search']);
 
-} elseif
-($route == 'category') {
+} elseif ($route == 'category') {
 
     // models of one category
     $modelController = new \Karura\Controller\ModelController();
     echo $modelController->showByCategoryAction($_GET['category']);
 
-} elseif
-($route == 'contact') {
-
+} elseif ($route == 'contact') {
     // go to contact page
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showContact();
 
-} elseif
-($route == 'mentions') {
+} elseif ($route == 'mentions') {
     // go to mentions page
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showMentions();
 
-} elseif
-($route == 'product') {
+} elseif ($route == 'product') {
     $modelController = new \Karura\Controller\ModelController();
     echo $modelController->showProduct();
-} elseif
-($route == 'catalog') {
+
+} elseif ($route == 'catalog') {
     $modelController = new \Karura\Controller\HomeController();
     echo $modelController->showCatalog();
+
 } else {
     // go to homepage by default
     $homeController = new \Karura\Controller\HomeController();

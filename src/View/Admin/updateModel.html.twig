@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Modifier un modèle</h1>
-    <form class="contactForm" action="index.php?route=adminmodelupdate" method='post'>
+    <form class="contactForm" action="admin.php?route=adminmodelupdate" method='post'>
         <div class="form-group">
             <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
 
@@ -32,7 +32,7 @@
                     class="glyphicon glyphicon-edit"
                     aria-hidden="true"> Modifier</span></button>
 
-        <a href="index.php?route=adminmodel" class="pull-right btn btn-danger">
+        <a href="admin.php?route=adminmodel" class="pull-right btn btn-danger">
         <span class="glyphicon glyphicon-remove"
               aria-hidden="true"> Annuler</span></a>
     </form>

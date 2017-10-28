@@ -111,7 +111,7 @@ class ColorController extends Controller
             if (empty($errors)) {
                 $colorManager->update($color);
 
-                header('Location: index.php?route=admincolor');
+                header('Location: admin.php?route=admincolor');
                 exit;
             } else {
                 self::setMessage('Votre formulaire comporte des erreurs', 'danger', 'Erreur !');

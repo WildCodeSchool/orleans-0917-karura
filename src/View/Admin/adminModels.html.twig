@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{% extends 'Admin/baseadmin.html.twig' %}
 
 {% block pageTitle %}Administration des Modèles{% endblock %}
 
 {% block content %}
-    <h1>Administration des Modèles <a class="btn btn-success btn-lg pull-right" href="index.php?route=adminmodeladd">
+    <h1>Administration des Modèles <a class="btn btn-success btn-lg pull-right" href="admin.php?route=adminmodeladd">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"> Ajouter un modèle</span>
         </a></h1>
     <div class="container">
@@ -24,7 +24,7 @@
                                 <small class="pull-right">{{ loop.index }} / {{ models | length }}</small>
                             </p>
 
-                            <form action="index.php?route=adminmodelupdate" method='post'>
+                            <form action="admin.php?route=adminmodelupdate" method='post'>
                                 <div class="form-group">
                                     <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
                                 </div>
@@ -33,7 +33,7 @@
                                 </button>
                             </form>
 
-                            <form action="index.php?route=adminmodelupdate" method='post'>
+                            <form action="admin.php?route=adminmodelupdate" method='post'>
                                 <div class="form-group">
                                     <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
                                 </div>
@@ -42,7 +42,7 @@
                                 </button>
                             </form>
 
-                            <form action="index.php?route=adminmodeldelete" method='post'>
+                            <form action="admin.php?route=adminmodeldelete" method='post'>
                                 <div class="form-group">
                                     <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
                                 </div>

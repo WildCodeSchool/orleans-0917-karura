@@ -3,7 +3,7 @@
 {% block pageTitle %}Administration des couleurs{% endblock %}
 
 {% block content %}
-    <h1>Administration des couleurs <a class="btn btn-success btn-lg pull-right" href="index.php?route=admincoloradd">
+    <h1>Administration des couleurs <a class="btn btn-success btn-lg pull-right" href="admin.php?route=admincoloradd">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"> Ajouter une couleur</span>
         </a></h1>
     <p class="text-center"></p>
@@ -16,7 +16,7 @@
                                                                      style="color:{{ color.hexa }}"></span>
                     </p>
 
-                    <form action="index.php?route=admincolorupdate" method='post'>
+                    <form action="admin.php?route=admincolorupdate" method='post'>
                         <div class="form-group">
                             <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
                         </div>
@@ -25,7 +25,7 @@
                         </button>
                     </form>
 
-                    <form action="index.php?route=admincolordelete" method='post'>
+                    <form action="admin.php?route=admincolordelete" method='post'>
                         <div class="form-group">
                             <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
                         </div>

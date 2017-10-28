@@ -5,7 +5,7 @@
 {% block content %}
     <h1>Modifier une couleur</h1>
 
-    <form class="contactForm" action="index.php?route=admincolorupdate" method='post'>
+    <form class="contactForm" action="admin.php?route=admincolorupdate" method='post'>
         <div class="form-group">
             <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
             <label for="name">Nom de la couleur</label>
@@ -18,7 +18,7 @@
                                                                                    aria-hidden="true"> Modifier</span>
         </button>
 
-        <a href="index.php?route=admincolor" class="pull-right btn btn-danger">
+        <a href="admin.php?route=admincolor" class="pull-right btn btn-danger">
         <span class="glyphicon glyphicon-remove"
               aria-hidden="true"> Annuler</span></a>
     </form>

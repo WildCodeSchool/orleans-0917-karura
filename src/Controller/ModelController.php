@@ -164,7 +164,7 @@ class ModelController extends Controller
 
                 self::setMessage('Le modèle ' . $model->getName() . ' a été ajouté à la base de données', 'success');
 
-                header('Location: index.php?route=adminmodel');
+                header('Location: admin.php?route=adminmodel');
                 exit;
             }
 
@@ -214,7 +214,7 @@ class ModelController extends Controller
             if (empty($errors)) {
                 $modelManager->update($model);
 
-                header('Location: index.php?route=adminmodel');
+                header('Location: admin.php?route=adminmodel');
                 exit;
 
             } else {
@@ -244,7 +244,7 @@ class ModelController extends Controller
 
             self::setMessage('Le modèle ' . $model->getName() . ' a bien été supprimé de la base de données', 'success');
 
-            header('Location: index.php?route=adminmodel');
+            header('Location: admin.php?route=adminmodel');
             exit;
         }
 
