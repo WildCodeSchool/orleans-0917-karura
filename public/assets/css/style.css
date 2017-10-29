@@ -177,6 +177,7 @@ Start Mise en forme des thumbnails*/
     min-height: 100%;
     float: left;
     font-family: Celtic Garamond Pro;
+    box-shadow: 5px 5px 5px #b2b2b2;
 }
 
 /* Alternate bg color of rectangle in Home */
@@ -323,9 +324,11 @@ Start page mentions légales*/
     font-size: calc(2em * 0.625);
 }
 
-/*End page mentions légales*/
+/*End page mentions légales
 
-/*Start pages modèles*/
+------------------------------------------------------------------------------------------------------------------------
+
+Start pages modèles*/
 
 .main-model-row, .declination-row {
     margin-top: 2.5vh;

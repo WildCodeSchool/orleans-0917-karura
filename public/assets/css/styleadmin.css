@@ -1,0 +1,12 @@
+/* Style page accueil Admin */
+
+.thumbnail {
+    border : none;
+    text-align: center;
+    font-size: 1.5em;
+    color: black;
+}
+
+.row h1 {
+    text-align: center;
+}

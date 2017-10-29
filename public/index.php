@@ -15,34 +15,9 @@ if (!empty($_GET['route'])) {
     $route = 'home'; // go to home by default
 }
 
-
 if ($route == 'home') {
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showHome();
-
-} elseif (substr($route, 0, 5) == 'admin') {
-    // admin pages
-    if (substr($route, 0, 10) == 'admincolor') {
-        $colorController = new \Karura\Controller\ColorController();
-        if ($route == 'admincoloradd') {
-            echo $colorController->addColor();
-        } elseif ($route == 'admincolordelete') {
-            echo $colorController->deleteColor();
-        } elseif ($route == 'admincolorupdate') {
-            echo $colorController->updateColor();
-
-        } else {
-            echo $colorController->showAll();
-        }
-
-    } elseif ($route == 'admincategory') {
-        $adminController = new \Karura\Controller\AdminController();
-        echo $adminController->showAdminCategory();
-
-    } else {
-        $adminController = new \Karura\Controller\AdminController();
-        echo $adminController->showMainPage();
-    }
 
 } elseif
 ($route == 'search') {
