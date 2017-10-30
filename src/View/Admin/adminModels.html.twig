@@ -19,10 +19,10 @@
                 <ul class="list-group">
                     {% for model in models %}
                         <li class="list-group-item">
-                            <p>Modèle : {{ model.name }} ( existe en {{ declinationsNumber[model.id] }}
+                            <h3>Modèle : <strong>{{ model.name }}</strong> ( existe en {{ declinationsNumber[model.id] }}
                                 couleur{{ (declinationsNumber[model.id] > 1) ? 's' }} )
                                 <small class="pull-right">{{ loop.index }} / {{ models | length }}</small>
-                            </p>
+                            </h3>
 
                             <form action="admin.php?route=adminmodelupdate" method='post'>
                                 <div class="form-group">

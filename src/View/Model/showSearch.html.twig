@@ -3,18 +3,18 @@
 {% block pageTitle %}Recherche{% endblock %}
 
 {% block content %}
-
-    {% if category %}
-        <div class="jumbotron">
-            <h2>{{ category.name | capitalize }}</h2>
-        </div>
-    {% endif %}
-
-    <div class="nbr-search">
-        <p>{{ declinations | length }} {{ (declinations | length)>1 ? 'résultats trouvés' : 'résultat trouvé' }} {{ searchInput ? ' pour le terme "' ~ searchInput ~ '"' }}</p>
-    </div>
-
     <div class="container">
+        {% if category %}
+            <div class="jumbotron">
+                <h2>{{ category.name | capitalize }}</h2>
+            </div>
+        {% endif %}
+
+        <div class="nbr-search">
+            <p>{{ declinations | length }} {{ (declinations | length)>1 ? 'résultats trouvés' : 'résultat trouvé' }} {{ searchInput ? ' pour le terme "' ~ searchInput ~ '"' }}</p>
+        </div>
+
+
         <div class="row">
 
             {% for declination in declinations %}
