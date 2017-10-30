@@ -18,6 +18,7 @@ if (!empty($_GET['route'])) {
 if ($route == 'home') {
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showHome();
+
 } elseif ($route == 'search') {
     // simple search in name of models
     $modelController = new \Karura\Controller\ModelController();
@@ -54,3 +55,4 @@ if ($route == 'home') {
 }
 
 ?>
+
