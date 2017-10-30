@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'Admin/baseadmin.html.twig' %}
 
 {% block pageTitle %}Modification de l'adresse de réception du formulaire{% endblock %}
 
@@ -6,7 +6,7 @@
 
     <div class="container">
     <h1>Modification de l'adresse de réception du formulaire</h1>
-    <form action="index.php?route=adminformreceptionaddressupdate" method="POST">
+    <form action="admin.php?route=adminform-reception-address-update" method="POST">
         <label for="formReceptionAddress">Veuillez saisir votre nouvelle adresse de réception des messages du
             formulaire</label>
         <input type="email" id="formReceptionAddress" name="formReceptionAddress" class="form-control" required>
@@ -14,7 +14,7 @@
                                                             aria-hidden="true">Valider</span></button>
     </form>
 
-    <form action="index.php?route=adminform" method='post'>
+    <form action="admin.php?route=adminform" method='post'>
         <button type="submit" class="btn btn-danger button-mail-address"><span class="glyphicon glyphicon-remove"
                                                                                aria-hidden="true">Annuler</span></button>
     </form>

@@ -24,7 +24,6 @@ if (substr($route, 0, 10) == 'admincolor') {
         echo $colorController->deleteColor();
     } elseif ($route == 'admincolorupdate') {
         echo $colorController->updateColor();
-
     } else {
         echo $colorController->showAll();
     }
@@ -37,7 +36,6 @@ if (substr($route, 0, 10) == 'admincolor') {
         echo $modelController->deleteModel();
     } elseif ($route == 'adminmodelupdate') {
         echo $modelController->updateModel();
-
     } else {
         echo $modelController->showAllAdminAction();
     }
@@ -46,10 +44,9 @@ if (substr($route, 0, 10) == 'admincolor') {
     $adminController = new \Karura\Controller\AdminController();
     echo $adminController->showAdminCategory();
 
-
 } elseif (substr($route, 0, 9) == 'adminform') {
     $formController = new \Karura\Controller\FormController();
-    if ($route == 'admin-form-reception-address-update') {
+    if ($route == 'adminform-reception-address-update') {
         echo $formController->updateReceptionAddress();
     } else {
         echo $formController->showAll();

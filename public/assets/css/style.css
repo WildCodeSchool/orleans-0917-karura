@@ -193,6 +193,7 @@ textarea.form-control {
         font-size: 15px;
     }
 }
+
 /* END FORM
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -318,6 +319,7 @@ footer {
     background-color: #F3F3F3;
     height: 100%;
     padding-top: 5vh;
+    margin-top: 10vh;
 }
 
 footer a {
