@@ -89,24 +89,39 @@ class ColorController extends Controller
     public function updateColor()
     {
         $colorManager = new ColorManager();
+        $errors = [];
 
-        if (!empty($_POST['updating'])) {
+        if (empty($_POST['updating'])) {
+            $color = $colorManager->find($_POST['color_id']);
+        } else {
+            // check errors
+            if (empty($_POST['name'])) {
+                $errors['name'] = 'Le nom de la couleur ne doit pas être vide';
+            } else {
+                if ($colorManager->findByName($_POST['name'])) {
+                    $errors['name'] = 'Une couleur existe déjà sous ce nom, veuillez en spécifier un autre';
+                }
+            }
+
             $color = new Color();
-            $color->setId($_POST['id']);
+            $color->setId($_POST['color_id']);
             $color->setName($_POST['name']);
             $color->setHexa($_POST['hexa']);
 
+            if (empty($errors)) {
+                $colorManager->update($color);
 
-            $colorManager->update($color);
-
-            header('Location: index.php?route=admincolor');
-            exit;
+                header('Location: admin.php?route=admincolor');
+                exit;
+            } else {
+                self::setMessage('Votre formulaire comporte des erreurs', 'danger', 'Erreur !');
+            }
         }
 
-        $color = $colorManager->find($_POST['color_id']);
 
-        return self::getTwig()->render('Admin/updateColor.html.twig', [
+        return self::render('Admin/updateColor.html.twig', [
             'color' => $color,
+            'errors' => $errors,
         ]);
 
     }
