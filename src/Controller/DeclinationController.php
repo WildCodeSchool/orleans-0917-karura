@@ -85,14 +85,13 @@ class DeclinationController extends Controller
     {
         $declinationManager = new DeclinationManager();
         $declination = $declinationManager->find($_POST['id']);
-        $max_file_size =3145728;
         $errors=[];
 
         if (!empty($_POST['updating'])) {
 
             for($i=0; $i<=1;$i++) {
                 if($_FILES['files']['error'][$i]==0){
-                    if($_FILES['files']['size'][$i]>$max_file_size){
+                    if($_FILES['files']['size'][$i]>MAXSIZE){
                         $message[]='L\'image est trop volumineuse';
                     }elseif ($_FILES['files']['error'][$i]) {
                         $message[] = 'Vous avez une erreur';
@@ -142,7 +141,6 @@ class DeclinationController extends Controller
 
     public function addDeclination()
     {
-        $max_file_size =3145728;
         $errors=[];
 
         $modelManager = new ModelManager();
@@ -157,7 +155,7 @@ class DeclinationController extends Controller
 
             for ($i = 0; $i <= 1; $i++) {
                 if($_FILES['files']['error'][$i]==0) {
-                    if ($_FILES['files']['size'][$i] > $max_file_size) {
+                    if ($_FILES['files']['size'][$i] > MAXSIZE) {
                         $message[] = 'L\'image est trop volumineuse';
                     } else {
                         $ext = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);

@@ -2,6 +2,7 @@
 // loading autoload and connect to db
 require "../vendor/autoload.php";
 require '../connect.php';
+require '../config.php';
 
 // session starting for dynamic everywhere you want message
 if (session_status() == PHP_SESSION_NONE) {
