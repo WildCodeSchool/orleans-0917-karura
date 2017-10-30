@@ -4,6 +4,7 @@ namespace Karura\Controller;
 
 use Karura\Model\CategoryManager;
 use Karura\Model\DeclinationManager;
+use Karura\Model\ModelManager;
 
 class HomeController extends Controller
 {
@@ -24,10 +25,16 @@ class HomeController extends Controller
             $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
         }
 
+        $modelManager = new ModelManager();
+        $models = $modelManager->findAll();
+        $modelNames = [];
+        foreach ($models as $model) {
+            $modelNames[$model->getId()] = $model->getName();
+        }
         // TODO pour le moment affichage des modeles avec TOUTES les couleurs dispos
-        // à terme on affichera uniquement une des couleur + modal
         return self::render('home.html.twig', [
             'declinationsByCat' => $declinationsByCat,
+            'models' => $modelNames,
         ]);
     }
 
@@ -49,10 +56,18 @@ class HomeController extends Controller
             $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
         }
 
+        $modelManager = new ModelManager();
+        $models = $modelManager->findAll();
+        $modelNames = [];
+        foreach ($models as $model) {
+            $modelNames[$model->getId()] = $model->getName();
+        }
+
         // TODO pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
         return self::render('catalog.html.twig', [
             'declinationsByCat' => $declinationsByCat,
+            'models' => $modelNames,
         ]);
     }
 
