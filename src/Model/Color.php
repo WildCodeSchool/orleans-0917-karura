@@ -25,7 +25,7 @@ class Color
     private $name;
 
     /**
-     * @var
+     * @var string
      */
     private $hexa;
 

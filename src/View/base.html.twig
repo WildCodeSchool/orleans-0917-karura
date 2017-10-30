@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="assets/images/logo/favicon.ico" />
     <title>Karura - {% block pageTitle %}Accueil{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/styleAdmin.css">
 
 </head>
 
@@ -20,17 +22,19 @@
 
 {# Dynamic message for user #}
 {% if message %}
-    <div class="row">
-        <div class="alert alert-{{ message_type }}">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>{{ message_title }}</strong> {{ message }}
-            {#
-            - ?? messages multiples : à coup de for message in messages via un $_SESSION['messages']
-            - ?? message ul : à coup de ul via un array avec title=key et message=value
-            <strong>{{ message_title }}</strong> <ul>{% for msg in message %}<li>{{ msg | raw }}</li> {% endfor %}</ul>
-            #}
-        </div>
-    </div> <!-- end row -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1 alert alert-{{ message_type }}">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <strong>{{ message_title }}</strong> {{ message }}
+                {#
+                - ?? messages multiples : à coup de for message in messages via un $_SESSION['messages']
+                - ?? message ul : à coup de ul via un array avec title=key et message=value
+                <strong>{{ message_title }}</strong> <ul>{% for msg in message %}<li>{{ msg | raw }}</li> {% endfor %}</ul>
+                #}
+            </div>
+        </div> <!-- end row -->
+    </div>
 {% endif %}
 
 {% block content %}{% endblock %}
