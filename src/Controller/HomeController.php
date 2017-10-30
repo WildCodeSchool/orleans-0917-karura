@@ -82,7 +82,7 @@ class HomeController extends Controller
 
         $errors = [];
 
-        if (!empty($_POST)) {
+        if (!empty($_POST['submitForm'])) {
 
             if (empty($_POST['formLastName'])) {
                 $errors['formLastName'] = "Merci de renseigner votre nom";

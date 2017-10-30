@@ -44,7 +44,7 @@ class FormController extends Controller
 
             self::setMessage('Votre adresse email a correctement été modifiée.', 'success');
 
-            header('Location: index.php?route=adminform');
+            header('Location: admin.php?route=adminform');
             exit;
         }
 
