@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'Admin/baseadmin.html.twig' %}
 
 {% block pageTitle %}Administration des couleurs{% endblock %}
 
@@ -6,24 +6,23 @@
 
     <h1>Modifier une couleur</h1>
 
-    <div class="row">
-        <div class="col-xs-6 col-xs-offset-3">
-            <form action="index.php?route=admincolorupdate" method='post'>
-                <div class="form-group">
-                    <input type="hidden" class="form-control" name="id" value="{{ color.id }}">
-                    <label for="name">Nom de la couleur</label>
-                    <input id="name" type="text" class="form-control" name="name" value="{{ color.name }}">
-                    <label for="hexa">Code couleur</label>
-                    <input id="hexa" type="color" class="form-control" name="hexa" value="{{ color.hexa }}">
-                </div>
-                <button type="submit" class="btn btn-info" name="updating" value="1"><span class="glyphicon glyphicon-edit"
-                                                                 aria-hidden="true"> Modifier</span></button>
-            </form>
-
-            <form action="index.php?route=admincolor" method='post'>
-                <button type="submit" class="btn btn-danger">Annuler</button>
-            </form>
+    <form class="contactForm" action="admin.php?route=admincolorupdate" method='post'>
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
+            <label for="name">Nom de la couleur</label>
+            <input id="name" type="text" class="form-control" name="name" value="{{ color.name }}">
+            <label for="hexa">Code couleur</label>
+            <input id="hexa" type="color" class="form-control" name="hexa" value="{{ color.hexa }}">
         </div>
-    </div>
+
+        <button type="submit" class="btn btn-info" name="updating" value="1"><span class="glyphicon glyphicon-edit"
+                                                                                   aria-hidden="true"> Modifier</span>
+        </button>
+
+        <a href="admin.php?route=admincolor" class="pull-right btn btn-danger">
+        <span class="glyphicon glyphicon-remove"
+              aria-hidden="true"> Annuler</span></a>
+    </form>
+
 
 {% endblock %}

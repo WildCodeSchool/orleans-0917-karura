@@ -115,15 +115,9 @@ p {
 }
 
 /*Décalage paragraphe*/
-.secondParaSlider {
+.secondParaSlider, .troisiemeParaSlider {
     text-align: center;
     font-family: Celtic Garamond Pro;
-}
-
-/*Position paragraphe*/
-.troisiemeParaSlider {
-    bottom: 0;
-    position: absolute;
 }
 
 .action-button {
@@ -211,8 +205,6 @@ Start Mise en forme des thumbnails*/
 }
 
 .title-block {
-    background-color: #E3E3E3;
-    text-align: center;
     display: inline-block;
     position: absolute;
     padding: 0;
@@ -222,12 +214,26 @@ Start Mise en forme des thumbnails*/
     min-height: 100%;
     float: left;
     font-family: Celtic Garamond Pro;
+    box-shadow: 5px 5px 5px #b2b2b2;
+}
+
+/* Alternate bg color of rectangle in Home */
+.category-thumbnail:nth-child(2n) .title-block {
+    background-color: #E3E3E3;
+}
+
+.category-thumbnail:nth-child(2n+1) .title-block {
+    background-color: #4C4C4C;
+    color: #E3E3E3;
 }
 
 .title-block span {
     font-size: 5vh;
-    color: #555555;
     border-bottom: 5px solid #D821AD;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-80%);
 }
 
 .title-block-sm {
@@ -244,11 +250,13 @@ Start Mise en forme des thumbnails*/
 }
 
 .thumbnail-sm .thumbnail {
+    position: relative;
     width: 18.1vh;
     padding-bottom: 5vh;
 }
 
 .main-thumbnail .thumbnail {
+    position: relative;
     width: 40vh;
 }
 
@@ -397,6 +405,16 @@ Start pages Catalogue*/
     font-family: Celtic Garamond Pro;
     margin-top: 5vh;
     color: #555562;
+}
+
+/* Alternate bg color of rectangle in Home */
+.catalog-row:nth-child(2n) .jumbotron {
+    background-color: #E3E3E3;
+}
+
+.catalog-row:nth-child(2n+1) .jumbotron {
+    background-color: #4C4C4C;
+    color: #E3E3E3;
 }
 
 .jumbotron h1, h2 {

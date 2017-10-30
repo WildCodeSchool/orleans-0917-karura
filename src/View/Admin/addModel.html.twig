@@ -1,0 +1,42 @@
+{% extends 'Admin/baseadmin.html.twig' %}
+
+{% block pageTitle %}Administration des Modèles{% endblock %}
+
+{% block content %}
+    <h1>Ajouter un modèle</h1>
+    <form class="contactForm" action="admin.php?route=adminmodeladd" method='post'>
+
+        <div class="form-group">
+            <label for="name">Nom du modèle</label>
+            <input id="name" type="text" class="form-control" name="name" value="{{ post.name ?: '' }}">
+            {% if errors.name %}
+                <strong style="color:red">{{ (errors.name) ? errors.name }}</strong>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea class="form-control" name="description" id="desc" cols="30"
+                      rows="10">{{ post.description ?: '' }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="cat">Catégorie</label>
+            <select name="category" id="cat">
+                {% for category in categories %}
+                    <option value="{{ category.id }}"
+                            {{ category.id == model.categoryId ? 'selected' }}>{{ category.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"
+                                                         aria-hidden="true"> Ajouter</span></button>
+
+        <a href="admin.php?route=adminmodel" class="pull-right btn btn-danger">
+        <span class="glyphicon glyphicon-remove"
+              aria-hidden="true"> Annuler</span></a>
+
+    </form>
+
+{% endblock %}
