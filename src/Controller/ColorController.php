@@ -123,7 +123,6 @@ class ColorController extends Controller
             'color' => $color,
             'errors' => $errors,
         ]);
-
     }
 
     /**
