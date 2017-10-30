@@ -229,7 +229,6 @@ Start Mise en forme des thumbnails*/
 
 .title-block span {
     font-size: 5vh;
-    border-bottom: 5px solid #D821AD;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -417,11 +416,6 @@ Start pages Catalogue*/
     color: #E3E3E3;
 }
 
-.jumbotron h1, h2 {
-    text-decoration-line: underline;
-    text-decoration-color: #D821AD;
-}
-
 .catalog-thumb .thumbnail {
     margin-top: 5vh;
     margin-bottom: 5vh;
@@ -437,9 +431,15 @@ Start pages Product*/
     text-align: center;
     font-family: Celtic Garamond Pro;
     margin-top: 5vh;
-    text-decoration-line: underline;
-    text-decoration-color: #D821AD;
 
 }
 
 /*End pages Product*/
+
+/*Start admin button*/
+
+.adminButton{
+    margin-bottom: 10px;
+}
+
+/*End admin button*/

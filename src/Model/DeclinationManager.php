@@ -32,7 +32,7 @@ class DeclinationManager extends Manager
      * @param int $id
      * @return mixed
      */
-    public function find(int $id)
+    public function find(int $id):Declination
     {
         $req = "SELECT *
                 FROM " . self::TABLE . "
@@ -94,16 +94,52 @@ class DeclinationManager extends Manager
         return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
 
-    // INSERT Methods
-    public function insert()
+    public function findByColorAndModel($colorId, $modelId)
     {
-        // TODO
+        $req = "SELECT *
+                FROM " . self::TABLE . " as decl
+                WHERE color_id=:color_id AND model_id=:model_id";
+
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('color_id', $colorId, \PDO::PARAM_INT);
+        $statement->bindValue('model_id', $modelId, \PDO::PARAM_INT);
+        $statement->execute();
+        $statement->setFetchMode(\PDO::FETCH_CLASS, self::CLASSREF);
+        return $statement->fetch();
+    }
+
+    // INSERT Methods
+    public function insert(Declination $declination)
+    {
+        $req = "INSERT INTO " . self::TABLE . "
+                (main_image, secondary_image, color_id, model_id)
+                VALUES (:mainImage, :secondaryImage, :colorId, :modelId)";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('mainImage', $declination->getMainImage(), \PDO::PARAM_STR);
+        $statement->bindValue('secondaryImage', $declination->getSecondaryImage(), \PDO::PARAM_STR);
+        $statement->bindValue('colorId', $declination->getColorId(), \PDO::PARAM_STR);
+        $statement->bindValue('modelId', $declination->getModelId(), \PDO::PARAM_STR);
+        $statement->execute();
     }
 
     // UPDATE Methods
-    public function update()
+    public function update(Declination $declination)
     {
-        // TODO
+        $id = $declination->getId();
+        $modelId = $declination->getModelId();
+        $colorId = $declination->getColorId();
+        $mainImage = $declination->getMainImage();
+        $secondaryImage = $declination->getSecondaryImage();
+
+        $req = "UPDATE " . self::TABLE . "
+                SET main_image=:mainImage, secondary_image=:secondaryImage, color_id=:colorId
+                WHERE id=:id";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->bindValue('colorId', $colorId, \PDO::PARAM_INT);
+        $statement->bindValue('mainImage', $mainImage, \PDO::PARAM_STR);
+        $statement->bindValue('secondaryImage', $secondaryImage, \PDO::PARAM_STR);
+        $statement->execute();
     }
 
     // DELETE Methods
@@ -113,10 +149,12 @@ class DeclinationManager extends Manager
      */
     public function delete(Declination $declination)
     {
-        $id = $declination->getId();
-        $req = "DELETE FROM self::TABLE WHERE id=:id";
+        $modelId = $declination->getModelId();
+        $colorId = $declination->getColorId();
+        $req = "DELETE FROM " .  self::TABLE . " WHERE color_id=:colorId AND model_id=:modelId";
         $statement = $this->pdo->prepare($req);
-        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->bindValue('colorId', $colorId, \PDO::PARAM_INT);
+        $statement->bindValue('modelId', $modelId, \PDO::PARAM_INT);
         $statement->execute();
     }
 
