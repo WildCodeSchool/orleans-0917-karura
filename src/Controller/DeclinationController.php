@@ -66,8 +66,12 @@ class DeclinationController extends Controller
         if (!empty($_POST['id'])) {
             $declinationManager = new DeclinationManager();
             $declination = $declinationManager->find($_POST['id']);
-            unlink('./assets/images/' . $declination->getMainImage());
-            unlink('./assets/images/' . $declination->getSecondaryImage());
+            if(file_exists('./assets/images/') . $declination->getSecondaryImage()) {
+                unlink('./assets/images/' . $declination->getSecondaryImage());
+            }
+            if(file_exists('./assets/images/') . $declination->getMainImage()) {
+                unlink('./assets/images/' . $declination->getMainImage());
+            }
             $declinationManager->delete($declination);
 
             self::setMessage('La déclinaison a bien été supprimée de la base de données', 'success');
@@ -81,29 +85,43 @@ class DeclinationController extends Controller
     {
         $declinationManager = new DeclinationManager();
         $declination = $declinationManager->find($_POST['id']);
+        $max_file_size =3145728;
+        $errors=[];
 
         if (!empty($_POST['updating'])) {
 
             for($i=0; $i<=1;$i++) {
-                if($_FILES['files']['error'][$i]){
-                    continue;
+                if($_FILES['files']['error'][$i]==0){
+                    if($_FILES['files']['size'][$i]>$max_file_size){
+                        $message[]='L\'image est trop volumineuse';
+                    }elseif ($_FILES['files']['error'][$i]) {
+                        $message[] = 'Vous avez une erreur';
+                    } else {
+                        $ext = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
+                        $uniqueName = 'image' . uniqid() . '.' . $ext;
+                        move_uploaded_file($_FILES['files']['tmp_name'][$i], 'assets/images/' . $uniqueName);
+
+                        if($i==0) {
+                            if(file_exists('./assets/images/') . $declination->getSecondaryImage()) {
+                                unlink('./assets/images/' . $declination->getSecondaryImage());
+                                $declination->setSecondaryImage($uniqueName);
+                            }
+                        } else {
+                            if(file_exists('./assets/images/') . $declination->getMainImage()) {
+                                unlink('./assets/images/' . $declination->getMainImage());
+                                $declination->setMainImage($uniqueName);
+                            }
+                        }
+                    }
                 }
-                $ext = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
-                $uniqueName = 'image' . uniqid() . '.' . $ext;
-                move_uploaded_file($_FILES['files']['tmp_name'][$i], 'assets/images/' . $uniqueName);
-                if($i==0) {
-                    unlink('./assets/images/' . $declination->getSecondaryImage());
-                    $declination->setSecondaryImage($uniqueName);
-                } else {
-                    unlink('./assets/images/' . $declination->getMainImage());
-                    $declination->setMainImage($uniqueName);
-                }
+
             }
+
             $declination->setColorId($_POST['color_id']);
 
             $declinationManager->update($declination);
 
-            $this->setMessage('Le modèle a bien été modifié','success','success');
+            $this->setMessage('Le modèle a bien été modifié','success');
         }
 
         $colorManager = new ColorManager();
@@ -124,6 +142,7 @@ class DeclinationController extends Controller
 
     public function addDeclination()
     {
+        $max_file_size =3145728;
         $errors=[];
 
         $modelManager = new ModelManager();
@@ -137,16 +156,20 @@ class DeclinationController extends Controller
             $declination->setMainImage('');
 
             for ($i = 0; $i <= 1; $i++) {
-                if ($_FILES['files']['error'][$i]) {
-                    continue;
-                }
-                $ext = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
-                $uniqueName = 'image' . uniqid() . '.' . $ext;
-                move_uploaded_file($_FILES['files']['tmp_name'][$i], 'assets/images/' . $uniqueName);
-                if ($i == 0) {
-                    $declination->setSecondaryImage($uniqueName);
-                } else {
-                    $declination->setMainImage($uniqueName);
+                if($_FILES['files']['error'][$i]==0) {
+                    if ($_FILES['files']['size'][$i] > $max_file_size) {
+                        $message[] = 'L\'image est trop volumineuse';
+                    } else {
+                        $ext = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
+                        $uniqueName = 'image' . uniqid() . '.' . $ext;
+                        move_uploaded_file($_FILES['files']['tmp_name'][$i], 'assets/images/' . $uniqueName);
+
+                        if ($i == 0) {
+                            $declination->setSecondaryImage($uniqueName);
+                        } else {
+                            $declination->setMainImage($uniqueName);
+                        }
+                    }
                 }
             }
 
