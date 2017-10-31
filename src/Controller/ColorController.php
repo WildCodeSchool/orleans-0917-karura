@@ -91,19 +91,18 @@ class ColorController extends Controller
         $colorManager = new ColorManager();
         $errors = [];
 
-        if (empty($_POST['updating'])) {
-            $color = $colorManager->find($_POST['color_id']);
-        } else {
+        $color = $colorManager->find($_POST['color_id']);
+
+        if (!empty($_POST['updating'])) {
             // check errors
             if (empty($_POST['name'])) {
                 $errors['name'] = 'Le nom de la couleur ne doit pas être vide';
             } else {
-                if ($colorManager->findByName($_POST['name'])) {
+                if ($colorManager->findByName($_POST['name']) and $_POST['name'] != $color->getName()) {
                     $errors['name'] = 'Une couleur existe déjà sous ce nom, veuillez en spécifier un autre';
                 }
             }
 
-            $color = new Color();
             $color->setId($_POST['color_id']);
             $color->setName($_POST['name']);
             $color->setHexa($_POST['hexa']);
@@ -116,19 +115,19 @@ class ColorController extends Controller
             } else {
                 self::setMessage('Votre formulaire comporte des erreurs', 'danger', 'Erreur !');
             }
-        }
 
+        }
 
         return self::render('Admin/updateColor.html.twig', [
             'color' => $color,
-            'errors' => $errors,
-        ]);
+            'errors' => $errors,]);
     }
 
     /**
      * @return string
      */
-    public function deleteColor()
+    public
+    function deleteColor()
     {
         if (!empty($_POST['color_id'])) {
             $colorManager = new ColorManager();

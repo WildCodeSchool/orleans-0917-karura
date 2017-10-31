@@ -6,47 +6,49 @@
     <div class="container">
         {% for category, declinations in declinationsByCat %}
             {# add One rectangle by category #}
-            <div class="category-thumbnail">
-                <div class="row">
-                    <div class="hidden-xs {{ (loop.index % 2) ?: 'col-lg-push-8' }} col-lg-3">
-                        <div class="title-block">
-                            <span>{{ category | capitalize }}</span>
+            {% if declinations | length > 1 %}
+                <div class="category-thumbnail">
+                    <div class="row">
+                        <div class="hidden-xs {{ (loop.index % 2) ?: 'col-lg-push-8' }} col-lg-3">
+                            <div class="title-block">
+                                <span>{{ category | capitalize }}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="hidden-lg col-sm-3">
-                        <div class="title-block-sm">
-                            <span>{{ category | capitalize }}</span>
+                        <div class="hidden-lg col-sm-3">
+                            <div class="title-block-sm">
+                                <span>{{ category | capitalize }}</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-offset-1 col-lg-3">
-                        <div class="main-thumbnail">
-                            <a href="index.php?route=product&modelId={{ declinations[0].modelId }}&colorId={{ declinations[0].colorId }}">
-                                <div class="thumbnail">
-                                    <img src="assets/images/{{ declinations[0].mainImage }}" alt="">
-                                    <p class="text">{{ models[declinations[0].modelId] | capitalize }}</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="hidden-xs {{ (loop.index % 2) ?: 'col-lg-pull-8' }} col-lg-offset-1 col-lg-4">
-                        <div class="thumbnail-sm">
-                            <div class="row">
-                                {% for i in 1..4 %}
-                                    <div class="col-lg-6">
-                                        <a href="index.php?route=product&modelId={{ declinations[i].modelId }}&colorId={{ declinations[i].colorId }}">
-                                            <div class="thumbnail">
-                                                <img src="assets/images/{{ declinations[i].mainImage }}" alt="">
-                                                <p class="text">{{ models[declinations[i].modelId] | capitalize }}</p>
-                                            </div>
-                                        </a>
+                        <div class="col-lg-offset-1 col-lg-3">
+                            <div class="main-thumbnail">
+                                <a href="index.php?route=product&modelId={{ declinations[0].modelId }}&colorId={{ declinations[0].colorId }}">
+                                    <div class="thumbnail">
+                                        <img src="assets/images/{{ declinations[0].mainImage }}" alt="">
+                                        <p class="text">{{ models[declinations[0].modelId] | capitalize }}</p>
                                     </div>
-                                {% endfor %}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="hidden-xs {{ (loop.index % 2) ?: 'col-lg-pull-8' }} col-lg-offset-1 col-lg-4">
+                            <div class="thumbnail-sm">
+                                <div class="row">
+                                    {% for i in 1..4 %}
+                                        <div class="col-lg-6">
+                                            <a href="index.php?route=product&modelId={{ declinations[i].modelId }}&colorId={{ declinations[i].colorId }}">
+                                                <div class="thumbnail">
+                                                    <img src="assets/images/{{ declinations[i].mainImage }}" alt="">
+                                                    <p class="text">{{ models[declinations[i].modelId] | capitalize }}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}
