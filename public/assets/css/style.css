@@ -1,5 +1,23 @@
 /* START BODY */
 
+@font-face {
+    font-family: 'Tahoma' ;
+    src: url(../fonts/Tahoma_regular_font.ttf);
+}
+
+@font-face {
+    font-family: 'Trajan';
+    src: url(../fonts/TrajanPro-Regular.ttf);
+}
+
+h1, h2, span, .premierParaSlider, .navbar-default .navbar-nav > li > a, .text, footer a, footer p, input {
+    font-family: 'Trajan', 'sans-serif';
+}
+
+p{
+    font-family: 'Tahoma', 'sans-serif';
+}
+
 .returnMessage {
     margin-top: 20px;
 }
@@ -32,7 +50,6 @@ START BARRE DE NAVIGATION */
 .navbar-default .navbar-nav > li > a {
     color: black;
     font-size: calc(80% + 10px);
-    font-family: 'comic sans ms';
 }
 
 /*Couleur et effet lors du survole des catégories*/
@@ -107,7 +124,6 @@ p {
 /*Décalage paragraphe*/
 .premierParaSlider {
     text-align: center;
-    font-family: Celtic Garamond Pro;
     font-weight: bold;
     font-size: 3em;
     text-decoration-line: underline;
@@ -117,7 +133,6 @@ p {
 /*Décalage paragraphe*/
 .secondParaSlider, .troisiemeParaSlider {
     text-align: center;
-    font-family: Celtic Garamond Pro;
 }
 
 .action-button {
@@ -214,7 +229,6 @@ Start Mise en forme des thumbnails*/
     height: 53vh;
     min-height: 100%;
     float: left;
-    font-family: Celtic Garamond Pro;
     box-shadow: 5px 5px 5px #b2b2b2;
 }
 
@@ -246,7 +260,6 @@ Start Mise en forme des thumbnails*/
     width: 100%;
     height: 10vh;
     min-height: 100%;
-    font-family: Celtic Garamond Pro;
 }
 
 .thumbnail-sm .thumbnail {
@@ -291,7 +304,6 @@ Start Mise en form textes thumbnails */
 
 .text {
     color: black;
-    font-family: Celtic Garamond Pro;
 }
 
 .thumbnail:hover p.text {
@@ -323,7 +335,6 @@ footer {
 
 footer a {
     color: black;
-    font-family: Celtic Garamond Pro;
 }
 
 footer a:hover {
@@ -347,12 +358,10 @@ Start page mentions légales*/
 
 .mention-page h1 {
     text-align: center;
-    font-family: Celtic Garamond Pro;
     color: #555562;
 }
 
 .mention-page h2 {
-    font-family: Celtic Garamond Pro;
     font-size: calc(3em * 0.625);
     color: #555562;
 }
@@ -388,7 +397,6 @@ Start pages modèles*/
     color: white;
     padding: 5px 5px 5px 5px;
     border: none;
-    font-family: Celtic Garamond Pro;
 }
 
 .modal-header h2 {
@@ -403,7 +411,6 @@ Start pages Catalogue*/
 
 .jumbotron {
     text-align: center;
-    font-family: Celtic Garamond Pro;
     margin-top: 5vh;
     color: #555562;
 }
@@ -431,7 +438,6 @@ Start pages Product*/
 
 .nbr-search p {
     text-align: center;
-    font-family: Celtic Garamond Pro;
     margin-top: 5vh;
 
 }
