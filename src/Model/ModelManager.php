@@ -94,6 +94,22 @@ class ModelManager extends Manager
         return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
 
+    /**
+     * @param Category $category
+     * @return array
+     */
+    public function findHomeModelsByCat(Category $category)
+    {
+        $req = "SELECT * 
+                FROM " . self::TABLE . "
+                WHERE category_id=:category_id AND home_model!=0
+                ORDER BY name";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
+    }
+
     public function insert(Model $model)
     {
         $req = "INSERT INTO " . self::TABLE . "

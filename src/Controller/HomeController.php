@@ -17,17 +17,22 @@ class HomeController extends Controller
         //1* find all category
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll();
-
-        //2* find all declinations for each category
-        $declinationManager = new DeclinationManager();
+        $modelManager = new ModelManager();
         $declinationsByCat = [];
+
         foreach ($categories as $category) {
-            $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
+            $modelsByCat[$category->getName()] = $modelManager->findHomeModelsByCat($category);
+            $declinationsByCat[$category->getName()] = [];
+            $declinationManager = new DeclinationManager();
+            foreach ($modelsByCat[$category->getName()] as $model) {
+                $decl = $declinationManager->findByModel($model)[0];
+                $key = $model->getHomeModel();
+                $declinationsByCat[$category->getName()][$key] = $decl;
+            }
         }
 
-        $modelManager = new ModelManager();
-        $models = $modelManager->findAll();
         $modelNames = [];
+        $models = $modelManager->findAll();
         foreach ($models as $model) {
             $modelNames[$model->getId()] = $model->getName();
         }
