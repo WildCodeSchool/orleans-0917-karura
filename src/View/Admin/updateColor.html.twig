@@ -11,17 +11,21 @@
             <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
             <label for="name">Nom de la couleur</label>
             <input id="name" type="text" class="form-control" name="name" value="{{ color.name }}">
+            {% if errors.name %}
+                <p style="color:red"><span class="glyphicon glyphicon-alert"
+                                           aria-hidden="true"></span> {{ errors.name }}</p>
+            {% endif %}
             <label for="hexa">Code couleur</label>
             <input id="hexa" type="color" class="form-control" name="hexa" value="{{ color.hexa }}">
         </div>
 
         <button type="submit" class="btn btn-info" name="updating" value="1"><span class="glyphicon glyphicon-edit"
-                                                                                   aria-hidden="true"> Modifier</span>
+                                                                                   aria-hidden="true"></span> Modifier
         </button>
 
         <a href="admin.php?route=admincolor" class="pull-right btn btn-danger">
         <span class="glyphicon glyphicon-remove"
-              aria-hidden="true"> Annuler</span></a>
+              aria-hidden="true"></span> Annuler</a>
     </form>
 
 

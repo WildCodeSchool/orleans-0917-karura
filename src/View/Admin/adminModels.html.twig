@@ -33,9 +33,10 @@
                                 </button>
                             </form>
 
-                            <form action="admin.php?route=adminmodelupdate" method='post'>
+                            <form action="admin.php" method='get'>
                                 <div class="form-group">
-                                    <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
+                                    <input type="hidden" class="form-control" name="route" value="admindeclination">
+                                    <input type="hidden" class="form-control" name="modelId" value="{{ model.id }}">
                                 </div>
                                 <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-list"
                                                                                  aria-hidden="true"> Gérer les réalisations de ce modèle</span>

@@ -76,7 +76,7 @@ class DeclinationController extends Controller
 
             self::setMessage('La déclinaison a bien été supprimée de la base de données', 'success');
 
-            header('Location: index.php?route=admindeclination&modelId=' . $declination->getModelId());
+            header('Location: admin.php?route=admindeclination&modelId=' . $declination->getModelId());
             exit;
         }
     }
@@ -120,7 +120,7 @@ class DeclinationController extends Controller
 
             $declinationManager->update($declination);
 
-            $this->setMessage('Le modèle a bien été modifié','success');
+            $this->setMessage('La déclinaison a bien été modifié','success');
         }
 
         $colorManager = new ColorManager();
@@ -181,9 +181,9 @@ class DeclinationController extends Controller
             if (empty($errors)) {
                 $declinationManager->insert($declination);
 
-                $this->setMessage('Le modèle a bien été modifié', 'success');
+                $this->setMessage('La déclinaison a bien été ajoutée', 'success');
 
-                header('Location: index.php?route=admindeclination&modelId=' . $declination->getModelId());
+                header('Location: admin.php?route=admindeclination&modelId=' . $declination->getModelId());
                 exit;
             }
         }

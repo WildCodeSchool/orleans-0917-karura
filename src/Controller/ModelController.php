@@ -215,20 +215,18 @@ class ModelController extends Controller
 
         $modelManager = new ModelManager();
 
-        if (empty($_POST['updating'])) {
-            $model = $modelManager->find($_POST['model_id']);
+        $model = $modelManager->find($_POST['model_id']);
 
-        } else {
+        if (!empty($_POST['updating'])) {
             // check errors
             if (empty($_POST['name'])) {
                 $errors['name'] = 'Le nom du modèle ne doit pas être vide';
             } else {
-                if ($modelManager->findByName($_POST['name'], true)) {
+                if ($modelManager->findByName($_POST['name'], true) and $_POST['name'] != $model->getName()) {
                     $errors['name'] = 'Un modèle existe déjà sous ce nom, veuillez en spécifier un autre';
                 }
             }
 
-            $model = new Model();
             $model->setId($_POST['model_id']);
             $model->setName($_POST['name']);
             $model->setDescription($_POST['description']);
@@ -236,6 +234,9 @@ class ModelController extends Controller
 
             if (empty($errors)) {
                 $modelManager->update($model);
+
+                self::setMessage('Le modèle <strong>' . $model->getName() . '</strong> a bien été modifié dans la base de données',
+                    'success', 'Modification réussie !');
 
                 header('Location: admin.php?route=adminmodel');
                 exit;
@@ -246,10 +247,10 @@ class ModelController extends Controller
             }
         }
 
-        return self::getTwig()->render('Admin/updateModel.html.twig', [
+        return self::render('Admin/updateModel.html.twig', [
             'model' => $model,
             'categories' => $categories,
-            'errors'=> $errors,
+            'errors' => $errors,
         ]);
 
     }

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'Admin/baseadmin.html.twig' %}
 
 {% block pageTitle %}{{ model.name }}{% endblock %}
 
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="col-lg-2">
-                    <form action="index.php?route=admindeclinationdelete" method='post'>
+                    <form action="admin.php?route=admindeclinationdelete" method='post'>
                         <div class="form-group">
                             <input type="hidden" class="form-control" name="id" value="{{ declination.id }}">
                         </div>
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="col-lg-2">
-                    <form action="index.php?route=admindeclinationupdate" method='post'>
+                    <form action="admin.php?route=admindeclinationupdate" method='post'>
                         <div class="form-group">
                             <input type="hidden" class="form-control" name="id" value="{{ declination.id }}">
                         </div>
@@ -57,7 +57,7 @@
         {% endfor %}
         <div class="row">
             <div class="col-lg-2">
-                <form action="index.php?route=admindeclinationadd" method='post'>
+                <form action="admin.php?route=admindeclinationadd" method='post'>
                     <div class="form-group">
                         <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
                     </div>

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'Admin/baseadmin.html.twig' %}
 
 {% block pageTitle %}Administration des modèles{% endblock %}
 
@@ -11,7 +11,8 @@
             <label for="name">Nom du modèle</label>
             <input id="name" type="text" class="form-control" name="name" value="{{ model.name }}">
             {% if errors.name %}
-                <li style="color:red">{{ errors.name }}</li>{% endif %}
+                <li class="errorMessage">{{ errors.name }}</li>
+            {% endif %}
         </div>
         <div class="form-group">
             <label for="desc">Description</label>
