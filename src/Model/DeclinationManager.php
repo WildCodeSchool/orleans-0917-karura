@@ -32,7 +32,7 @@ class DeclinationManager extends Manager
      * @param int $id
      * @return mixed
      */
-    public function find(int $id):Declination
+    public function find($id):Declination
     {
         $req = "SELECT *
                 FROM " . self::TABLE . "

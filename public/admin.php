@@ -2,6 +2,7 @@
 // loading autoload and connect to db
 require "../vendor/autoload.php";
 require '../connect.php';
+require '../config.php';
 
 // session starting for dynamic everywhere you want message
 if (session_status() == PHP_SESSION_NONE) {
@@ -38,6 +39,19 @@ if (substr($route, 0, 10) == 'admincolor') {
         echo $modelController->updateModel();
     } else {
         echo $modelController->showAllAdminAction();
+    }
+
+} elseif (substr($route, 0, strlen('admindeclination')) == 'admindeclination') {
+    $declinationController = new \Karura\Controller\DeclinationController();
+    if ($route == 'admindeclinationadd') {
+        echo $declinationController->addDeclination();
+    } elseif ($route == 'admindeclinationdelete') {
+        echo $declinationController->deleteDeclination();
+    } elseif ($route == 'admindeclinationupdate') {
+        echo $declinationController->updateDeclination();
+
+    } else {
+        echo $declinationController->showAllByModel();
     }
 
 } elseif ($route == 'admincategory') {

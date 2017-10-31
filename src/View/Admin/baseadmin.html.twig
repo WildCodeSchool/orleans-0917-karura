@@ -19,6 +19,8 @@
 
 {% include 'Admin/headeradmin.html.twig' %}
 
+<div class="container">
+
 {# Dynamic message for user #}
 {% if message %}
     <div class="row">
@@ -35,6 +37,7 @@
 {% endif %}
 
 {% block content %}{% endblock %}
+</div>
 
 <!-- import Jquery and BS JS -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
