@@ -10,11 +10,11 @@
     src: url(../fonts/TrajanPro-Regular.ttf);
 }
 
-h1, h2, span, .premierParaSlider, .navbar-default .navbar-nav > li > a, .text, footer a, footer p, input {
+h1, h2, span, .premierParaSlider, .navbar-default .navbar-nav > li > a, .text, footer a, footer p, input, label {
     font-family: 'Trajan', 'sans-serif';
 }
 
-p{
+p, .mendatory-fields{
     font-family: 'Tahoma', 'sans-serif';
 }
 
