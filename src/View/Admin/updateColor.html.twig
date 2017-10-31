@@ -11,6 +11,10 @@
             <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
             <label for="name">Nom de la couleur</label>
             <input id="name" type="text" class="form-control" name="name" value="{{ color.name }}">
+            {% if errors.name %}
+                <p style="color:red"><span class="glyphicon glyphicon-alert"
+                                           aria-hidden="true"></span> {{ errors.name }}</p>
+            {% endif %}
             <label for="hexa">Code couleur</label>
             <input id="hexa" type="color" class="form-control" name="hexa" value="{{ color.hexa }}">
         </div>

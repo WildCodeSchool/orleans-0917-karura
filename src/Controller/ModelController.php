@@ -235,6 +235,9 @@ class ModelController extends Controller
             if (empty($errors)) {
                 $modelManager->update($model);
 
+                self::setMessage('Le modèle <strong>' . $model->getName() . '</strong> a bien été modifié dans la base de données',
+                    'success', 'Modification réussie !');
+
                 header('Location: admin.php?route=adminmodel');
                 exit;
 

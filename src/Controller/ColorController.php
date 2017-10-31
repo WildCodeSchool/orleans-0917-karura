@@ -110,6 +110,9 @@ class ColorController extends Controller
             if (empty($errors)) {
                 $colorManager->update($color);
 
+                self::setMessage('La couleur <strong>' . $color->getName() . '</strong> a bien été modifiée dans la base de données',
+                    'success', 'Modification réussie !');
+
                 header('Location: admin.php?route=admincolor');
                 exit;
             } else {
