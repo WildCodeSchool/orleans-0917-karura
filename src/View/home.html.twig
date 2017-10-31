@@ -4,12 +4,14 @@
 
     <!--Thumbnail des catégories -->
     <div class="container">
+        {% set altern = 0 %}
         {% for category, declinations in declinationsByCat %}
             {# add One rectangle by category #}
             {% if declinations | length > 1 %}
+                {% set altern = altern + 1 %}
                 <div class="category-thumbnail">
                     <div class="row">
-                        <div class="hidden-xs {{ (loop.index % 2) ?: 'col-lg-push-8' }} col-lg-3">
+                        <div class="hidden-xs {{ (altern % 2) ?: 'col-lg-push-8' }} col-lg-3">
                             <div class="title-block">
                                 <span>{{ category | capitalize }}</span>
                             </div>
@@ -30,7 +32,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="hidden-xs {{ (loop.index % 2) ?: 'col-lg-pull-8' }} col-lg-offset-1 col-lg-4">
+                        <div class="hidden-xs {{ (altern % 2) ?: 'col-lg-pull-8' }} col-lg-offset-1 col-lg-4">
                             <div class="thumbnail-sm">
                                 <div class="row">
                                     {% for i in 1..4 %}
