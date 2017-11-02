@@ -173,6 +173,9 @@ class DeclinationController extends Controller
 
             $declination->setColorId($_POST['color_id']);
             $declination->setModelId($_POST['model_id']);
+            // if the decl is alone, it's the main_color
+            $main_color = count($declinationManager->findByModel($model)) ? 0 : 1;
+            $declination->setMainColor($main_color);
 
             if ($declinationManager->findByColorAndModel($_POST['color_id'], $_POST['model_id'])) {
                 $errors['twice'] = 'Cette déclinaison existe déjà';
@@ -204,6 +207,29 @@ class DeclinationController extends Controller
             'model'=>$model,
             'post'=>$_POST,
         ]);
+    }
+
+    public function changeMainColor($declination_id)
+    {
+        $declinationManager = new DeclinationManager();
+        $declination = $declinationManager->find($declination_id);
+
+        $modelManager = new ModelManager();
+        $model = $modelManager->find($declination->getModelId());
+
+        $declinations = $declinationManager->findByModel($model);
+
+        foreach ($declinations as $declination) {
+            if ($declination->getId() != $declination_id) {
+                $declination->setMainColor(0);
+            } else {
+                $declination->setMainColor(1);
+            }
+            $declinationManager->update($declination);
+        }
+
+        header('Location: admin.php?route=admindeclination&modelId=' . $declination->getModelId());
+        exit();
     }
 
 

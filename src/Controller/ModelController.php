@@ -84,7 +84,7 @@ class ModelController extends Controller
         $declinationManager = new DeclinationManager();
         $declinationsByModel = [];
         foreach ($models as $model) {
-            $declinationsByModel = array_merge($declinationsByModel, $declinationManager->findByModel($model));
+            $declinationsByModel = array_merge($declinationsByModel, $declinationManager->findByModel($model, true));
         }
 
         $modelManager = new ModelManager();
@@ -117,7 +117,7 @@ class ModelController extends Controller
         $category = $categoryManager->findByName($category);
 
         $declinationManager = new DeclinationManager();
-        $declinationsByCategory = $declinationManager->findByCategory($category);
+        $declinationsByCategory = $declinationManager->findByCategory($category, true);
 
         $modelManager = new ModelManager();
         $models = $modelManager->findAll();

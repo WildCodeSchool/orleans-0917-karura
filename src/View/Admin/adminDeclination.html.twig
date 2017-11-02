@@ -6,7 +6,7 @@
 
     <div class="container">
 
-    <h1>{{ model.name }}</h1>
+        <h1>Administrer les créations du modèle {{ model.name }}</h1>
 
         {% for declination in declinations %}
             <div class="row">
@@ -14,7 +14,7 @@
                     <div class="thumbnail secondary-thumbnail-model">
                         <figure>
                             <img class="img-responsive" src="assets/images/{{ declination.secondaryImage }}"
-                                 alt="Image du modele">
+                                 alt="Image secondaire du modèle {{ model.name }} couleur {{ colors[declination.colorId].name }}">
                         </figure>
                     </div>
                 </div>
@@ -23,13 +23,13 @@
                     <div class="thumbnail main-thumbnail-model">
                         <figure>
                             <img class="img-responsive" src="assets/images/{{ declination.mainImage }}"
-                                 alt="Image du modele">
+                                 alt="Image principale du modèle {{ model.name }} couleur {{ colors[declination.colorId].name }}">
                         </figure>
                     </div>
                 </div>
 
                 <div class="col-lg-2">
-                    <p>Couleur : {{ colors[declination.colorId].name }}</p>
+                    <p>Couleur : {{ colors[declination.colorId].name | capitalize }}</p>
                 </div>
 
                 <div class="col-lg-2">
@@ -38,7 +38,8 @@
                             <input type="hidden" class="form-control" name="id" value="{{ declination.id }}">
                         </div>
                         <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-minus"
-                                                                           aria-hidden="true"> Supprimer</span></button>
+                                                                           aria-hidden="true"></span> Supprimer
+                        </button>
                     </form>
                 </div>
 
@@ -48,23 +49,47 @@
                             <input type="hidden" class="form-control" name="id" value="{{ declination.id }}">
                         </div>
                         <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-edit"
-                                                                         aria-hidden="true"> Modifier</span></button>
+                                                                         aria-hidden="true"></span> Modifier
+                        </button>
                     </form>
+                </div>
+
+                <div class="col-lg-2">
+                    {% if not declination.mainColor %}
+                        <form action="admin.php?route=admindeclination-change-maincolor" method='post'>
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" name="id" value="{{ declination.id }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true">
+                                </span> Définir comme couleur principale
+                            </button>
+                        </form>
+                    {% else %}
+                        <p class="alert alert-info"><span class="glyphicon glyphicon-star" aria-hidden="true">
+                                </span> Cette couleur représente le modèle dans le catalogue</p>
+                    {% endif %}
                 </div>
 
             </div>
 
+            <hr>
+
         {% endfor %}
         <div class="row">
-            <div class="col-lg-2">
-                <form action="admin.php?route=admindeclinationadd" method='post'>
-                    <div class="form-group">
-                        <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
-                    </div>
-                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"
-                                                                        aria-hidden="true"></span> Ajouter</button>
-                </form>
-            </div>
+            <form action="admin.php?route=admindeclinationadd" method='post'>
+                <div class="form-group">
+                    <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
+                </div>
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"
+                                                                    aria-hidden="true"></span> Ajouter une création
+                </button>
+
+
+                <a href="admin.php?route=adminmodel" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-remove"
+                                                                                   aria-hidden="true"></span> Revenir
+                    aux modèles</a>
+            </form>
         </div>
     </div>
 

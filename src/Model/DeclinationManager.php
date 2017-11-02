@@ -22,7 +22,8 @@ class DeclinationManager extends Manager
      */
     public function findAll()
     {
-        $req = "SELECT * FROM " . self::TABLE;
+        $req = "SELECT *
+                FROM " . self::TABLE;
         $statement = $this->pdo->query($req);
         return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
 
@@ -48,13 +49,17 @@ class DeclinationManager extends Manager
      * @param Category $category
      * @return mixed
      */
-    public function findByCategory(Category $category)
+    public function findByCategory(Category $category, Bool $mainOnly=false)
     {
         $req = "SELECT decl.*, model.name
                 FROM " . self::TABLE . " as decl
                 JOIN model
                 ON decl.model_id = model.id
                 WHERE model.category_id=:category_id";
+
+        if ($mainOnly) {
+            $req .= " AND decl.main_color='1'";
+        }
 
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
@@ -66,11 +71,15 @@ class DeclinationManager extends Manager
      * @param Model $model
      * @return array
      */
-    public function findByModel(Model $model)
+    public function findByModel(Model $model, Bool $mainOnly=false )
     {
         $req = "SELECT *
                 FROM " . self::TABLE . " as decl
                 WHERE model_id=:model_id";
+
+        if ($mainOnly) {
+            $req .= " AND main_color='1'";
+        }
 
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('model_id', $model->getId(), \PDO::PARAM_INT);
@@ -112,13 +121,14 @@ class DeclinationManager extends Manager
     public function insert(Declination $declination)
     {
         $req = "INSERT INTO " . self::TABLE . "
-                (main_image, secondary_image, color_id, model_id)
-                VALUES (:mainImage, :secondaryImage, :colorId, :modelId)";
+                (main_image, secondary_image, color_id, model_id, main_color)
+                VALUES (:mainImage, :secondaryImage, :colorId, :modelId, :main_color)";
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('mainImage', $declination->getMainImage(), \PDO::PARAM_STR);
         $statement->bindValue('secondaryImage', $declination->getSecondaryImage(), \PDO::PARAM_STR);
         $statement->bindValue('colorId', $declination->getColorId(), \PDO::PARAM_STR);
         $statement->bindValue('modelId', $declination->getModelId(), \PDO::PARAM_STR);
+        $statement->bindValue('main_color', $declination->getMainColor(), \PDO::PARAM_STR);
         $statement->execute();
     }
 
@@ -130,15 +140,17 @@ class DeclinationManager extends Manager
         $colorId = $declination->getColorId();
         $mainImage = $declination->getMainImage();
         $secondaryImage = $declination->getSecondaryImage();
+        $main_color = $declination->getMainColor();
 
         $req = "UPDATE " . self::TABLE . "
-                SET main_image=:mainImage, secondary_image=:secondaryImage, color_id=:colorId
+                SET main_image=:mainImage, secondary_image=:secondaryImage, color_id=:colorId, main_color=:main_color
                 WHERE id=:id";
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->bindValue('colorId', $colorId, \PDO::PARAM_INT);
         $statement->bindValue('mainImage', $mainImage, \PDO::PARAM_STR);
         $statement->bindValue('secondaryImage', $secondaryImage, \PDO::PARAM_STR);
+        $statement->bindValue('main_color', $main_color, \PDO::PARAM_STR);
         $statement->execute();
     }
 
