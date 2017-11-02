@@ -10,7 +10,8 @@
     src: url(../fonts/TrajanPro-Regular.ttf);
 }
 
-h1, h2, span, .premierParaSlider, .navbar-default .navbar-nav > li > a, .text, footer a, footer p, input {
+h1, h2, span, .premierParaSlider, .navbar-default .navbar-nav > li > a, .text, footer a, footer p, input, .nbr-search p,
+.action-button, .dropdown-menu a {
     font-family: 'Trajan', 'sans-serif';
 }
 
@@ -33,11 +34,25 @@ START BARRE DE NAVIGATION */
     background-color: white;
     margin-bottom: 0;
     border: none;
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
+    z-index:1000;
 }
 
 /*Positionnement des catégories sur l'axe Y*/
 .navbar-collapse {
     padding-top: 50px;
+}
+
+/*Barre de recherche rectangulaire*/
+
+.form-control {
+    border-radius: 0;
+}
+
+/*Bouton de recherche*/
+
+.btn {
+    border-radius: 0;
 }
 
 /*Barre de recherche effet blur*/
@@ -61,6 +76,20 @@ START BARRE DE NAVIGATION */
 /*Couleur de la police du menu déroulant*/
 .dropdown-menu > li > a {
     color: black;
+    padding-left:5px;
+
+}
+
+/*Placement du logo de la navbar*/
+.navbar .container-fluid {
+    padding-left: 0;
+}
+
+/*Dropdown menu */
+
+.dropdown-menu {
+    min-width: 100%;
+    border-radius: 0;
 }
 
 /*Lors de l'activation d'une catégorie, encadrement + transition*/
@@ -68,6 +97,8 @@ START BARRE DE NAVIGATION */
     background-color: #D821AD;
     color: black;
 }
+
+
 
 /* END BARRE DE NAVIGATION
 
@@ -139,8 +170,7 @@ p {
     font-size: 1.5em;
     background-color: #D821AD;
     color: white;
-    padding: 5px 5px 5px 5px;
-    font-family: Celtic Garamond Pro;
+    padding: 10px 5px 5px 5px;
 }
 
 .action-button:hover {
@@ -183,7 +213,6 @@ START FORM */
     width: 80vw;
     padding: 1em;
     border: 1px solid #D821AD;
-    border-radius: 1em;
     font-size: 20px;
 }
 
@@ -225,7 +254,7 @@ Start Mise en forme des thumbnails*/
     position: absolute;
     padding: 0;
     margin-bottom: 0;
-    width: 40vh;
+    width: 42vh;
     height: 53vh;
     min-height: 100%;
     float: left;
@@ -276,6 +305,7 @@ Start Mise en forme des thumbnails*/
 .thumbnail {
     margin-bottom: 0;
     border: none;
+    border-radius: 0;
     padding: 0;
     overflow: hidden;
     margin-left: 0;
@@ -289,7 +319,7 @@ Start Mise en forme des thumbnails*/
 }
 
 .thumbnail:hover img {
-    opacity: 0.7;
+    opacity: 0.3;
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
@@ -328,9 +358,11 @@ START FOOTER */
 
 footer {
     background-color: #F3F3F3;
-    height: 100%;
+    width: 100%;
     padding-top: 5vh;
     margin-top: 10vh;
+    bottom:0;
+    position: relative;
 }
 
 footer a {
@@ -346,9 +378,6 @@ footer img {
     width: 5vw;
 }
 
-footer .row {
-    height: 100%;
-}
 
 /*End footer
 
@@ -395,7 +424,7 @@ Start pages modèles*/
     font-size: 1.5em;
     background-color: #D821AD;
     color: white;
-    padding: 5px 5px 5px 5px;
+    padding: 10px 5px 5px 5px;
     border: none;
 }
 
@@ -413,6 +442,10 @@ Start pages Catalogue*/
     text-align: center;
     margin-top: 5vh;
     color: #555562;
+}
+
+.container .jumbotron {
+    border-radius: 0;
 }
 
 /* Alternate bg color of rectangle in Home */

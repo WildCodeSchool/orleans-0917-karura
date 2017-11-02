@@ -36,6 +36,11 @@ if ($route == 'home') {
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showContact();
 
+} elseif ($route == 'about') {
+    // go to contact page
+    $homeController = new \Karura\Controller\HomeController();
+    echo $homeController->showAbout();
+
 } elseif ($route == 'mentions') {
     // go to mentions page
     $homeController = new \Karura\Controller\HomeController();

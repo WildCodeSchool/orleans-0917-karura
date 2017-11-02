@@ -140,4 +140,13 @@ class HomeController extends Controller
         // show mentions légales
         return self::render('mentions.html.twig');
     }
+
+    /**
+     * @return string
+     */
+    public function showAbout()
+    {
+        // show about
+        return self::render('about.html.twig');
+    }
 }
