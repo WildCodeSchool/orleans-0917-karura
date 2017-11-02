@@ -14,6 +14,10 @@ class Declination
     /**
      * @var int
      */
+    private $id;
+    /**
+     * @var int
+     */
     private $color_id;
 
     /**
@@ -30,6 +34,24 @@ class Declination
      * @var string
      */
     private $secondary_image;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return Declination
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * @return int

@@ -1,29 +1,28 @@
-{% extends 'base.html.twig' %}
+{% extends 'Admin/baseadmin.html.twig' %}
 
 {% block pageTitle %}Administration des couleurs{% endblock %}
 
 {% block content %}
     <h1>Ajouter une couleur</h1>
-    <div class="container">
-        <div class="row">
-            <form action="index.php?route=admincoloradd" method='post'>
-                <div class="form-group">
-                    <label for="name">Nom de la couleur</label>
-                    <input id="name" type="text" class="form-control" name="name" value="{{ post.name ?: '' }}">
-                    {% if errors.name %}
-                        <li style="color:red">{{ errors.name }}</li>{% endif %}
+    <form class="contactForm" action="admin.php?route=admincoloradd" method='post'>
+        <div class="form-group">
+            <label for="name">Nom de la couleur</label>
+            <input id="name" type="text" class="form-control" name="name" value="{{ post.name }}">
+            {% if errors.name %}
+                <strong style="color:red">{{ errors.name }}</strong>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="hexa">Code couleur</label>
+            <input id="hexa" type="color" class="form-control" name="hexa" value="{{ post.hexa }}">
+        </div>
 
-                    <label for="hexa">Code couleur</label>
-                    <input id="hexa" type="color" class="form-control" name="hexa" value="{{ post.hexa ?: '' }}">
-                </div>
-                <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-plus"
-                                                                 aria-hidden="true"> Ajouter</span></button>
-            </form>
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"
+                                                            aria-hidden="true"> Ajouter</span></button>
 
-            <form action="index.php?route=admincolor" method='post'>
-                <button type="submit" class="btn btn-danger">Annuler</button>
-            </form>
-        </div> <!-- end row -->
-    </div>
+        <a href="admin.php?route=admincolor" class="pull-right btn btn-danger">
+        <span class="glyphicon glyphicon-remove"
+              aria-hidden="true"> Annuler</span></a>
+    </form>
 
 {% endblock %}

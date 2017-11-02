@@ -1,0 +1,14 @@
+{% extends 'Admin/baseadmin.html.twig' %}
+
+{% block pageTitle %}Administration du formulaire{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Administration du formulaire</h1>
+        <p>Vous recevez actuellement vos mails à l'adresse <span class="mailReceptionAddress">{{ formReceptionAddress.receptionAddress }}</span> <a
+                    class="btn btn-info"
+                    href="admin.php?route=adminform-reception-address-update"><span
+                        class="glyphicon glyphicon-plus" aria-hidden="true">Modifier</span></a></p>
+    </div>
+{% endblock %}

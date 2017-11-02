@@ -67,7 +67,7 @@ class ColorController extends Controller
 
                 self::setMessage('La couleur ' . $color->getName() . ' a été ajoutée à la base de données', 'success');
 
-                header('Location: index.php?route=admincolor');
+                header('Location: admin.php?route=admincolor');
                 exit;
             }
 
@@ -89,32 +89,48 @@ class ColorController extends Controller
     public function updateColor()
     {
         $colorManager = new ColorManager();
-
-        if (!empty($_POST['updating'])) {
-            $color = new Color();
-            $color->setId($_POST['id']);
-            $color->setName($_POST['name']);
-            $color->setHexa($_POST['hexa']);
-
-
-            $colorManager->update($color);
-
-            header('Location: index.php?route=admincolor');
-            exit;
-        }
+        $errors = [];
 
         $color = $colorManager->find($_POST['color_id']);
 
-        return self::getTwig()->render('Admin/updateColor.html.twig', [
-            'color' => $color,
-        ]);
+        if (!empty($_POST['updating'])) {
+            // check errors
+            if (empty($_POST['name'])) {
+                $errors['name'] = 'Le nom de la couleur ne doit pas être vide';
+            } else {
+                if ($colorManager->findByName($_POST['name']) and $_POST['name'] != $color->getName()) {
+                    $errors['name'] = 'Une couleur existe déjà sous ce nom, veuillez en spécifier un autre';
+                }
+            }
 
+            $color->setId($_POST['color_id']);
+            $color->setName($_POST['name']);
+            $color->setHexa($_POST['hexa']);
+
+            if (empty($errors)) {
+                $colorManager->update($color);
+
+                self::setMessage('La couleur <strong>' . $color->getName() . '</strong> a bien été modifiée dans la base de données',
+                    'success', 'Modification réussie !');
+
+                header('Location: admin.php?route=admincolor');
+                exit;
+            } else {
+                self::setMessage('Votre formulaire comporte des erreurs', 'danger', 'Erreur !');
+            }
+
+        }
+
+        return self::render('Admin/updateColor.html.twig', [
+            'color' => $color,
+            'errors' => $errors,]);
     }
 
     /**
      * @return string
      */
-    public function deleteColor()
+    public
+    function deleteColor()
     {
         if (!empty($_POST['color_id'])) {
             $colorManager = new ColorManager();
@@ -123,7 +139,7 @@ class ColorController extends Controller
 
             self::setMessage('La couleur ' . $color->getName() . ' a bien été supprimée de la base de données', 'success');
 
-            header('Location: index.php?route=admincolor');
+            header('Location: admin.php?route=admincolor');
             exit;
         }
 

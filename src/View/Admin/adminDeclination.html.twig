@@ -1,0 +1,71 @@
+{% extends 'Admin/baseadmin.html.twig' %}
+
+{% block pageTitle %}{{ model.name }}{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+    <h1>{{ model.name }}</h1>
+
+        {% for declination in declinations %}
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="thumbnail secondary-thumbnail-model">
+                        <figure>
+                            <img class="img-responsive" src="assets/images/{{ declination.secondaryImage }}"
+                                 alt="Image du modele">
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <div class="thumbnail main-thumbnail-model">
+                        <figure>
+                            <img class="img-responsive" src="assets/images/{{ declination.mainImage }}"
+                                 alt="Image du modele">
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="col-lg-2">
+                    <p>Couleur : {{ colors[declination.colorId].name }}</p>
+                </div>
+
+                <div class="col-lg-2">
+                    <form action="admin.php?route=admindeclinationdelete" method='post'>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="id" value="{{ declination.id }}">
+                        </div>
+                        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-minus"
+                                                                           aria-hidden="true"> Supprimer</span></button>
+                    </form>
+                </div>
+
+                <div class="col-lg-2">
+                    <form action="admin.php?route=admindeclinationupdate" method='post'>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" name="id" value="{{ declination.id }}">
+                        </div>
+                        <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-edit"
+                                                                         aria-hidden="true"> Modifier</span></button>
+                    </form>
+                </div>
+
+            </div>
+
+        {% endfor %}
+        <div class="row">
+            <div class="col-lg-2">
+                <form action="admin.php?route=admindeclinationadd" method='post'>
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
+                    </div>
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"
+                                                                        aria-hidden="true"></span> Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

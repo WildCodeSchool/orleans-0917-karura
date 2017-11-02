@@ -1,0 +1,58 @@
+{% extends 'Admin/baseadmin.html.twig' %}
+
+{% block pageTitle %}Administration d'une déclinaison{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+    <h1>Modifier une déclinaison</h1>
+
+
+            <form action="admin.php?route=admindeclinationupdate" method='post' enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <div class="row">
+                    <div class="col-lg-2">
+                    <label for="back">Image secondaire</label>
+                    <img class="img-responsive" src="assets/images/{{ declination.secondaryImage }}"
+                         alt="Image du modele">
+                    <input type="file" name="files[]" multiple="multiple" accept="image/*">
+                    </div>
+
+                    <div class="col-lg-2 col-lg-offset-1">
+                    <label for="front">Image principale</label>
+                    <img class="img-responsive" src="assets/images/{{ declination.mainImage }}"
+                         alt="Image du modele">
+                    <input type="file" name="files[]" multiple="multiple" accept="image/*">
+                    </div>
+
+                    <div class="col-lg-3 col-lg-offset-1">
+                    <label for="front">Couleur</label>
+                    <select class="form-control" name="color_id">
+                        {% for color in colors %}
+                            <option value="{{ color.id }}" {{ (declination.colorId == color.id)?'selected' }}>{{ color.name }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+
+                    <input type="hidden" class="form-control" name="model_id" value="{{ declination.modelId }}">
+                    <input type="hidden" class="form-control" name="id" value="{{ declination.id }}">
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-lg-2">
+                <button type="submit" class="adminButton btn btn-info" name="updating" value="1"><span
+                            class="glyphicon glyphicon-edit"
+                            aria-hidden="true"></span> Modifier</button>
+
+                <a href="admin.php?route=admindeclination&modelId={{ declination.modelId }}"
+                   class="adminButton btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Annuler
+                </a>
+                </div>
+                </div>
+
+            </form>
+        </div>
+
+
+{% endblock %}
