@@ -67,9 +67,18 @@ if (substr($route, 0, 10) == 'admincolor') {
         echo $formController->showAll();
     }
 
+} elseif (substr($route, 0, 9) == 'adminhome'){
+    $homeController = new \Karura\Controller\HomeController();
+    if ($route == 'adminhomeupdate') {
+        echo $homeController->showAdminUpdate();
+    } else {
+        echo $homeController->showAdminHome();
+    }
+
 } else {
     $adminController = new \Karura\Controller\AdminController();
     echo $adminController->showMainPage();
 }
 
 ?>
+

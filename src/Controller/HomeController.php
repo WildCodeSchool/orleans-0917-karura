@@ -17,17 +17,22 @@ class HomeController extends Controller
         //1* find all category
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->findAll();
-
-        //2* find all declinations for each category
-        $declinationManager = new DeclinationManager();
+        $modelManager = new ModelManager();
         $declinationsByCat = [];
+
+        $declinationManager = new DeclinationManager();
         foreach ($categories as $category) {
-            $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
+            $modelsByCat[$category->getName()] = $modelManager->findHomeModelsByCat($category);
+            $declinationsByCat[$category->getName()] = [];
+            foreach ($modelsByCat[$category->getName()] as $model) {
+                $decl = $declinationManager->findByModel($model)[0];
+                $key = $model->getHomeModel();
+                $declinationsByCat[$category->getName()][$key] = $decl;
+            }
         }
 
-        $modelManager = new ModelManager();
-        $models = $modelManager->findAll();
         $modelNames = [];
+        $models = $modelManager->findAll();
         foreach ($models as $model) {
             $modelNames[$model->getId()] = $model->getName();
         }
@@ -139,5 +144,74 @@ class HomeController extends Controller
     {
         // show mentions légales
         return self::render('mentions.html.twig');
+    }
+
+    public function showAdminHome()
+    {
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->findAll();
+
+        return self::render('Admin/adminHome.html.twig', [
+            'categories' => $categories,
+        ]);
+    }
+
+    public function showAdminUpdate()
+    {
+        // show some models in home -> using model manager
+        //1* find all category
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->find($_GET['id']);
+        $modelManager = new ModelManager();
+        $declinationsByCat = [];
+
+        $modelsByCat[$category->getName()] = $modelManager->findHomeModelsByCat($category);
+        $declinationsByCat[$category->getName()] = [];
+        $declinationManager = new DeclinationManager();
+
+        foreach ($modelsByCat[$category->getName()] as $model) {
+            $decl = $declinationManager->findByModel($model)[0];
+            $key = $model->getHomeModel();
+            $declinationsByCat[$key] = $decl;
+        }
+
+        $modelNames = [];
+        $models = $modelManager->findByCategory($category);
+        foreach ($models as $model) {
+            $modelNames[$model->getId()] = $model->getName();
+        }
+
+        if (!empty($_POST)) {
+
+            if (count(array_unique($_POST['models'])) < 5) {
+
+                $this->setMessage('Erreur : les cinq modèles doivent être différents', 'danger');
+
+            } else {
+
+                foreach ($modelsByCat[$category->getName()] as $model) {
+                    $model->setHomeModel(0);
+                    $modelManager->update($model);
+                }
+
+                foreach ($_POST['models'] as $key => $modelId) {
+                    $model = $modelManager->find($modelId);
+                    $model->setHomeModel($key + 1);
+                    $modelManager->update($model);
+                }
+
+                $this->setMessage('Vos changements ont bien été pris en compte', 'success');
+                header('Location: admin.php?route=adminhomeupdate&id=' . $_GET['id']);
+                exit();
+            }
+        }
+
+        // TODO pour le moment affichage des modeles avec TOUTES les couleurs dispos
+        return self::render('Admin/adminHomeUpdate.html.twig', [
+            'declinations' => $declinationsByCat,
+            'models' => $modelNames,
+            'category' => $category,
+            'modelsInCat' => $models,
+        ]);
     }
 }

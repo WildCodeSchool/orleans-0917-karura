@@ -75,7 +75,7 @@ class DeclinationManager extends Manager
     public function findByModel(Model $model, bool $mainOnly=false )
     {
         $req = "SELECT *
-                FROM " . self::TABLE . " as decl
+                FROM " . self::TABLE . "
                 WHERE model_id=:model_id";
 
         if ($mainOnly) {
@@ -95,7 +95,7 @@ class DeclinationManager extends Manager
     public function findByColor(Color $color)
     {
         $req = "SELECT *
-                FROM " . self::TABLE . " as decl
+                FROM " . self::TABLE . "
                 WHERE color_id=:color_id";
 
         $statement = $this->pdo->prepare($req);
