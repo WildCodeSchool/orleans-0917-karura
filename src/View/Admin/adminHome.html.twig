@@ -1,0 +1,16 @@
+{% extends 'Admin/baseadmin.html.twig' %}
+
+{% block pageTitle %}Administration de la page d'accueil{% endblock %}
+
+{% block content %}
+
+    <ul>
+        {% for category in categories %}
+            <li>Catégorie : {{ category.name }}
+            <a href="admin.php?route=adminhomeupdate&id={{ category.id }}">Modifier</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+
+{% endblock %}
