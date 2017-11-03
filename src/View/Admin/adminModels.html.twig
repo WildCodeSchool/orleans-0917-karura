@@ -19,7 +19,8 @@
                 <ul class="list-group">
                     {% for model in models %}
                         <li class="list-group-item">
-                            <h3>Modèle : <strong>{{ model.name }}</strong> ( existe en {{ declinationsNumber[model.id] }}
+                            <h3>Modèle : <strong>{{ model.name }}</strong> ( existe
+                                en {{ declinationsNumber[model.id] }}
                                 couleur{{ (declinationsNumber[model.id] > 1) ? 's' }} )
                                 <small class="pull-right">{{ loop.index }} / {{ models | length }}</small>
                             </h3>
@@ -52,6 +53,9 @@
                                             class="glyphicon glyphicon-trash"
                                             aria-hidden="true"> Supprimer ce modèle</span>
                                 </button>
+                            </form>
+
+                            <div>
                                 {% if declinationsNumber[model.id] > 0 %}
                                     <strong> Il y a {{ declinationsNumber[model.id] }} variantes associés à ce modèle,
                                         vous
@@ -59,7 +63,7 @@
                                         pouvez pas
                                         le supprimer.</strong>
                                 {% endif %}
-                            </form>
+                            </div>
                         </li>
                     {% endfor %}
                 </ul>

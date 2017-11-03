@@ -182,6 +182,7 @@ class ModelController extends Controller
                 $model->setName($_POST['name']);
                 $model->setDescription($_POST['description']);
                 $model->setCategoryId($_POST['category']);
+                $model->setHomeModel(0);
 
                 $modelManager->insert($model);
 

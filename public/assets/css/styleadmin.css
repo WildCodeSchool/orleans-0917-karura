@@ -23,3 +23,10 @@
 }
 
 /*End Administration Email Address*/
+
+/* Error messages for admin */
+.errorMessage {
+    color: red;
+}
+
+/* End Error messages for admin */
