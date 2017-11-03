@@ -12,7 +12,7 @@
 
         <ul class="nav nav-tabs nav-justified">
             {% for category, models in modelsByCat %}
-                <li {{ loop.first ? 'class="active"' }}><a data-toggle="tab"
+                <li {{ (active_category == category) ? 'class="active"' }}><a data-toggle="tab"
                                                            href="#{{ category }}"><strong>{{ category | capitalize }}</strong>
                     </a></li>
             {% endfor %}
@@ -20,9 +20,9 @@
 
         <div class="tab-content">
             {% for category, models in modelsByCat %}
-                <div id="{{ category }}" class="tab-pane fade {{ loop.first ? 'in active' }}">
-                    <h2>Catégorie : {{ category | capitalize }}
-                        <small class="pull-right">{{ models | length }} modèles</small>
+                <div id="{{ category }}" class="tab-pane fade {{ (active_category == category) ? 'in active' }}">
+                    <h2>Catégorie : {{ category.id | capitalize }}
+                        <small class="pull-right">{{ models | length }} modèle{{ (models | length > 1) ? 's' }}</small>
                     </h2>
 
                     <ul class="list-group">
@@ -68,7 +68,7 @@
 
                                 <div class="col-xs-2 text-left">
                                     {% if declinationsNumber[model.id] > 0 %}
-                                        <strong> Il y a {{ declinationsNumber[model.id] }} créations associées à ce
+                                        <strong> Il y a {{ declinationsNumber[model.id] }} {{ (declinationsNumber[model.id] > 1) ? 'créations associées' : 'création associée' }} à ce
                                             modèle, vous ne pouvez pas le supprimer.</strong>
                                     {% endif %}
                                 </div>

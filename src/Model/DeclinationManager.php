@@ -49,7 +49,7 @@ class DeclinationManager extends Manager
      * @param Category $category
      * @return mixed
      */
-    public function findByCategory(Category $category, Bool $mainOnly=false)
+    public function findByCategory(Category $category, bool $mainOnly=false)
     {
         $req = "SELECT decl.*, model.name
                 FROM " . self::TABLE . " as decl

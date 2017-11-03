@@ -11,21 +11,17 @@
         {% for declination in declinations %}
             <div class="row">
                 <div class="col-lg-2">
-                    <div class="thumbnail secondary-thumbnail-model">
-                        <figure>
-                            <img class="img-responsive" src="assets/images/{{ declination.secondaryImage }}"
-                                 alt="Image secondaire du modèle {{ model.name }} couleur {{ colors[declination.colorId].name }}">
-                        </figure>
-                    </div>
+                    <figure class="thumbnail secondary-thumbnail-model">
+                        <img class="img-responsive" src="assets/images/{{ declination.secondaryImage }}"
+                             alt="Image secondaire du modèle {{ model.name }} couleur {{ colors[declination.colorId].name }}">
+                    </figure>
                 </div>
 
                 <div class="col-lg-2">
-                    <div class="thumbnail main-thumbnail-model">
-                        <figure>
-                            <img class="img-responsive" src="assets/images/{{ declination.mainImage }}"
-                                 alt="Image principale du modèle {{ model.name }} couleur {{ colors[declination.colorId].name }}">
-                        </figure>
-                    </div>
+                    <figure class="thumbnail main-thumbnail-model">
+                        <img class="img-responsive" src="assets/images/{{ declination.mainImage }}"
+                             alt="Image principale du modèle {{ model.name }} couleur {{ colors[declination.colorId].name }}">
+                    </figure>
                 </div>
 
                 <div class="col-lg-2">
@@ -86,9 +82,9 @@
                 </button>
 
 
-                <a href="admin.php?route=adminmodel" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-remove"
-                                                                                   aria-hidden="true"></span> Revenir
-                    aux modèles</a>
+                <a href="admin.php?route=adminmodel" class="btn btn-danger pull-right"><span
+                            class="glyphicon glyphicon-remove"
+                            aria-hidden="true"></span> Revenir aux modèles</a>
             </form>
         </div>
     </div>

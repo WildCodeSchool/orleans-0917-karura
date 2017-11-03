@@ -78,10 +78,8 @@ class DeclinationController extends Controller
                 $modelManager = new ModelManager();
                 $model = $modelManager->find($declination->getModelId());
                 $declinations = $declinationManager->findByModel($model);
-                var_dump($declinations);
                 if (count($declinations)) {
                     $declinations[0]->setMainColor(1);
-                    var_dump($declinations);
                     $declinationManager->update($declinations[0]);
                 }
             }
