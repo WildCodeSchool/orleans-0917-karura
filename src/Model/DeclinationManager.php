@@ -69,9 +69,10 @@ class DeclinationManager extends Manager
 
     /**
      * @param Model $model
+     * @param bool $mainOnly
      * @return array
      */
-    public function findByModel(Model $model, Bool $mainOnly=false )
+    public function findByModel(Model $model, bool $mainOnly=false )
     {
         $req = "SELECT *
                 FROM " . self::TABLE . " as decl
