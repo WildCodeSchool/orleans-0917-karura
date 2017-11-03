@@ -22,8 +22,8 @@ class DeclinationController extends Controller
         $declinations = $declinationManager->findAll();
 
         return self::render('Declination/showAll.html.twig', [
-                'declinations' => $declinations,
-            ]);
+            'declinations' => $declinations,
+        ]);
     }
 
     public function showOneAction($id)
@@ -32,8 +32,8 @@ class DeclinationController extends Controller
         $declination = $declinationManager->find($id);
 
         return self::render('Declination/showOne.html.twig', [
-                'declination' => $declination,
-            ]);
+            'declination' => $declination,
+        ]);
     }
 
     public function showAllByModel()
@@ -49,15 +49,14 @@ class DeclinationController extends Controller
 
         $resColor = [];
 
-        foreach($colors as $color)
-        {
-          $resColor[$color->getId()] = $color;
+        foreach ($colors as $color) {
+            $resColor[$color->getId()] = $color;
         }
 
         return self::render('Admin/adminDeclination.html.twig', [
             'declinations' => $declinationsByModel,
             'model' => $model,
-            'colors' =>$resColor,
+            'colors' => $resColor,
         ]);
     }
 
@@ -66,14 +65,27 @@ class DeclinationController extends Controller
         if (!empty($_POST['id'])) {
             $declinationManager = new DeclinationManager();
             $declination = $declinationManager->find($_POST['id']);
-            if(file_exists('./assets/images/') . $declination->getSecondaryImage()) {
+            if ($declination->getSecondaryImage() and file_exists('./assets/images/') . $declination->getSecondaryImage()) {
                 unlink('./assets/images/' . $declination->getSecondaryImage());
             }
-            if(file_exists('./assets/images/') . $declination->getMainImage()) {
+            if ($declination->getMainImage() and file_exists('./assets/images/') . $declination->getMainImage()) {
                 unlink('./assets/images/' . $declination->getMainImage());
             }
             $declinationManager->delete($declination);
 
+            // ajout du flag main_color à une autre decl si possible et si la decl suppr était la main_color
+            if ($declination->getMainColor() == 1) {
+                $modelManager = new ModelManager();
+                $model = $modelManager->find($declination->getModelId());
+                $declinations = $declinationManager->findByModel($model);
+                var_dump($declinations);
+                if (count($declinations)) {
+                    $declinations[0]->setMainColor(1);
+                    var_dump($declinations);
+                    $declinationManager->update($declinations[0]);
+                }
+            }
+            
             self::setMessage('La déclinaison a bien été supprimée de la base de données', 'success');
 
             header('Location: admin.php?route=admindeclination&modelId=' . $declination->getModelId());
@@ -85,28 +97,28 @@ class DeclinationController extends Controller
     {
         $declinationManager = new DeclinationManager();
         $declination = $declinationManager->find($_POST['id']);
-        $errors=[];
+        $errors = [];
 
         if (!empty($_POST['updating'])) {
 
-            for($i=0; $i<=1;$i++) {
-                if($_FILES['files']['error'][$i]==0){
-                    if($_FILES['files']['size'][$i]>MAXSIZE){
-                        $message[]='L\'image est trop volumineuse';
-                    }elseif ($_FILES['files']['error'][$i]) {
+            for ($i = 0; $i <= 1; $i++) {
+                if ($_FILES['files']['error'][$i] == 0) {
+                    if ($_FILES['files']['size'][$i] > MAXSIZE) {
+                        $message[] = 'L\'image est trop volumineuse';
+                    } elseif ($_FILES['files']['error'][$i]) {
                         $message[] = 'Vous avez une erreur';
                     } else {
                         $ext = pathinfo($_FILES['files']['name'][$i], PATHINFO_EXTENSION);
                         $uniqueName = 'image' . uniqid() . '.' . $ext;
                         move_uploaded_file($_FILES['files']['tmp_name'][$i], 'assets/images/' . $uniqueName);
 
-                        if($i==0) {
-                            if(file_exists('./assets/images/') . $declination->getSecondaryImage()) {
+                        if ($i == 0) {
+                            if (file_exists('./assets/images/') . $declination->getSecondaryImage()) {
                                 unlink('./assets/images/' . $declination->getSecondaryImage());
                                 $declination->setSecondaryImage($uniqueName);
                             }
                         } else {
-                            if(file_exists('./assets/images/') . $declination->getMainImage()) {
+                            if (file_exists('./assets/images/') . $declination->getMainImage()) {
                                 unlink('./assets/images/' . $declination->getMainImage());
                                 $declination->setMainImage($uniqueName);
                             }
@@ -120,7 +132,7 @@ class DeclinationController extends Controller
 
             $declinationManager->update($declination);
 
-            $this->setMessage('La déclinaison a bien été modifié','success');
+            $this->setMessage('La déclinaison a bien été modifié', 'success');
         }
 
         $colorManager = new ColorManager();
@@ -128,8 +140,7 @@ class DeclinationController extends Controller
 
         $resColor = [];
 
-        foreach($colors as $color)
-        {
+        foreach ($colors as $color) {
             $resColor[$color->getId()] = $color;
         }
 
@@ -141,7 +152,7 @@ class DeclinationController extends Controller
 
     public function addDeclination()
     {
-        $errors=[];
+        $errors = [];
 
         $modelManager = new ModelManager();
         $model = $modelManager->find($_POST['model_id']);
@@ -154,7 +165,7 @@ class DeclinationController extends Controller
             $declination->setMainImage('');
 
             for ($i = 0; $i <= 1; $i++) {
-                if($_FILES['files']['error'][$i]==0) {
+                if ($_FILES['files']['error'][$i] == 0) {
                     if ($_FILES['files']['size'][$i] > MAXSIZE) {
                         $message[] = 'L\'image est trop volumineuse';
                     } else {
@@ -178,7 +189,7 @@ class DeclinationController extends Controller
             $declination->setMainColor($main_color);
 
             if ($declinationManager->findByColorAndModel($_POST['color_id'], $_POST['model_id'])) {
-                $errors['twice'] = 'Cette déclinaison existe déjà';
+                $errors['twice'] = 'Ce modèle existe déjà dans cette couleur';
             }
 
             if (empty($errors)) {
@@ -196,16 +207,15 @@ class DeclinationController extends Controller
 
         $resColor = [];
 
-        foreach($colors as $color)
-        {
+        foreach ($colors as $color) {
             $resColor[$color->getId()] = $color;
         }
 
         return $this->render('Admin/addDeclination.html.twig', [
-            'errors'=>$errors,
+            'errors' => $errors,
             'colors' => $resColor,
-            'model'=>$model,
-            'post'=>$_POST,
+            'model' => $model,
+            'post' => $_POST,
         ]);
     }
 

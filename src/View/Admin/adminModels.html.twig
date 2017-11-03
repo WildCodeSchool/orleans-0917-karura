@@ -27,14 +27,11 @@
 
                     <ul class="list-group">
                         {% for model in models %}
-                            <li class="list-group-item">
-                                <h3>Modèle : <strong>{{ model.name }}</strong> ( existe
-                                    en {{ declinationsNumber[model.id] }}
-                                    couleur{{ (declinationsNumber[model.id] > 1) ? 's' }} )
-                                    <small class="pull-right">{{ loop.index }} / {{ models | length }}</small>
+                            <li class="list-group-item row text-center">
+                                <h3 class="col-xs-3 text-left">Modèle : <strong>{{ model.name }}</strong>
                                 </h3>
 
-                                <form class="inline" action="admin.php?route=adminmodelupdate" method='post'>
+                                <form class="col-xs-2" action="admin.php?route=adminmodelupdate" method='post'>
                                     <div class="form-group">
                                         <input type="hidden" class="form-control" name="model_id"
                                                value="{{ model.id }}">
@@ -45,7 +42,7 @@
                                     </button>
                                 </form>
 
-                                <form action="admin.php" method='get'>
+                                <form class="col-xs-2" action="admin.php" method='get'>
                                     <div class="form-group">
                                         <input type="hidden" class="form-control" name="route" value="admindeclination">
                                         <input type="hidden" class="form-control" name="modelId" value="{{ model.id }}">
@@ -57,7 +54,7 @@
                                     </button>
                                 </form>
 
-                                <form action="admin.php?route=adminmodeldelete" method='post'>
+                                <form class="col-xs-2" action="admin.php?route=adminmodeldelete" method='post'>
                                     <div class="form-group">
                                         <input type="hidden" class="form-control" name="model_id"
                                                value="{{ model.id }}">
@@ -67,15 +64,19 @@
                                                 class="glyphicon glyphicon-trash"
                                                 aria-hidden="true"></span> Supprimer
                                     </button>
+                                </form>
+
+                                <div class="col-xs-2 text-left">
                                     {% if declinationsNumber[model.id] > 0 %}
                                         <strong> Il y a {{ declinationsNumber[model.id] }} créations associées à ce
-                                            modèle,
-                                            vous
-                                            ne
-                                            pouvez pas
-                                            le supprimer.</strong>
+                                            modèle, vous ne pouvez pas le supprimer.</strong>
                                     {% endif %}
-                                </form>
+                                </div>
+
+                                <div class="col-xs-1">
+                                    <small class="pull-right">{{ loop.index }} / {{ models | length }}</small>
+                                </div>
+
                             </li>
                         {% endfor %}
                     </ul>
