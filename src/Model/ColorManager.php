@@ -24,7 +24,8 @@ class ColorManager extends Manager
     public function findAll()
     {
         $req = "SELECT *
-                FROM " . self::TABLE;
+                FROM " . self::TABLE ."
+                ORDER BY name";
         $statement = $this->pdo->query($req);
         return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }

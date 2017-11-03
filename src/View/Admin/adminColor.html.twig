@@ -6,40 +6,42 @@
     <h1>Administration des couleurs <a class="btn btn-success btn-lg pull-right" href="admin.php?route=admincoloradd">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"> Ajouter une couleur</span>
         </a></h1>
-    <p class="text-center"></p>
 
     <div class="container">
         <ul class="list-group">
             {% for color in colors %}
-                <li class="list-group-item">
-                    <p>Couleur : {{ color.name | capitalize }} <span class="glyphicon glyphicon-tint"
-                                                                     style="color:{{ color.hexa }}"></span>
-                    </p>
+                <li class="list-group-item row">
+                    <h2 class="col-xs-3">
+                        <span class="glyphicon glyphicon-tint" style="color:{{ color.hexa }}"></span> {{ color.name | capitalize }}
+                    </h2>
 
-                    <form action="admin.php?route=admincolorupdate" method='post'>
+                    <form class="col-xs-2 text-center" action="admin.php?route=admincolorupdate" method='post'>
                         <div class="form-group">
                             <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
                         </div>
                         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"
-                                                                            aria-hidden="true"> Modifier cette couleur</span>
+                                                                            aria-hidden="true"></span> Modifier
                         </button>
                     </form>
 
-                    <form action="admin.php?route=admincolordelete" method='post'>
+                    <form class="col-xs-2 text-center" action="admin.php?route=admincolordelete" method='post'>
                         <div class="form-group">
                             <input type="hidden" class="form-control" name="color_id" value="{{ color.id }}">
                         </div>
                         <button type="submit" class="btn btn-danger"
                                 {{ (declinationsNumber[color.id] > 0) ? 'disabled="disabled"' }}>
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"> Supprimer cette couleur</span>
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Supprimer
                         </button>
+                    </form>
+
+                    <div class="col-xs-4">
                         {% if declinationsNumber[color.id] > 0 %}
-                            <strong> Il y a {{ declinationsNumber[color.id] }} modèles associés à cette couleur, vous ne
+                            <strong> Il y a {{ declinationsNumber[color.id] }} {{ (declinationsNumber[color.id] > 1) ? 'modèles associés' : 'modèle associé' }} à cette couleur, vous ne
                                 pouvez
                                 pas
                                 la supprimer.</strong>
                         {% endif %}
-                    </form>
+                    </div>
                 </li>
             {% endfor %}
         </ul>
