@@ -20,10 +20,10 @@ class HomeController extends Controller
         $modelManager = new ModelManager();
         $declinationsByCat = [];
 
+        $declinationManager = new DeclinationManager();
         foreach ($categories as $category) {
             $modelsByCat[$category->getName()] = $modelManager->findHomeModelsByCat($category);
             $declinationsByCat[$category->getName()] = [];
-            $declinationManager = new DeclinationManager();
             foreach ($modelsByCat[$category->getName()] as $model) {
                 $decl = $declinationManager->findByModel($model)[0];
                 $key = $model->getHomeModel();
