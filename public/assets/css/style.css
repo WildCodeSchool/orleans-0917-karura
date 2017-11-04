@@ -23,6 +23,12 @@ p {
     margin-top: 20px;
 }
 
+@media(max-width: 500px) {
+    body {
+        font-size: 10px;
+    }
+}
+
 /* END BODY
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -293,7 +299,7 @@ Start Mise en forme des thumbnails*/
     text-align: center;
     padding: 0;
     margin-bottom: 5vh;
-    font-size: 6vh;
+    font-size: 3em;
     width: 100%;
     height: 10vh;
     min-height: 100%;
