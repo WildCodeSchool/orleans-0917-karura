@@ -277,20 +277,28 @@ Start Mise en forme des thumbnails*/
 
 /* Alternate bg color of rectangle in Home */
 .category-thumbnail:nth-child(2n) .title-block {
-    background-color: #E3E3E3;
+    background-color: #D821AD;
+    color: black;
 }
 
 .category-thumbnail:nth-child(2n+1) .title-block {
-    background-color: #4C4C4C;
-    color: #E3E3E3;
+    background-color: black;
+    color: white;
+}
+
+.category-thumbnail:nth-child(2n+1) .title-block span {
+    transform: rotate(-90deg);
+    top: 80%;
+    left: 40%;
 }
 
 .title-block span {
     font-size: 5vh;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -80%);
+    top: 30%;
+    left: 60%;
+    transform: rotate(90deg);
+    transform-origin: 0 0;
 }
 
 .title-block-sm {
@@ -370,8 +378,13 @@ Start Mise en form textes thumbnails */
 
 START FOOTER */
 
+.separator {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(216, 33, 173, 1), rgba(0, 0, 0, 0));
+    height: 1px;
+    border: 0;
+}
+
 footer {
-    background-color: #F3F3F3;
     width: 100%;
     padding-top: 3vh;
     margin-top: 10vh;
