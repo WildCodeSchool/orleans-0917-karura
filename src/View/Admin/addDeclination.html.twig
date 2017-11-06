@@ -22,7 +22,7 @@
                         {% endfor %}
                     </select>
                     {% if errors.twice %}
-                    <strong style="color:red">{{errors.twice}}</strong>
+                    <strong class="errorMessage">{{errors.twice}}</strong>
                     {% endif %}
                     <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
 

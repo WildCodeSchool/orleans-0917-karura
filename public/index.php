@@ -48,6 +48,10 @@ if ($route == 'home') {
     $modelController = new \Karura\Controller\HomeController();
     echo $modelController->showCatalog();
 
+} elseif ($route == 'galerie') {
+    $galleryController = new \Karura\Controller\GalleryController();
+    echo $galleryController->showGallery();
+
 } else {
     // go to homepage by default
     $homeController = new \Karura\Controller\HomeController();
