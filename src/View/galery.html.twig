@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+    <!--Thumbnail Catalogue -->
+    <div class="jumbotron">
+        <h1>NOTRE GALERIE</h1>
+    </div>
+
+    <div class="container test">
+
+        <div class="grid">
+        {% for picture in pictures %}
+
+
+
+              <div class="grid-item">d-item">
+                <img class="img-big img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+              </div>
+                        <div class="grid-item">
+                            
+                        </div><img class="img-big img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+</div>
+                        <div class="grid-item grid-item--width2">...</div>
+                        <div class="grid-item">...</div>
+                        ...
+            <!--<div c</div>lass="row ">
+              <div class="grid-item grid-item--width2">...</div>
+              <div class="col-lg-4 {{ (loop.index % 2) ?: 'col-lg-push-8' }}">
+              <div class="grid-item">...</div>        <div class="thumbnail gallery-thumb1">
+              ...            <img class="img-big img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+            </div>        </div>
+                </div>
+
+                <div class="col-lg-4 {{ (loop.index % 2) ?: 'col-lg-pull-4' }}">
+
+                    <div class="row">
+                        <div class="thumbnail gallery-thumb2">
+                            <img class="img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+                        </div>
+
+                        <div class="thumbnail gallery-thumb3">
+                            <img class="img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 {{ (loop.index % 2) ?: 'col-lg-pull-4' }}">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+
+                            <div class="thumbnail gallery-thumb4">
+                                <img class="img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="thumbnail gallery-thumb5">
+                                <img class="img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="thumbnail gallery-thumb6">
+                                <img class="img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div> -->
+        {% endfor %}
+
+    </div>
+{% endblock %}

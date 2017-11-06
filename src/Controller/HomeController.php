@@ -4,6 +4,8 @@ namespace Karura\Controller;
 
 use Karura\Model\CategoryManager;
 use Karura\Model\DeclinationManager;
+use Karura\Model\Gallery;
+use Karura\Model\GalleryManager;
 use Karura\Model\ModelManager;
 
 class HomeController extends Controller
@@ -222,4 +224,5 @@ class HomeController extends Controller
             'modelsInCat' => $models,
         ]);
     }
+
 }
