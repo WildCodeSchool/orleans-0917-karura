@@ -1,6 +1,6 @@
 <FilesMatch "admin.php">
     AuthName "Ceci est du contenu securise"
     AuthType Basic
-    AuthUserFile "/home/noclain/Documents/Professionnel/Wild Code School/Projet Pro n°1/orleans-0917-karura/public/.htpasswd"
+    AuthUserFile "/home/noclain/Documents/Professionnel/Wild-Code-School/projet-karura/orleans-0917-karura/public/.htpasswd"
     Require valid-user
 </FilesMatch>
