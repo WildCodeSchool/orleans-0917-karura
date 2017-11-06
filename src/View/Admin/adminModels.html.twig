@@ -3,72 +3,87 @@
 {% block pageTitle %}Administration des Modèles{% endblock %}
 
 {% block content %}
-    <h1>Administration des Modèles <a class="btn btn-success btn-lg pull-right" href="admin.php?route=adminmodeladd">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"> Ajouter un modèle</span>
-        </a></h1>
     <div class="container">
+        <h1>Administration des Modèles <a class="btn btn-success btn-lg pull-right"
+                                          href="admin.php?route=adminmodeladd">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un modèle</a>
+        </h1>
 
-        {% for category, models in modelsByCat %}
-            <details>
-                <summary>
-                    <h2><span class="glyphicon glyphicon-triangle-bottom"
-                              aria-hidden="true"></span> Catégorie : <strong>{{ category | capitalize }}</strong>
-                        <small class="pull-right">{{ models | length }} modèles</small>
+
+        <ul class="nav nav-tabs nav-justified">
+            {% for category, models in modelsByCat %}
+                <li {{ (active_category == category) ? 'class="active"' }}><a data-toggle="tab"
+                                                           href="#{{ category }}"><strong>{{ category | capitalize }}</strong>
+                    </a></li>
+            {% endfor %}
+        </ul>
+
+        <div class="tab-content">
+            {% for category, models in modelsByCat %}
+                <div id="{{ category }}" class="tab-pane fade {{ (active_category == category) ? 'in active' }}">
+                    <h2>Catégorie : {{ category.id | capitalize }}
+                        <small class="pull-right">{{ models | length }} modèle{{ (models | length > 1) ? 's' }}</small>
                     </h2>
-                </summary>
-                <ul class="list-group">
-                    {% for model in models %}
-                        <li class="list-group-item">
-                            <h3>Modèle : <strong>{{ model.name }}</strong> ( existe
-                                en {{ declinationsNumber[model.id] }}
-                                couleur{{ (declinationsNumber[model.id] > 1) ? 's' }} )
-                                <small class="pull-right">{{ loop.index }} / {{ models | length }}</small>
-                            </h3>
 
-                            <form action="admin.php?route=adminmodelupdate" method='post'>
-                                <div class="form-group">
-                                    <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
+                    <ul class="list-group">
+                        {% for model in models %}
+                            <li class="list-group-item row text-center">
+                                <h3 class="col-xs-3 text-left">Modèle : <strong>{{ model.name }}</strong>
+                                </h3>
+
+                                <form class="col-xs-2" action="admin.php?route=adminmodelupdate" method='post'>
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" name="model_id"
+                                               value="{{ model.id }}">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"
+                                                                                        aria-hidden="true"></span>
+                                        Modifier
+                                    </button>
+                                </form>
+
+                                <form class="col-xs-2" action="admin.php" method='get'>
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" name="route" value="admindeclination">
+                                        <input type="hidden" class="form-control" name="modelId" value="{{ model.id }}">
+                                    </div>
+                                    <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-list"
+                                                                                     aria-hidden="true"></span> Gérer
+                                        les
+                                        créations
+                                    </button>
+                                </form>
+
+                                <form class="col-xs-2" action="admin.php?route=adminmodeldelete" method='post'>
+                                    <div class="form-group">
+                                        <input type="hidden" class="form-control" name="model_id"
+                                               value="{{ model.id }}">
+                                    </div>
+                                    <button type="submit"
+                                            class="btn btn-danger" {{ (declinationsNumber[model.id] > 0) ? 'disabled="disabled"' }}><span
+                                                class="glyphicon glyphicon-trash"
+                                                aria-hidden="true"></span> Supprimer
+                                    </button>
+                                </form>
+
+                                <div class="col-xs-2 text-left">
+                                    {% if declinationsNumber[model.id] > 0 %}
+                                        <strong> Il y a {{ declinationsNumber[model.id] }} {{ (declinationsNumber[model.id] > 1) ? 'créations associées' : 'création associée' }} à ce
+                                            modèle, vous ne pouvez pas le supprimer.</strong>
+                                    {% endif %}
                                 </div>
-                                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-edit"
-                                                                                    aria-hidden="true"> Modifier ce modèle</span>
-                                </button>
-                            </form>
 
-                            <form action="admin.php" method='get'>
-                                <div class="form-group">
-                                    <input type="hidden" class="form-control" name="route" value="admindeclination">
-                                    <input type="hidden" class="form-control" name="modelId" value="{{ model.id }}">
+                                <div class="col-xs-1">
+                                    <small class="pull-right">{{ loop.index }} / {{ models | length }}</small>
                                 </div>
-                                <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-list"
-                                                                                 aria-hidden="true"> Gérer les réalisations de ce modèle</span>
-                                </button>
-                            </form>
 
-                            <form action="admin.php?route=adminmodeldelete" method='post'>
-                                <div class="form-group">
-                                    <input type="hidden" class="form-control" name="model_id" value="{{ model.id }}">
-                                </div>
-                                <button type="submit"
-                                        class="btn btn-danger" {{ (declinationsNumber[model.id] > 0) ? 'disabled="disabled"' }}><span
-                                            class="glyphicon glyphicon-trash"
-                                            aria-hidden="true"> Supprimer ce modèle</span>
-                                </button>
-                            </form>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
 
-                            <div>
-                                {% if declinationsNumber[model.id] > 0 %}
-                                    <strong> Il y a {{ declinationsNumber[model.id] }} variantes associés à ce modèle,
-                                        vous
-                                        ne
-                                        pouvez pas
-                                        le supprimer.</strong>
-                                {% endif %}
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </details>
-        {% endfor %}
     </div>
 
 {% endblock %}

@@ -26,7 +26,6 @@ if ($route == 'home') {
     echo $modelController->showSearchAction($_GET['search']);
 
 } elseif ($route == 'category') {
-
     // models of one category
     $modelController = new \Karura\Controller\ModelController();
     echo $modelController->showByCategoryAction($_GET['category']);

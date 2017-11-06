@@ -36,6 +36,28 @@ class Declination
     private $secondary_image;
 
     /**
+     * @var string
+     */
+    private $main_color;
+
+    /**
+     * @return string
+     */
+    public function getMainColor(): string
+    {
+        return $this->main_color;
+    }
+    /**
+     * @param string $main_color
+     * @return Declination
+     */
+    public function setMainColor(string $main_color): Declination
+    {
+        $this->main_color = $main_color;
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getId()

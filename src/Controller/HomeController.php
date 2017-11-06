@@ -58,7 +58,7 @@ class HomeController extends Controller
         $declinationManager = new DeclinationManager();
         $declinationsByCat = [];
         foreach ($categories as $category) {
-            $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category);
+            $declinationsByCat[$category->getName()] = $declinationManager->findByCategory($category, true);
         }
 
         $modelManager = new ModelManager();
