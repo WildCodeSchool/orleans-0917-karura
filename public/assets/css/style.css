@@ -532,53 +532,18 @@ Start pages Product*/
 /*End admin button*/
 
 /*Start Galerie */
-/*.row{*/
-    /*margin-left: 0;*/
-    /*margin-right: 15px;*/
-/*}*/
 
-/*.gallery-thumb1 {*/
-    /*width: 350px;*/
-    /*margin-bottom: 15px;*/
-/*}*/
-
-/*.gallery-thumb2 {*/
-    /*height: 220px;*/
-    /*width: 350px;*/
-/*}*/
-
-/*.gallery-thumb3 {*/
-    /*height: 220px;*/
-    /*width: 350px;*/
-    /*margin-top: 10px;*/
-
-/*}*/
-
-/*.gallery-thumb4 {*/
-    /*height: 220px;*/
-    /*width: 350px;*/
-/*}*/
-
-/*.gallery-thumb5 {*/
-    /*height: 220px;*/
-    /*width: 170px;*/
-    /*margin-top: 10px;*/
-/*}*/
-
-.test .row {
-    max-height: 70vh;
-    overflow: hidden;
-    margin-bottom:2em;
+.grid-item {
+    width: 360px;
+    float: left;
+    margin: 10px;
+}
+.bloc {
+    margin: 0 auto;
 }
 
-
-
-/*.gallery-thumb6 {*/
-    /*height: 220px;*/
-    /*width: 170px;*/
-    /*margin-top: 10px;*/
-/*}*/
-
-
+.gallery {
+    width: 1000px;
+}
 
 /*End Galerie */
