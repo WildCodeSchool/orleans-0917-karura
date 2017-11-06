@@ -56,9 +56,12 @@ class ModelController extends Controller
             $declinationsNumber[$model->getId()] = count($declinationManager->findByModel($model));
         }
 
+        $active_category = !empty($_GET['active_category']) ? $_GET['active_category'] : $categories[0]->getName() ;
+
         return self::render('Admin/adminModels.html.twig', [
             'modelsByCat' => $modelsByCat,
             'declinationsNumber' => $declinationsNumber,
+            'active_category' => $active_category
         ]);
     }
 
@@ -84,7 +87,7 @@ class ModelController extends Controller
         $declinationManager = new DeclinationManager();
         $declinationsByModel = [];
         foreach ($models as $model) {
-            $declinationsByModel = array_merge($declinationsByModel, $declinationManager->findByModel($model));
+            $declinationsByModel = array_merge($declinationsByModel, $declinationManager->findByModel($model, true));
         }
 
         $modelManager = new ModelManager();
@@ -117,7 +120,7 @@ class ModelController extends Controller
         $category = $categoryManager->findByName($category);
 
         $declinationManager = new DeclinationManager();
-        $declinationsByCategory = $declinationManager->findByCategory($category);
+        $declinationsByCategory = $declinationManager->findByCategory($category, true);
 
         $modelManager = new ModelManager();
         $models = $modelManager->findAll();
@@ -182,12 +185,15 @@ class ModelController extends Controller
                 $model->setName($_POST['name']);
                 $model->setDescription($_POST['description']);
                 $model->setCategoryId($_POST['category']);
+                $model->setHomeModel(0);
 
                 $modelManager->insert($model);
 
-                self::setMessage('Le modèle ' . $model->getName() . ' a été ajouté à la base de données', 'success');
+                $category = $categoryManager->find($model->getCategoryId());
 
-                header('Location: admin.php?route=adminmodel');
+                self::setMessage('Le modèle <strong>' . $model->getName() . '</strong> a été ajouté à la base de données', 'success');
+
+                header('Location: admin.php?route=adminmodel&active_category=' . $category->getName());
                 exit;
             }
 
@@ -235,10 +241,12 @@ class ModelController extends Controller
             if (empty($errors)) {
                 $modelManager->update($model);
 
+                $category = $categoryManager->find($model->getCategoryId());
+
                 self::setMessage('Le modèle <strong>' . $model->getName() . '</strong> a bien été modifié dans la base de données',
                     'success', 'Modification réussie !');
 
-                header('Location: admin.php?route=adminmodel');
+                header('Location: admin.php?route=adminmodel&active_category=' . $category->getName());
                 exit;
 
             } else {
@@ -266,9 +274,12 @@ class ModelController extends Controller
             $model = $modelmanager->find($_POST['model_id']);
             $modelmanager->delete($model);
 
-            self::setMessage('Le modèle ' . $model->getName() . ' a bien été supprimé de la base de données', 'success');
+            $categoryManager = new CategoryManager();
+            $category = $categoryManager->find($model->getCategoryId());
 
-            header('Location: admin.php?route=adminmodel');
+            self::setMessage('Le modèle <strong>' . $model->getName() . '</strong> a bien été supprimé de la base de données', 'success');
+
+            header('Location: admin.php?route=adminmodel&active_category=' . $category->getName());
             exit;
         }
 

@@ -37,4 +37,5 @@ class AdminController extends Controller
             'categories' => $categories,
         ]);
     }
+
 }

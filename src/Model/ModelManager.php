@@ -94,15 +94,32 @@ class ModelManager extends Manager
         return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
 
+    /**
+     * @param Category $category
+     * @return array
+     */
+    public function findHomeModelsByCat(Category $category)
+    {
+        $req = "SELECT * 
+                FROM " . self::TABLE . "
+                WHERE category_id=:category_id AND home_model!=0
+                ORDER BY name";
+        $statement = $this->pdo->prepare($req);
+        $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
+    }
+
     public function insert(Model $model)
     {
         $req = "INSERT INTO " . self::TABLE . "
-                (name, description, category_id)
-                VALUES (:name, :description, :category)";
+                (name, description, category_id, home_model)
+                VALUES (:name, :description, :category, :home_model)";
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('name', $model->getName(), \PDO::PARAM_STR);
         $statement->bindValue('description', $model->getDescription(), \PDO::PARAM_STR);
         $statement->bindValue('category', $model->getCategoryId(), \PDO::PARAM_STR);
+        $statement->bindValue('home_model', $model->getHomeModel(), \PDO::PARAM_STR);
         $statement->execute();
     }
 
@@ -112,15 +129,17 @@ class ModelManager extends Manager
         $name = $model->getName();
         $description = $model->getDescription();
         $category = $model->getCategoryId();
+        $homeModel = $model->getHomeModel();
 
         $req = "UPDATE " . self::TABLE . "
-                SET id=:id, name=:name, description=:description, category_id=:category
+                SET id=:id, name=:name, description=:description, category_id=:category, home_model=:home_model
                 WHERE id=:id";
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->bindValue('name', $name, \PDO::PARAM_STR);
         $statement->bindValue('description', $description, \PDO::PARAM_STR);
         $statement->bindValue('category', $category, \PDO::PARAM_INT);
+        $statement->bindValue('home_model', $homeModel, \PDO::PARAM_INT);
         $statement->execute();
     }
 

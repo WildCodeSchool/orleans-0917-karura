@@ -32,6 +32,29 @@ class Model
     private $description;
 
     /**
+     * @var string
+     */
+    private $home_model;
+
+    /**
+     * @return string
+     */
+    public function getHomeModel(): string
+    {
+        return $this->home_model;
+    }
+
+    /**
+     * @param string $home_model
+     * @return Model
+     */
+    public function setHomeModel(string $home_model): Model
+    {
+        $this->home_model = $home_model;
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
