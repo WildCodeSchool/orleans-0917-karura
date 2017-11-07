@@ -13,17 +13,17 @@
             <div class="grid-item">
                 <a href="#" data-toggle="modal" data-target="#{{ picture.id }}">
                     <figure>
-                <img class="img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+                <img class="thumbnail img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
                     </figure>
                 </a>
                 <div class="modal fade" id="{{ picture.id }}" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <button type="button" class="close" data-dismiss="modal">x</button>
                             </div>
                             <div class="modal-body">
-                                <img class="img-responsive" src="assets/images/gallery/{{ picture.name }}">
+                                <img class="thumbnail img-responsive" src="assets/images/gallery/{{ picture.name }}">
                             </div>
                         </div>
                     </div>
@@ -33,5 +33,4 @@
         </div>
         </div>
     </div>
-
 {% endblock %}
