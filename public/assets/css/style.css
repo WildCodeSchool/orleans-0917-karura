@@ -310,8 +310,12 @@ Start Mise en forme des thumbnails*/
 
 .category-thumbnail:nth-child(2n+1) .title-block span {
     transform: rotate(-90deg);
-    top: 70%;
+    width: 100%;
+    top: 82%;
+    text-align: center;
     left: 50%;
+
+
 }
 
 .title-block span {
