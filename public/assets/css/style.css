@@ -15,8 +15,16 @@ h1, h2, span, .premierParaSlider, .navbar-default .navbar-nav > li > a, .text, f
     font-family: 'Trajan', 'sans-serif';
 }
 
-p {
+p, label, .mendatory-fields {
     font-family: 'Tahoma', 'sans-serif';
+}
+
+p {
+    font-size: 2em;
+}
+
+label {
+    font-size: 1.3em;
 }
 
 .returnMessage {
@@ -25,7 +33,7 @@ p {
 
 @media(max-width: 500px) {
     body {
-        font-size: 10px;
+        font-size: 1em;
     }
 }
 
@@ -56,7 +64,6 @@ START BARRE DE NAVIGATION */
 }
 
 /*Bouton de recherche*/
-
 .btn {
     border-radius: 0;
 }
@@ -120,6 +127,9 @@ START SLIDER */
     height: 30vw;
     background-size: cover;
 }
+.carousel-inner {
+    margin-bottom: 2vw;
+}
 
 .carousel-control {
     color: #D821AD;
@@ -134,20 +144,15 @@ START SLIDER */
 }
 
 .slider1 {
-    background: url('../images/agi02.jpg') center no-repeat;
+    background: url('../images/slider/agi02.jpg') center no-repeat;
 }
 
 .slider2 {
-    background: url('../images/agi05.jpg') center no-repeat;
+    background: url('../images/slider/agi05.jpg') center no-repeat;
 }
 
 .slider3 {
-    background: url('../images/agi06.jpg') center no-repeat;
-}
-
-/*Taille police du paragraphe*/
-p {
-    font-size: 2em;
+    background: url('../images/slider/agi06.jpg') center no-repeat;
 }
 
 /*Position du paragrahe*/
@@ -195,7 +200,7 @@ p {
 }
 
 /*En taille d'écran téléphone le slider disparait*/
-@media (max-width: 500px) {
+@media (max-width: 900px) {
     #carousel-example-generic {
         display: none;
     }
@@ -217,20 +222,33 @@ START FORM */
     width: 80vw;
     padding: 1em;
     border: 1px solid #D821AD;
-    font-size: 20px;
 }
 
 .form-upload {
     margin: 20px 0;
 }
 
-.formFile {
-    font-size: 15px;
+.errorForm {
+    font-size: 1.5em;
+    color: #D821AD;
 }
 
-.errorForm {
-    font-size: 20px;
-    color: #D821AD;
+.formFile {
+    font-size: 1.2em;
+}
+
+.mendatory-fields {
+    font-size: 1.2em;
+}
+
+.button-form-submit {
+    background-color: #D821AD;
+    color: white;
+}
+
+.button-form-submit:hover{
+    background-color: #D821AD;
+    color: white;
 }
 
 textarea.form-control {
@@ -239,17 +257,14 @@ textarea.form-control {
 
 @media (max-width: 500px) {
     .contactForm {
-        font-size: 15px;
+        font-size: 1.3em;
     }
-
     .errorForm {
-        font-size: 15px;
+        font-size: 1.2em;
     }
-
     .formFile {
-        font-size: 12px;
+        font-size: 1em;
     }
-
 }
 
 /* END FORM
@@ -305,16 +320,31 @@ Start Mise en forme des thumbnails*/
     transform-origin: 0 50%;
 }
 
-.title-block-sm {
-    background-color: #E3E3E3;
+/* Alternate bg color of rectangle in Home sm size */
+.category-thumbnail:nth-child(2n) .title-block-sm {
+    background-color: #D821AD;
     color: black;
+}
+
+.category-thumbnail:nth-child(2n+1) .title-block-sm {
+    background-color: black;
+    color: white;
+}
+
+.title-block-sm {
     text-align: center;
     padding: 0;
-    margin-bottom: 5vh;
+    margin: 5vh 0;
     font-size: 3em;
     width: 100%;
-    height: 10vh;
+    height: 80px;
     min-height: 100%;
+}
+
+.category-name-block-sm {
+    display: inline-block;
+    height: inherit;
+    line-height: 85px;
 }
 
 .thumbnail-sm .thumbnail {
@@ -350,6 +380,12 @@ Start Mise en forme des thumbnails*/
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
     transition: all .3s ease-in-out;
+}
+
+@media(max-width: 1000px) {
+    .thumbnail {
+        margin: 0 auto;
+    }
 }
 
 /*End Mise en forme thumbnail
@@ -415,9 +451,6 @@ footer img {
 }
 
 @media (max-width: 500px) {
-    footer {
-        font-size: 10px;
-    }
     .contactUs {
         position: absolute;
     }
@@ -434,16 +467,12 @@ Start page mentions légales*/
 
 .mention-page h1 {
     text-align: center;
-    color: #555562;
+    color: white;
 }
 
 .mention-page h2 {
     font-size: calc(3em * 0.625);
     color: #555562;
-}
-
-.mention-page p {
-    font-size: calc(2em * 0.625);
 }
 
 /*End page mentions légales
@@ -491,7 +520,8 @@ Start pages Catalogue*/
 .jumbotron {
     text-align: center;
     margin-top: 5vh;
-    color: #555562;
+    color: white;
+    background-color: black;
 }
 
 .container .jumbotron {
@@ -499,13 +529,9 @@ Start pages Catalogue*/
 }
 
 /* Alternate bg color of rectangle in Home */
-.catalog-row:nth-child(2n) .jumbotron {
-    background-color: #E3E3E3;
-}
-
-.catalog-row:nth-child(2n+1) .jumbotron {
-    background-color: #4C4C4C;
-    color: #E3E3E3;
+.catalog-row .jumbotron {
+    background-color: #D821AD;
+    color: black;
 }
 
 .catalog-thumb .thumbnail {

@@ -21,7 +21,7 @@
         <div class="tab-content">
             {% for category, models in modelsByCat %}
                 <div id="{{ category }}" class="tab-pane fade {{ (active_category == category) ? 'in active' }}">
-                    <h2>Catégorie : {{ category.id | capitalize }}
+                    <h2>Catégorie : {{ category | capitalize }}
                         <small class="pull-right">{{ models | length }} modèle{{ (models | length > 1) ? 's' }}</small>
                     </h2>
 
