@@ -8,29 +8,29 @@
 
     <div class="container">
         <div class="gallery">
-        <div class="bloc">
-            {% for picture in pictures %}
-            <div class="grid-item">
-                <a href="#" data-toggle="modal" data-target="#{{ picture.id }}">
-                    <figure>
-                <img class="thumbnail img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
-                    </figure>
-                </a>
-                <div class="modal fade" id="{{ picture.id }}" tabindex="-1" role="dialog">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">x</button>
-                            </div>
-                            <div class="modal-body">
-                                <img class="thumbnail img-responsive" src="assets/images/gallery/{{ picture.name }}">
+            <div class="bloc">
+                {% for picture in pictures %}
+                    <div class="grid-item">
+                        <a href="#" data-toggle="modal" data-target="#{{ picture.id }}">
+                            <figure>
+                                <img class="thumbnail img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+                            </figure>
+                        </a>
+                        <div class="modal fade" id="{{ picture.id }}" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">x</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img class="thumbnail img-responsive" src="assets/images/gallery/{{ picture.name }}">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
-        {% endfor %}
-        </div>
         </div>
     </div>
 {% endblock %}

@@ -9,7 +9,7 @@
             {% if declinations | length > 1 %}
                 <div class="category-thumbnail">
                     <div class="row">
-                        <div class="hidden-sm hidden-xs {{ (loop.index % 2) ?: 'col-md-push-8' }} col-md-3">
+                        <div class="hidden-sm hidden-xs {{ (loop.index is odd) ?: 'col-md-push-8' }} col-md-3">
                             <div class="title-block">
                                 <span>{{ category | capitalize }}</span>
                             </div>
@@ -30,7 +30,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="hidden-sm hidden-xs {{ (loop.index % 2) ?: 'col-md-pull-8' }} col-md-offset-1 col-md-4">
+                        <div class="hidden-sm hidden-xs {{ (loop.index is odd) ?: 'col-md-pull-8' }} col-md-offset-1 col-md-4">
                             <div class="thumbnail-sm">
                                 <div class="row">
                                     {% for i in 2..5 %}
