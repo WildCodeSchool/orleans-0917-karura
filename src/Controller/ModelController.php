@@ -153,7 +153,6 @@ class ModelController extends Controller
             'model' => $model,
             'declinationByColor' => $declinationByColor,
         ]);
-
     }
 
     // CRUD of models //

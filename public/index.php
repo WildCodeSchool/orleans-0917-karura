@@ -35,6 +35,11 @@ if ($route == 'home') {
     $homeController = new \Karura\Controller\HomeController();
     echo $homeController->showContact();
 
+} elseif ($route == 'about') {
+    // go to contact page
+    $homeController = new \Karura\Controller\HomeController();
+    echo $homeController->showAbout();
+
 } elseif ($route == 'mentions') {
     // go to mentions page
     $homeController = new \Karura\Controller\HomeController();
@@ -47,6 +52,10 @@ if ($route == 'home') {
 } elseif ($route == 'catalog') {
     $modelController = new \Karura\Controller\HomeController();
     echo $modelController->showCatalog();
+
+} elseif ($route == 'galerie') {
+    $galleryController = new \Karura\Controller\GalleryController();
+    echo $galleryController->showGallery();
 
 } else {
     // go to homepage by default

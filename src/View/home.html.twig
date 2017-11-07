@@ -9,20 +9,20 @@
             {% if declinations | length > 1 %}
                 <div class="category-thumbnail">
                     <div class="row">
-                        <div class="hidden-xs {{ (loop.index % 2) ?: 'col-lg-push-8' }} col-lg-3">
+                        <div class="hidden-sm hidden-xs {{ (loop.index is odd) ?: 'col-md-push-8' }} col-md-3">
                             <div class="title-block">
                                 <span>{{ category | capitalize }}</span>
                             </div>
                         </div>
-                        <div class="hidden-lg col-sm-3">
+                        <div class="hidden-md hidden-lg col-sm">
                             <div class="title-block-sm">
                                 <span>{{ category | capitalize }}</span>
                             </div>
                         </div>
 
-                        <div class="col-lg-offset-1 col-lg-3">
+                        <div class="col-xs-offset-2 col-xs col-md-offset-1 col-md-3">
                             <div class="main-thumbnail">
-                                <a href="index.php?route=product&modelId={{ declinations[1].modelId }}&colorId={{ declinations[0].colorId }}">
+                                <a href="index.php?route=product&modelId={{ declinations[1].modelId }}&colorId={{ declinations[1].colorId }}">
                                     <div class="thumbnail">
                                         <img src="assets/images/{{ declinations[1].mainImage }}" alt="">
                                         <p class="text">{{ models[declinations[1].modelId] | capitalize }}</p>
@@ -30,11 +30,11 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="hidden-xs {{ (loop.index % 2) ?: 'col-lg-pull-8' }} col-lg-offset-1 col-lg-4">
+                        <div class="hidden-sm hidden-xs {{ (loop.index is odd) ?: 'col-md-pull-8' }} col-md-offset-1 col-md-4">
                             <div class="thumbnail-sm">
                                 <div class="row">
                                     {% for i in 2..5 %}
-                                        <div class="col-lg-6">
+                                        <div class="col-md-6">
                                             <a href="index.php?route=product&modelId={{ declinations[i].modelId }}&colorId={{ declinations[i].colorId }}">
                                                 <div class="thumbnail">
                                                     <img src="assets/images/{{ declinations[i].mainImage }}" alt="">

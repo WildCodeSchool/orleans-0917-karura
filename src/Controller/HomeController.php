@@ -4,6 +4,8 @@ namespace Karura\Controller;
 
 use Karura\Model\CategoryManager;
 use Karura\Model\DeclinationManager;
+use Karura\Model\Gallery;
+use Karura\Model\GalleryManager;
 use Karura\Model\ModelManager;
 
 class HomeController extends Controller
@@ -102,7 +104,6 @@ class HomeController extends Controller
             if (empty($errors)) {
 
                 $setFrom = $_POST['formMail'];
-                $gender = $_POST['gender'];
                 $firstName = $_POST['formFirstName'];
                 $lastName = $_POST['formLastName'];
                 $phoneForm = $_POST['formTel'];
@@ -115,7 +116,7 @@ class HomeController extends Controller
                     $phone = "non renseigné";
                 }
 
-                $messageSent = $gender . ' ' . $firstName . ' ' . $lastName . ' vous a envoyé un message sur Karura.com :' . "\r\n\r\n" . $formMessage . "\r\n\r\n" .
+                $messageSent = $firstName . ' ' . $lastName . ' vous a envoyé un message sur Karura.com :' . "\r\n\r\n" . $formMessage . "\r\n\r\n" .
                     'E-mail : ' . $setFrom . "\r\n" . 'Téléphone : ' . $phone;
 
                 require '../mailConfig.php';
@@ -144,6 +145,15 @@ class HomeController extends Controller
     {
         // show mentions légales
         return self::render('mentions.html.twig');
+    }
+
+    /**
+     * @return string
+     */
+    public function showAbout()
+    {
+        // show about
+        return self::render('about.html.twig');
     }
 
     public function showAdminHome()
@@ -214,4 +224,5 @@ class HomeController extends Controller
             'modelsInCat' => $models,
         ]);
     }
+
 }
