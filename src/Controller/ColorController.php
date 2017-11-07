@@ -129,7 +129,8 @@ class ColorController extends Controller
     /**
      * @return string
      */
-    public function deleteColor()
+    public
+    function deleteColor()
     {
         if (!empty($_POST['color_id'])) {
             $colorManager = new ColorManager();
