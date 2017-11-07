@@ -298,9 +298,10 @@ Start Mise en forme des thumbnails*/
 
 .category-thumbnail:nth-child(2n) .title-block span {
     transform: rotate(90deg);
-    top: 20%;
     left: 50%;
-
+    width: 100%;
+    top: 4%;
+    text-align: center;
 }
 
 .category-thumbnail:nth-child(2n+1) .title-block {
@@ -312,9 +313,10 @@ Start Mise en forme des thumbnails*/
     transform: rotate(-90deg);
     width: 100%;
     top: 82%;
-    text-align: center;
     left: 50%;
+    text-align: center;
 }
+
 
 .title-block span {
     font-size: 5vh;
