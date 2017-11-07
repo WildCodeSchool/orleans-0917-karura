@@ -9,7 +9,7 @@
             <label for="name">Nom de la couleur</label>
             <input id="name" type="text" class="form-control" name="name" value="{{ post.name }}">
             {% if errors.name %}
-                <strong style="color:red">{{ errors.name }}</strong>
+                <strong class="errorMessage">{{ errors.name }}</strong>
             {% endif %}
         </div>
         <div class="form-group">
