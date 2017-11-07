@@ -298,8 +298,11 @@ Start Mise en forme des thumbnails*/
 
 .category-thumbnail:nth-child(2n) .title-block span {
     transform: rotate(90deg);
-    top: 20%;
     left: 50%;
+    border: solid red 2px;
+    width: 100%;
+    text-align: center;
+    transform-origin: 0 50%;
 
 }
 
@@ -310,14 +313,16 @@ Start Mise en forme des thumbnails*/
 
 .category-thumbnail:nth-child(2n+1) .title-block span {
     transform: rotate(-90deg);
-    top: 70%;
     left: 50%;
+    border: solid red 2px;
+    width: 100%;
+    text-align: center;
+    transform-origin: 0 top;
 }
 
 .title-block span {
     font-size: 5vh;
     position: absolute;
-    transform-origin: 0 50%;
 }
 
 /* Alternate bg color of rectangle in Home sm size */
