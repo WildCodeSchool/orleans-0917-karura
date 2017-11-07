@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-
-    <!--Thumbnail Catalogue -->
-    <div class="jumbotron">
-        <h1>NOTRE GALERIE</h1>
-    </div>
-
+    
     <div class="container">
+        <div class="jumbotron">
+            <h1>NOTRE GALERIE</h1>
+        </div>
+
         <div class="gallery">
             <div class="bloc">
                 {% for picture in pictures %}
                     <div class="grid-item">
                         <a href="#" data-toggle="modal" data-target="#{{ picture.id }}">
                             <figure>
-                                <img class="thumbnail img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
+                                <img class="thumbnail img-responsive" src="assets/images/gallery/{{ picture.name }}"
+                                     alt="">
                             </figure>
                         </a>
                         <div class="modal fade" id="{{ picture.id }}" tabindex="-1" role="dialog">
@@ -23,7 +23,8 @@
                                         <button type="button" class="close" data-dismiss="modal">x</button>
                                     </div>
                                     <div class="modal-body">
-                                        <img class="thumbnail img-responsive" src="assets/images/gallery/{{ picture.name }}">
+                                        <img class="thumbnail img-responsive"
+                                             src="assets/images/gallery/{{ picture.name }}">
                                     </div>
                                 </div>
                             </div>
