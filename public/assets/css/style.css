@@ -96,6 +96,7 @@ START BARRE DE NAVIGATION */
 /*Placement du logo de la navbar*/
 .navbar .container-fluid {
     padding-left: 0;
+    padding-right: 0;
 }
 
 /*Dropdown menu */
@@ -564,3 +565,21 @@ Start pages Product*/
 }
 
 /*End admin button*/
+
+/*Start Galerie */
+
+.grid-item {
+    width: 250px;
+    float: left;
+    margin: 10px;
+}
+
+.bloc {
+    margin: 0 auto;
+}
+
+.gallery {
+    width: 1000px;
+}
+
+/*End Galerie */

@@ -2,12 +2,12 @@
 {% block content %}
 
     <!--Thumbnail Catalogue -->
-    <div class="jumbotron">
-        <h1>NOTRE CATALOGUE</h1>
-        <p>Retrouvez ici nos différents modèles</p>
-    </div>
-
     <div class="container">
+        <div class="jumbotron">
+            <h1>NOTRE CATALOGUE</h1>
+            <p>Retrouvez ici nos différents modèles</p>
+        </div>
+
         {% for category, declinations in declinationsByCat %}
             <div class="row catalog-row">
                 <div class="jumbotron">

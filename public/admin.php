@@ -41,6 +41,16 @@ if (substr($route, 0, 10) == 'admincolor') {
         echo $modelController->showAllAdminAction();
     }
 
+} elseif (substr($route, 0, strlen('admingallery')) == 'admingallery') {
+    $galleryController = new \Karura\Controller\GalleryController();
+    if ($route == 'admingalleryadd') {
+        echo $galleryController->addPicture();
+    } elseif ($route == 'admingallerydelete') {
+        echo $galleryController->deletePicture();
+    } else {
+        echo $galleryController->showAllAdminGalleryAction();
+    }
+
 } elseif (substr($route, 0, strlen('admindeclination')) == 'admindeclination') {
     $declinationController = new \Karura\Controller\DeclinationController();
     if ($route == 'admindeclinationadd') {
