@@ -89,6 +89,7 @@ START BARRE DE NAVIGATION */
 /*Placement du logo de la navbar*/
 .navbar .container-fluid {
     padding-left: 0;
+    padding-right: 0;
 }
 
 /*Dropdown menu */
