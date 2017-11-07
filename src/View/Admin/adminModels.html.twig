@@ -13,14 +13,14 @@
         <ul class="nav nav-tabs nav-justified">
             {% for category, models in modelsByCat %}
                 <li {{ (active_category == category) ? 'class="active"' }}><a data-toggle="tab"
-                                                           href="#{{ category }}"><strong>{{ category | capitalize }}</strong>
+                                                           href="#{{ category |replace({' ':''}) }}"><strong>{{ category | capitalize }}</strong>
                     </a></li>
             {% endfor %}
         </ul>
 
         <div class="tab-content">
             {% for category, models in modelsByCat %}
-                <div id="{{ category }}" class="tab-pane fade {{ (active_category == category) ? 'in active' }}">
+                <div id="{{ category |replace({' ':''}) }}" class="tab-pane fade {{ (active_category == category) ? 'in active' }}">
                     <h2>Catégorie : {{ category | capitalize }}
                         <small class="pull-right">{{ models | length }} modèle{{ (models | length > 1) ? 's' }}</small>
                     </h2>

@@ -175,10 +175,11 @@ class HomeController extends Controller
         $declinationManager = new DeclinationManager();
 
         foreach ($modelsByCat[$category->getName()] as $model) {
-            $decl = $declinationManager->findByModel($model, true);
-            $decl = $decl ? $decl[0] : false;
-            $key = $model->getHomeModel();
-            $declinationsByCat[$key] = $decl;
+            $declination = $declinationManager->findByModel($model, true);
+            if (count($declination)) {
+                $flag = $model->getHomeModel();
+                $declinationsByCat[$flag] = $declination[0];
+            }
         }
 
         $modelNames = [];
