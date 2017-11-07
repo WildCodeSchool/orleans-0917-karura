@@ -11,12 +11,12 @@
         <div class="bloc">
             {% for picture in pictures %}
             <div class="grid-item">
-                <a href="#" data-toggle="modal" data-target="#2">
+                <a href="#" data-toggle="modal" data-target="#{{ picture.id }}">
                     <figure>
                 <img class="img-responsive" src="assets/images/gallery/{{ picture.name }}" alt="">
                     </figure>
                 </a>
-                <div class="modal fade" id="2" tabindex="-1" role="dialog">
+                <div class="modal fade" id="{{ picture.id }}" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
