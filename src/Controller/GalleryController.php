@@ -19,7 +19,7 @@ class GalleryController extends Controller
         $galleryManager = new GalleryManager();
         $pictures = $galleryManager->findAll();
 
-        return self::render('galery.html.twig', [
+        return self::render('gallery.html.twig', [
             'pictures' => $pictures,
         ]);
 
@@ -83,8 +83,8 @@ class GalleryController extends Controller
         if (!empty($_POST['id'])) {
             $galleryManager = new GalleryManager();
             $picture = $galleryManager->find($_POST['id']);
-            if ($picture->getName() and file_exists('./assets/images/gallery') . $picture->getName()) {
-                unlink('./assets/images/gallery' . $picture->getName());
+            if ($picture->getName() and file_exists('./assets/images/gallery/') . $picture->getName()) {
+                unlink("./assets/images/gallery/" . $picture->getName());
             }
 
             $galleryManager->delete($picture);
