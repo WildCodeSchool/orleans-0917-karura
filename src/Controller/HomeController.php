@@ -25,7 +25,8 @@ class HomeController extends Controller
             $modelsByCat[$category->getName()] = $modelManager->findHomeModelsByCat($category);
             $declinationsByCat[$category->getName()] = [];
             foreach ($modelsByCat[$category->getName()] as $model) {
-                $decl = $declinationManager->findByModel($model)[0];
+                $decl = $declinationManager->findByModel($model, true);
+                $decl = $decl ? $decl[0] : false;
                 $key = $model->getHomeModel();
                 $declinationsByCat[$category->getName()][$key] = $decl;
             }
@@ -36,7 +37,7 @@ class HomeController extends Controller
         foreach ($models as $model) {
             $modelNames[$model->getId()] = $model->getName();
         }
-        // TODO pour le moment affichage des modeles avec TOUTES les couleurs dispos
+
         return self::render('home.html.twig', [
             'declinationsByCat' => $declinationsByCat,
             'models' => $modelNames,
@@ -68,7 +69,6 @@ class HomeController extends Controller
             $modelNames[$model->getId()] = $model->getName();
         }
 
-        // TODO pour le moment affichage des modeles avec TOUTES les couleurs dispos
         // à terme on affichera uniquement une des couleur + modal
         return self::render('catalog.html.twig', [
             'declinationsByCat' => $declinationsByCat,
@@ -82,9 +82,6 @@ class HomeController extends Controller
     public function showContact()
     {
         // show contact page
-        // make args to formate form when you came from model contact redirection
-        // TODO
-
         $errors = [];
 
         if (!empty($_POST['submitForm'])) {
@@ -178,7 +175,8 @@ class HomeController extends Controller
         $declinationManager = new DeclinationManager();
 
         foreach ($modelsByCat[$category->getName()] as $model) {
-            $decl = $declinationManager->findByModel($model)[0];
+            $decl = $declinationManager->findByModel($model, true);
+            $decl = $decl ? $decl[0] : false;
             $key = $model->getHomeModel();
             $declinationsByCat[$key] = $decl;
         }
