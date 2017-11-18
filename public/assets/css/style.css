@@ -80,7 +80,7 @@ START BARRE DE NAVIGATION */
     font-size: calc(80% + 10px);
 }
 
-/*Couleur et effet lors du survole des catégories*/
+/*Couleur et effet lors du survol des catégories*/
 .navbar-default .navbar-nav > li > a:hover {
     color: #D821AD;
     transition: all 0.4s ease 0s;
@@ -90,7 +90,7 @@ START BARRE DE NAVIGATION */
 .dropdown-menu > li > a {
     color: black;
     padding-left: 5px;
-
+    font-size: 1.3em;
 }
 
 /*Placement du logo de la navbar*/
