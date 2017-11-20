@@ -9,12 +9,12 @@
             {% if declinations | length > 1 %}
                 <div class="category-thumbnail">
                     <div class="row">
-                        <div class="hidden-sm hidden-xs {{ (loop.index is odd) ?: 'col-md-push-8' }} col-md-3">
+                        <div class="hidden-sm hidden-xs img-responsive {{ (loop.index is odd) ?: 'col-md-push-8' }} col-md-3 ">
                             <div class="title-block">
                                 <span>{{ category | title }}</span>
                             </div>
                         </div>
-                        <div class="hidden-md hidden-lg col-sm col-xs-12">
+                        <div class="hidden-md hidden-lg">
                             <div class="title-block-sm">
                                 <span class="category-name-block-sm">{{ category | title }}</span>
                             </div>
