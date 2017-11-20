@@ -48,7 +48,6 @@ START BARRE DE NAVIGATION */
     background-color: white;
     margin-bottom: 0;
     border: none;
-    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
 
@@ -349,7 +348,7 @@ Start Mise en forme des thumbnails*/
 .category-name-block-sm {
     display: inline-block;
     height: inherit;
-    line-height: 85px;
+
 }
 
 .thumbnail-sm .thumbnail {
