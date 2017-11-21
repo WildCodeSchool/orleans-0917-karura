@@ -23,9 +23,12 @@
         <div class="form-group">
             <label for="cat">Catégorie</label>
             <select name="category" id="cat">
+                {% set catname = '0' %}
                 {% for category in categories %}
                     <option value="{{ category.id }}"
                             {{ (category.id == model.categoryId) ? 'selected' }}>{{ category.name }}</option>
+                    {% if (category.id == model.categoryId) %}{% set catname = category.name %}{% endif %}
+
                 {% endfor %}
             </select>
         </div>
@@ -34,7 +37,7 @@
                     class="glyphicon glyphicon-edit"
                     aria-hidden="true"> Modifier</span></button>
 
-        <a href="admin.php?route=adminmodel" class="pull-right btn btn-danger">
+        <a href="admin.php?route=adminmodel&active_category={{ catname }}" class="pull-right btn btn-danger">
         <span class="glyphicon glyphicon-remove"
               aria-hidden="true"> Annuler</span></a>
     </form>
