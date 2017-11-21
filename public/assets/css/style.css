@@ -31,7 +31,7 @@ label {
     margin-top: 20px;
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
     body {
         font-size: 1em;
     }
@@ -48,7 +48,6 @@ START BARRE DE NAVIGATION */
     background-color: white;
     margin-bottom: 0;
     border: none;
-    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
 
@@ -80,7 +79,7 @@ START BARRE DE NAVIGATION */
     font-size: calc(80% + 10px);
 }
 
-/*Couleur et effet lors du survole des catégories*/
+/*Couleur et effet lors du survol des catégories*/
 .navbar-default .navbar-nav > li > a:hover {
     color: #D821AD;
     transition: all 0.4s ease 0s;
@@ -90,7 +89,7 @@ START BARRE DE NAVIGATION */
 .dropdown-menu > li > a {
     color: black;
     padding-left: 5px;
-
+    font-size: 1.3em;
 }
 
 /*Placement du logo de la navbar*/
@@ -128,6 +127,7 @@ START SLIDER */
     height: 30vw;
     background-size: cover;
 }
+
 .carousel-inner {
     margin-bottom: 2vw;
 }
@@ -216,6 +216,7 @@ START FORM */
 .form h2 {
     text-align: center;
     margin: 25px 0;
+    font-size: calc(3em * 0.625);
 }
 
 .contactForm {
@@ -247,7 +248,7 @@ START FORM */
     color: white;
 }
 
-.button-form-submit:hover{
+.button-form-submit:hover {
     background-color: #D821AD;
     color: white;
 }
@@ -260,9 +261,11 @@ textarea.form-control {
     .contactForm {
         font-size: 1.3em;
     }
+
     .errorForm {
         font-size: 1.2em;
     }
+
     .formFile {
         font-size: 1em;
     }
@@ -284,7 +287,7 @@ Start Mise en forme des thumbnails*/
     position: absolute;
     padding: 0;
     margin-bottom: 0;
-    width: 42vh;
+    width: 39.9vh;
     height: 53vh;
     min-height: 100%;
     float: left;
@@ -301,7 +304,6 @@ Start Mise en forme des thumbnails*/
     transform: rotate(90deg);
     left: 50%;
     width: 100%;
-    top: 4%;
     text-align: center;
 }
 
@@ -317,7 +319,6 @@ Start Mise en forme des thumbnails*/
     left: 50%;
     text-align: center;
 }
-
 
 .title-block span {
     font-size: 5vh;
@@ -349,7 +350,7 @@ Start Mise en forme des thumbnails*/
 .category-name-block-sm {
     display: inline-block;
     height: inherit;
-    line-height: 85px;
+
 }
 
 .thumbnail-sm .thumbnail {
@@ -387,7 +388,7 @@ Start Mise en forme des thumbnails*/
     transition: all .3s ease-in-out;
 }
 
-@media(max-width: 1000px) {
+@media (max-width: 1000px) {
     .thumbnail {
         margin: 0 auto;
     }
@@ -459,6 +460,7 @@ footer img {
     .contactUs {
         position: absolute;
     }
+
     footer img {
         width: 4em;
     }
@@ -513,9 +515,15 @@ Start pages modèles*/
     text-align: center;
 }
 
-.errorMessage{
+
+.modal-sm {
+    margin-top:5vh;
+}
+
+.errorMessage {
     color: red;
 }
+
 /*End pages modèles
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -527,6 +535,10 @@ Start pages Catalogue*/
     margin-top: 5vh;
     color: white;
     background-color: black;
+}
+
+.jumbotron > h1 {
+    font-size: 5vh;
 }
 
 .container .jumbotron {
@@ -583,3 +595,15 @@ Start pages Product*/
 }
 
 /*End Galerie */
+
+/*A propos*/
+
+.about > h2 {
+    font-size: calc(3em * 0.625);
+}
+
+.about > p {
+    font-size: calc(2.5em * 0.625);
+}
+
+/*End A propos*/

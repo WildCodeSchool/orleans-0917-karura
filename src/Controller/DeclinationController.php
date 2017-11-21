@@ -13,6 +13,7 @@ use Karura\Model\ColorManager;
 use Karura\Model\Declination;
 use Karura\Model\DeclinationManager;
 use Karura\Model\ModelManager;
+use Karura\Model\CategoryManager;
 
 class DeclinationController extends Controller
 {
@@ -47,6 +48,9 @@ class DeclinationController extends Controller
         $colorManager = new ColorManager();
         $colors = $colorManager->findAll();
 
+        $categoryManager = new CategoryManager();
+        $category = $categoryManager->find($model->getCategoryId());
+
         $resColor = [];
 
         foreach ($colors as $color) {
@@ -57,6 +61,7 @@ class DeclinationController extends Controller
             'declinations' => $declinationsByModel,
             'model' => $model,
             'colors' => $resColor,
+            'category' => $category,
         ]);
     }
 

@@ -6,7 +6,7 @@
     <div class="container">
         {% if category %}
             <div class="jumbotron">
-                <h1>{{ category.name | capitalize }}</h1>
+                <h1>{{ category.name | title }}</h1>
             </div>
         {% endif %}
 
@@ -23,7 +23,7 @@
                         <figure class="thumbnail">
                             <img src="assets/images/{{ declination.mainImage }}" alt="">
                             <figcaption class="caption">
-                                <p class="text">{{ models[declination.modelId] | capitalize }}</p>
+                                <p class="text">{{ models[declination.modelId] | title }}</p>
                             </figcaption>
                         </figure>
                     </a>
