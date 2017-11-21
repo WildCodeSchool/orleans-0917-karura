@@ -21,13 +21,15 @@ $message = (new \Swift_Message($header))
     ->setBody($messageSent);
 
 if (!empty($_FILES)) {
-    if ($_FILES['formFile']['error'] !== 4) {
+    if (!$_FILES['formFile']['error']) {
         if (filesize($_FILES['formFile']['tmp_name']) > $fileSize) {
             $errors['formFile'] = "Votre fichier est trop volumineux";
         } else {
             $attachment = \Swift_Attachment::fromPath($_FILES['formFile']['tmp_name'])->setFilename($_FILES['formFile']['name']);
             $message->attach($attachment);
         }
+    } else {
+        $errors['formFile'] = "Erreur dans l'envoi du mail. Votre fichier en pièce jointe est trop volumineux";
     }
 }
 
