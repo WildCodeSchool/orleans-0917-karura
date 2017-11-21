@@ -512,6 +512,10 @@ Start pages modèles*/
     text-align: center;
 }
 
+.modal-sm {
+    margin-top:5vh;
+}
+
 .errorMessage{
     color: red;
 }

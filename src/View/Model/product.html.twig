@@ -56,15 +56,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-6 hidden-md hidden-sm hidden-lg">
-                        <div class="thumbnail main-thumbnail-model">
-                            <a href="#" data-toggle="modal" data-target="#1">
+                <div class="col-xs-6 hidden-lg hidden-md">
+                    {% if declinationByColor.secondaryImage is not empty %}
+                        <div class="thumbnail secondary-thumbnail-model modal-sm">
+                            <a href="#" data-toggle="modal" data-target="#3">
                                 <figure>
                                     <img class="img-responsive" src="assets/images/{{ declinationByColor.secondaryImage }}"
                                          alt="Image du modele">
                                 </figure>
                             </a>
-                            <div class="modal fade" id="1" tabindex="-1" role="dialog">
+                            <div class="modal fade" id="3" tabindex="-1" role="dialog">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -72,17 +73,18 @@
                                             <h2 class="modal-title">{{ model.name }}</h2>
                                         </div>
                                         <div class="modal-body">
-                                            <img src="assets/images/{{ declinationByColor.secondaryImage }}">
+                                            <img class="img-responsive" src="assets/images/{{ declinationByColor.secondaryImage }}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {% endif %}
+                </div>
 
 
 
-                <div class="col-lg-6">
+                <div class="col-xs-8 col-lg-6">
                     <h1>{{ model.name }}</h1>
                     <p>{{ model.description | nl2br }}</p>
                     <form method="POST" action="index.php?route=contact">
