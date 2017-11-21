@@ -59,7 +59,7 @@
 
                 <div class="col-lg-6">
                     <h1>{{ model.name }}</h1>
-                    <p>{{ model.description }}</p>
+                    <p>{{ model.description | raw}}</p>
                     <form method="POST" action="index.php?route=contact">
                         <input type="hidden" name="modelName" value="{{ model.name }}">
                         <input class="model-button" type="submit" name="contact" value="Nous contacter">
