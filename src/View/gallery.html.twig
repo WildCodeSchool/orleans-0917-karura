@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block content %}
-    
+
     <div class="container">
         <div class="jumbotron">
-            <h1>NOTRE GALERIE</h1>
+            <h1>Notre Galerie</h1>
         </div>
 
         <div class="gallery">
@@ -34,4 +34,11 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="assets/js/masonry.js"></script>
+    <script type="text/javascript" src="assets/js/galleryScript.js"></script>
 {% endblock %}

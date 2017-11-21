@@ -4,14 +4,14 @@
     <!--Thumbnail Catalogue -->
     <div class="container">
         <div class="jumbotron">
-            <h1>NOTRE CATALOGUE</h1>
+            <h1>Notre catalogue</h1>
             <p>Retrouvez ici nos différents modèles</p>
         </div>
 
         {% for category, declinations in declinationsByCat %}
             <div class="row catalog-row">
                 <div class="jumbotron">
-                    <h2>{{ category | capitalize }}</h2>
+                    <h2>{{ category | title }}</h2>
                 </div>
                 {% for declination in declinations %}
                     <div class="col-lg-3">

@@ -173,7 +173,7 @@ class ModelController extends Controller
             if (empty($_POST['name'])) {
                 $errors['name'] = 'Le nom du modèle ne doit pas être vide';
             } else {
-                if ($modelManager->findByName($_POST['name'])) {
+                if ($modelManager->findByName($_POST['name'], true)) {
                     $errors['name'] = 'Un modèle existe déjà sous ce nom, veuillez en spécifier un autre';
                 }
             }

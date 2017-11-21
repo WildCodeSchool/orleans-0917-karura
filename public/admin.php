@@ -59,7 +59,7 @@ if (substr($route, 0, 10) == 'admincolor') {
         echo $declinationController->deleteDeclination();
     } elseif ($route == 'admindeclinationupdate') {
         echo $declinationController->updateDeclination();
-    }elseif ($route == 'admindeclination-change-maincolor') {
+    } elseif ($route == 'admindeclination-change-maincolor') {
         echo $declinationController->changeMainColor($_POST['id']);
     } else {
         echo $declinationController->showAllByModel();
