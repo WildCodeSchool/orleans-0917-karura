@@ -61,6 +61,8 @@ class DeclinationManager extends Manager
             $req .= " AND decl.main_color='1'";
         }
 
+        $req .= "ORDER BY decl.id desc";
+
         $statement = $this->pdo->prepare($req);
         $statement->bindValue('category_id', $category->getId(), \PDO::PARAM_INT);
         $statement->execute();

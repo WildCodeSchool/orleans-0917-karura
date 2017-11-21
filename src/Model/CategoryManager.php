@@ -24,7 +24,8 @@ class CategoryManager extends Manager
     public function findAll()
     {
         $req = "SELECT *
-                FROM " . self::TABLE;
+                FROM " . self::TABLE . "
+                ORDER BY my_order";
         $statement = $this->pdo->query($req);
         return $statement->fetchAll(\PDO::FETCH_CLASS, self::CLASSREF);
     }
