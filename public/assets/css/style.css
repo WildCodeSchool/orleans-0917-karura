@@ -158,7 +158,7 @@ START SLIDER */
 
 /*Position du paragrahe*/
 .carousel-caption {
-    height: 80%;
+    height: 60%;
     bottom: 10%;
 }
 
@@ -167,8 +167,6 @@ START SLIDER */
     text-align: center;
     font-weight: bold;
     font-size: 3em;
-    text-decoration-line: underline;
-    text-decoration-color: #D821AD;
 }
 
 /*Décalage paragraphe*/
