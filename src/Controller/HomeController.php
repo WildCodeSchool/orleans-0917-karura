@@ -113,7 +113,7 @@ class HomeController extends Controller
                     $phone = "non renseigné";
                 }
 
-                $messageSent = $firstName . ' ' . $lastName . ' vous a envoyé un message sur Karura.com :' . "\r\n\r\n" . $formMessage . "\r\n\r\n" .
+                $messageSent = $firstName . ' ' . $lastName . ' vous a envoyé un message sur Karura.fr :' . "\r\n\r\n" . $formMessage . "\r\n\r\n" .
                     'E-mail : ' . $setFrom . "\r\n" . 'Téléphone : ' . $phone;
 
                 require '../mailConfig.php';
