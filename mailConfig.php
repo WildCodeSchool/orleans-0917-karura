@@ -20,7 +20,7 @@ $message = (new \Swift_Message($header))
     ->setTo($setTo)
     ->setBody($messageSent);
 
-if (!empty($_FILES)) {
+if (!empty($_FILES['formFile']['name'])) {
     if (!$_FILES['formFile']['error']) {
         if (filesize($_FILES['formFile']['tmp_name']) > $fileSize) {
             $errors['formFile'] = "Votre fichier est trop volumineux";
