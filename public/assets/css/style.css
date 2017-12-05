@@ -299,9 +299,10 @@ Start Mise en forme des thumbnails*/
 }
 
 .category-thumbnail:nth-child(2n) .title-block span {
-    transform: rotate(90deg);
+    transform: rotate(90deg) translateX(-50%) translateY(-50%);
     left: 50%;
     width: 100%;
+    top: 50%;
     text-align: center;
 }
 
@@ -311,9 +312,9 @@ Start Mise en forme des thumbnails*/
 }
 
 .category-thumbnail:nth-child(2n+1) .title-block span {
-    transform: rotate(-90deg);
+    transform: rotate(-90deg) translateX(-50%) translateY(-50%);
     width: 100%;
-    top: 82%;
+    top: 50%;
     left: 50%;
     text-align: center;
 }
@@ -321,7 +322,7 @@ Start Mise en forme des thumbnails*/
 .title-block span {
     font-size: 5vh;
     position: absolute;
-    transform-origin: 0 50%;
+    transform-origin: 0% 0%;
 }
 
 /* Alternate bg color of rectangle in Home sm size */
