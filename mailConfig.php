@@ -18,7 +18,8 @@ $mailer = new \Swift_Mailer($transport);
 $message = (new \Swift_Message($header))
     ->setFrom([$setFrom => $firstName])
     ->setTo($setTo)
-    ->setBody($messageSent);
+    ->setBody($messageSent)
+    ->setReplyTo($setFrom);
 
 if (!empty($_FILES['formFile']['name'])) {
     if (!$_FILES['formFile']['error']) {

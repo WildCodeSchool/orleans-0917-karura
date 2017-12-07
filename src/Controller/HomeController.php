@@ -105,7 +105,7 @@ class HomeController extends Controller
                 $lastName = $_POST['formLastName'];
                 $phoneForm = $_POST['formTel'];
                 $formMessage = $_POST['formMessage'];
-                $header = "Envoi de message sur Karura.com";
+                $header = "Envoi de message sur Karura.fr";
 
                 if ($phoneForm) {
                     $phone = $phoneForm;
